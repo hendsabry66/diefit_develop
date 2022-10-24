@@ -36,9 +36,9 @@ class UserController extends Controller
       	$code = rand(1000,9999);
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
-        $input['code'] = $code;
+        $input['code'] = 1111;
         $user = User::create($input);
-      	sendSMS($code,$user->phone);
+      	//sendSMS($code,$user->phone);
         return redirect('/code/' . $user->id);
     }
 
@@ -126,7 +126,7 @@ class UserController extends Controller
         $restaurantOrdersCompleted = RestaurantOrder::where('user_id', $user->id)->where('status_id', 5)->count();
         $currentSubscription  = (SubscriptionOrder::where('user_id', $user->id)->where('end_date','>=',date('Y-m-d'))->first()) ? SubscriptionOrder::where('user_id', $user->id)->where('end_date','>=',date('Y-m-d'))->first()->subscriptionPrice->subscription->name : '-';
         if(SubscriptionOrder::where('user_id', $user->id)->where('end_date','>=',date('Y-m-d'))->first()){
-            
+
         	$enddate = SubscriptionOrder::where('user_id', $user->id)->where('end_date','>=',date('Y-m-d'))->first()->end_date;
         	$end = Carbon::parse($enddate);
         	$remainingdays = $end->diffInDays(Carbon::now());
@@ -169,10 +169,10 @@ class UserController extends Controller
 
          $user = User::where('phone', $request->phone)->first();
         if($user) {
-          $code = rand(1000,9999);
-            $user->code = $code;
+          //$code = rand(1000,9999);
+            $user->code = 1111;
             $user->save();
-          	sendSMS($code,$user->phone);
+          	//sendSMS($code,$user->phone);
             return redirect('/code/' . $user->id.'/reset');
         }
         return back()->with('error', __('web.Wrong phone'));
