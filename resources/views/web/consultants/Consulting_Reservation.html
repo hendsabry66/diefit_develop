@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Diet Fit</title>
+</head>
+
+<body id="body_site">
+
+    <header id="header">
+        <div class="container">
+            <div class="content">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="logo"><a href=""><img src="assets/images/Logo.png" alt=""></a></div>
+                    <div class="menu_site">
+                        <div id="btn_menu"><i class="fa-solid fa-bars"></i></div>
+                        <ul id="primary-menu">
+                            <li><a href="" id="close_menu">إغلاق</a></li>
+                            <li><a href="">مقالات</a></li>
+                            <li><a href="">فيديوهات</a></li>
+                            <li><a href="">المطعم</a></li>
+                            <li><a href="">المتجر</a></li>
+                            <li><a href="">الاشتراكات</a></li>
+                            <li><a href="">الاستشارات</a></li>
+                        </ul>
+                    </div>
+                    <div class="links">
+                        <ul class="d-flex list-unstyled align-items-center mb-0">
+                            <li><a href="" class="user"><img src="assets/images/user.jpg" alt=""> <span
+                                        class="d-none d-md-inline-block">محمود
+                                        الدوسري</span></a></li>
+                            <li><a href="" class="lang">English</a></li>
+                            <li><a href="" id="toggle"><i class="fa-solid fa-bars"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">الرئيسية</a></li>
+                <li class="breadcrumb-item"><a href="#">الاستشاريين</a></li>
+                <li class="breadcrumb-item active" aria-current="page">تفاصيل الاستشارة </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="consulting-details">
+        <div class="container">
+            <div class="c-head">
+                <div class="d-md-flex justify-content-md-between">
+                    <div class="thumb">
+                        <div class="d-flex align-items-center">
+                            <figure><img src="assets/images/user.jpg" alt=""></figure>
+                            <div class="user-d">
+                                <h2>محمود الدوسري</h2>
+                                <small>اسشتاري سمنة ونحافة</small>
+                                <div class="stars mb-2">
+                                    <i class="fa-solid fa-star on"></i>
+                                    <i class="fa-solid fa-star on"></i>
+                                    <i class="fa-solid fa-star on"></i>
+                                    <i class="fa-solid fa-star on"></i>
+                                    <i class="fa-solid fa-star off"></i>
+                                    <small>(تقييم 4.7)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="c-caption">
+                        <p class="mb-1"><strong>اليوم:</strong> يوم الاثنين 21/12/2021</p>
+                        <p class="mb-1"><strong>الوقت:</strong> الساعة 4 م</p>
+                        <p class="mb-1"><strong>التكلفة:</strong> 700.00 ريال</p>
+                    </div>
+                </div>
+            </div>
+            <div class="c-body pay">
+                <div class="head">
+                    <h2>تحديد طريقة الدفع</h2>
+                </div>
+                <form action="" class="mb-4">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="item">
+                                <input type="radio" name="pay" value="visa" id="visa" checked>
+                                <label for="visa">
+                                    <figure><img src="assets/images/visa.png" alt=""></figure>
+                                    <h2>فيزا</h2>
+                                    <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما </p>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="item">
+                                <input type="radio" name="pay" value="mastarcard" id="mastarcard">
+                                <label for="mastarcard">
+                                    <figure><img src="assets/images/mastercard.png" alt=""></figure>
+                                    <h2>مستر كارد</h2>
+                                    <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما </p>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="item">
+                                <input type="radio" name="pay" value="bank" id="bank">
+                                <label for="bank">
+                                    <figure><img src="assets/images/bank.png" alt=""></figure>
+                                    <h2>تحويل بنكي</h2>
+                                    <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما </p>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <input class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button"
+                        value="تأكيد الاستشارة">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <h4>تأكيد حجز الاستشارة بنجاح </h4>
+                        <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على
+                            الشكل الخارجي</p>
+                        <a href="" class="btn btn-warning">تأكيد</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="item-footer about">
+                        <div class="logo">
+                            <img src="assets/images/Logo.png" alt="">
+                        </div>
+                        <ul class="social d-flex list-unstyled">
+                            <li><a href=""><i class="fa-brands fa-facebook-f"></i></a></li>
+                            <li><a href=""><i class="fa-brands fa-youtube"></i></a></li>
+                            <li><a href=""><i class="fa-brands fa-twitter"></i></a></li>
+                            <li><a href=""><i class="fa-solid fa-paper-plane"></i></a></li>
+                            <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="item-footer">
+                        <h2>لا نقدم حيلًا سحرية لإنقاص الوزن
+                            في ليلة واحدة</h2>
+                        <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على
+                            الشكل الخارجي للنص </p>
+                        <ul class="links list-unstyled d-flex">
+                            <li><a class="btn btn-outline-light" href="">لايف شات</a></li>
+                            <li><a class="btn btn-success" href="">انضم الآن</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="item-footer">
+                        <h2>روابط سريعة</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="">المتجر</a></li>
+                            <li><a href="">المطعم</a></li>
+                            <li><a href="">الاستشارات</a></li>
+                            <li><a href="">المقالات</a></li>
+                            <li><a href="">الاشتراكات</a></li>
+                            <li><a href="">نظام العمولة</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="item-footer">
+                        <h2>اتصل بنا</h2>
+                        <ul class="list-unstyled">
+                            <li><i class="fa-solid fa-location-dot"></i> المملكة العربية السعودية - الرياض
+                                شارع الرياض</li>
+                            <li><i class="fa-solid fa-phone-flip"></i> 9660123456789</li>
+                            <li><i class="fa-brands fa-whatsapp"></i> 9660123456789</li>
+                            <li><i class="fa-solid fa-envelope"></i> info@gmail.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="copy_right">
+                <div class="d-md-flex align-items-md-center justify-content-md-between">
+                    <p class="mb-0">جميع الحقوق محفوظة &copy; 2021</p>
+                    <a href=""><img src="assets/images/topline.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="assets/js/script.js"></script>
+
+</body>
+
+</html>

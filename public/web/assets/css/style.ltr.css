@@ -1,0 +1,52 @@
+.intro .content {
+    padding-left: 0;
+    padding-right: 70px;
+}
+
+#header .links>ul>li>a.lang {
+    margin-right: 10px;
+}
+
+footer .social>li:not(:last-child)>a {
+    margin-left: 0;
+    margin-right: 15px;
+}
+
+footer .item-footer ul.links>li:first-child {
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+.editor figure,
+.comments .items .item figure {
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+.single-product .gallery .swiper-thumbs {
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+.package .item .d-package ul li span {
+    margin-left: 0;
+    margin-right: 5px;
+}
+
+.package .item .price .d-flex>span+span {
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+@media (max-width: 767.98px) {
+    .mobile-btn .mobile-icon {
+        margin-right: 0;
+        margin-left: 10px;
+    }
+
+    #primary-menu {
+        left: 0;
+        right: inherit;
+        transform: translate3d(-100%, 0, 0);
+    }
+}

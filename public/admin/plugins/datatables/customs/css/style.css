@@ -1,0 +1,12 @@
+.dataTables_length{float: right;margin: 0 20px;}
+.dt-buttons{position: relative;float: left !important;}
+.dt-buttons .dt-button{margin: 0;border-radius: 0;transition: 1s all ease;}
+.dt-buttons .buttons-csv{background: #D22B59 !important;color:#fff !important;border:1px solid #D22B59;}
+.dt-buttons .buttons-excel{background: #217245 !important;color:#fff !important;border:1px solid #217245;}
+.dt-buttons .buttons-print{background: #14214A !important;color:#fff !important;border:1px solid #14214A;}
+.dt-buttons .buttons-reset{background: #76736f !important;color:#fff !important;border:1px solid #76736f;}
+.dt-buttons .buttons-reload{background: #2EBCD4 !important;color:#fff !important;border:1px solid #2EBCD4;}
+button.dt-button:hover:not(.disabled), div.dt-button:hover:not(.disabled), a.dt-button:hover:not(.disabled){border: 1px solid #ccc;}
+.dataTables_info{display: inline-block}
+.dataTables_paginate.paging_simple_numbers{display: inline-block;float: right;}
+table.dataTable{margin-bottom: 80px !important;}
