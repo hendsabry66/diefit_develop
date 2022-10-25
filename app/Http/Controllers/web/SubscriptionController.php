@@ -46,8 +46,8 @@ class SubscriptionController extends Controller
     }
 
     public function subscriptionStore(Request $request){
-       if(auth()->user()->subscriptionOrders()->orderBy('id', 'desc')->first()){
-           $lastDate =  auth()->user()->subscriptionOrders()->orderBy('id', 'desc')->first()->end_date;
+       if(auth()->user()->subscriptionOrders()->where('payment_status','paid')->orderBy('id', 'desc')->first()){
+           $lastDate =  auth()->user()->subscriptionOrders()->where('payment_status','paid')->orderBy('id', 'desc')->first()->end_date;
            if(! Carbon::now()->gt($lastDate))
            {
                return  redirect()->back()->with('error', __('web.You have already subscribed'));
@@ -67,22 +67,27 @@ class SubscriptionController extends Controller
             $img =  $img->save($imgPath.$imgName);
             $input['image']=$imgName;
         }
-        $subscripionOrder = SubscriptionOrder::create([
-            'subscription_price_id' => $request->subscription_price_id,
-            'user_id' => auth()->user()->id,
-            'status_id' => 1,
-            'payment' => $request->payment,
-            'name' => $request->name,
-            'account_number' => $request->account_number,
-            'amount' => $request->amount,
-            'ipan' => $request->ipan,
-            'bank_id' => $request->bank_id,
-            'image' => $input['image'],
-            'start_date' => $input['start_date'],
-            'end_date' => $input['end_date'],
-        ]);
+        $subscripionOrder = SubscriptionOrder::find($input['subscription_order_id']);
+        $subscripionOrder->update(
+            [
+                'subscription_price_id' => $request->subscription_price_id,
+                'user_id' => auth()->user()->id,
+                'status_id' => 1,
+                'payment' => $request->payment,
+                'payment_status' => 'paid',
+                'name' => $request->name,
+                'account_number' => $request->account_number,
+                'amount' => $request->amount,
+                'ipan' => $request->ipan,
+                'bank_id' => $request->bank_id,
+                'image' => $input['image'],
+                'start_date' => $input['start_date'],
+                'end_date' => $input['end_date'],
+            ]
+        );
 
-        return redirect('subscriptions/orderFood/'.$request->subscription_price_id.'/'.$subscripionOrder->id);
+
+        return redirect('/')->with('success', __('web.Subscription created successfully'));
 
     }
     public function dateRange($first, $last)

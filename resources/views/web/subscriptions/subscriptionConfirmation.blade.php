@@ -45,6 +45,7 @@
                             <form method="post" action="{{url('subscriptions/store')}}">
                                 @csrf
                                 <input type="hidden" name="subscription_price_id" value="{{$subscriptionPrice->id}}">
+                                <input type="hidden" name="subscription_order_id" value="{{$subscriptionOrder->id}}">
                                 <div class="form-check form-check-inline payment-menthod bank-accounts">
                                     <input class="form-check-input" type="radio" name="payment" id="inlineRadio1"
                                            value="bank">
