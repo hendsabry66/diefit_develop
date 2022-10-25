@@ -6,7 +6,7 @@ jQuery(document).ready(function ($) {
         thisPackage.find('ul.change-package li span.on').removeClass('on').html('');
         $(this).find('span').addClass('on').html('<i class="fa-solid fa-check"></i>');
         thisPackage.find('.updated-price').text(getPackagePrice.format());
-        thisPackage.find("#sub").attr("href", "/diefit/public/ar/subscriptions/create/" + subPriceId);
+        thisPackage.find("#sub").val(subPriceId);
     });
 
     $('.payment-menthod').click(function () {
@@ -16,9 +16,9 @@ jQuery(document).ready(function ($) {
             $('#bank-account-details').fadeIn('fast');
         }
     });
-  
+
   $('.change-qty').click(function () {
-    
+
     var thisItem = $(this).parents('.cart-item-qty');
     var thisInput = thisItem.find('.qty');
     var thisQty = thisInput.val();
@@ -27,7 +27,7 @@ jQuery(document).ready(function ($) {
     var thisMax = thisInput.attr('max');
     var totalPrice = 0;
     var newQty;
-        
+
     if ($(this).hasClass('plus')) {
       	newQty = Number(thisQty) + 1;
       	if ( newQty < thisMax ){
@@ -40,16 +40,16 @@ jQuery(document).ready(function ($) {
           newQty = thisMin;
         }
     }
-    
+
     totalPrice = newQty * thisPrice;
-    
+
     thisItem.find('.total-item-price').val(totalPrice);
     thisItem.find('.total-price-format').text(totalPrice);
-    
+
     auto_update_cart_totel();
-          
+
     });
-  
+
 
 });
 

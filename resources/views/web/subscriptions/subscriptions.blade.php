@@ -74,8 +74,17 @@
                             <div class="text-center">
                                 <p>سعر المختص: <strong>{{$subscription->specialist_price}} ريال</strong></p>
                                 <p>سعر التوصيل في المنطقة : <strong>70 ريال</strong></p>
-
-                                <a href="{{url('/subscriptions/subscriptionOrder/'.$subscription->subscriptionPrices()->first()->id)}}" id="sub" class="btn btn-outline-warning" > اشتراك</a>
+                                <form action="{{url('/subscriptions/subscriptionOrder')}}" method="get">
+                                    <input type="hidden" name="subscription_id" value="{{$subscription->id}}">
+                                    <input type="hidden" id="sub" name="subscription_price_id" value="{{$subscription->subscriptionPrices()->first()->id}}">
+                                    <select name="delivery_cost">
+                                        @foreach($cities as $city)
+                                            <option value="{{$city->delivery_cost}}">{{$city->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    <button type="submit"  class="btn btn-outline-warning">اشتراك </button>
+                                </form>
+{{--                                <a href="{{url('/subscriptions/subscriptionOrder/'.$subscription->subscriptionPrices()->first()->id)}}" id="sub" class="btn btn-outline-warning" > اشتراك</a>--}}
 
 
                             </div>

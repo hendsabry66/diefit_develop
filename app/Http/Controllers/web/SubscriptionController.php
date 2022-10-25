@@ -9,6 +9,7 @@ use App\Models\SubscriptionOrder;
 use App\Models\SubscriptionOrderFood;
 use App\Models\SubscriptionPrice;
 use App\Models\WeekFood;
+use App\Models\City;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Repositories\SubscriptionRepository;
@@ -33,12 +34,14 @@ class SubscriptionController extends Controller
     public function subscriptions(){
         $subscriptions = $this->subscriptionRepository->all();
         $types = $this->typeRepository->all();
-        return view('web.subscriptions.subscriptions', compact('subscriptions', 'types'));
+        $cities = City::get();
+        return view('web.subscriptions.subscriptions', compact('subscriptions', 'types', 'cities'));
     }
-    public function subscriptionCreate($subscriptionPriceId){
+    public function subscriptionCreate($subscriptionPriceId,$subscriptionOrderId){
         $subscriptionPrice = SubscriptionPrice::find($subscriptionPriceId);
+        $subscriptionOrder = SubscriptionOrder::find($subscriptionOrderId);
         $bankAccounts = BankAccounts::get();
-        return view('web.subscriptions.subscriptionConfirmation', compact('subscriptionPrice','bankAccounts'));
+        return view('web.subscriptions.subscriptionConfirmation', compact('subscriptionPrice','bankAccounts','subscriptionOrder'));
 
     }
 
@@ -90,16 +93,17 @@ class SubscriptionController extends Controller
         return new DatePeriod($begin, $interval, $end);
     }
 
-    public function subscriptionOrder($subscriptionPriceId){
-        $subscriptionPrice = SubscriptionPrice::find($subscriptionPriceId);
+    public function subscriptionOrder(Request $request){
+        $subscriptionPrice = SubscriptionPrice::find($request->subscription_price_id);
         $subscripionOrder = SubscriptionOrder::create([
             'subscription_price_id' => $subscriptionPrice->id,
             'user_id' => auth()->user()->id,
             'status_id' => 1,
-            'payment_status'=>'not_paid'
+            'payment_status'=>'not_paid',
+            'delivery_cost'=>$request->delivery_cost,
         ]);
 
-        return redirect('subscriptions/orderFood/'.$subscriptionPriceId.'/'.$subscripionOrder->id);
+        return redirect('subscriptions/orderFood/'.$request->subscription_price_id.'/'.$subscripionOrder->id);
 
 
     }
@@ -170,7 +174,7 @@ class SubscriptionController extends Controller
                 }
             }
         }
-       return redirect('/subscriptions/create/'.$request->subscription_price_id);
+       return redirect('/subscriptions/create/'.$request->subscription_price_id.'/'.$request->subscription_order_id );
     }
 
 
