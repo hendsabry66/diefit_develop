@@ -288,6 +288,10 @@ return [
     'editSubscriptionOrders'=>'تعديل طلب الاشتراك',
     'checkBankTransfer'=>' التحقق من التحويل البنكي   ',
 
+    'delivery_cost'=>'تكلفة التوصيل',
+
+    'specialist_price'=>'سعر المختص',
+
 
 
 

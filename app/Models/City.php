@@ -33,6 +33,7 @@ class City extends Model
         'area_id',
         'name',
         'status',
+        'delivery_cost',
     ];
 
     /**

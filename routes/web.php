@@ -31,7 +31,7 @@ Route::get('/test',function(){
  // \Artisan::call('config:cache');
 // $ff = sendSMS('test','966557831365');
  // dd($ff);
-  
+
 });
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
@@ -105,7 +105,7 @@ Route::group([
         Route::group( ['prefix' => 'store'], function () {
             Route::get('/', [StoreController::class, 'store']);
             Route::post('/addFavorite', [StoreController::class, 'addFavorite']);
-          
+
             Route::get('/getFavorite', [StoreController::class, 'getFavorite']);
             Route::post('/addCart', [StoreController::class, 'addCart']);
             Route::get('/cart', [StoreController::class, 'cart']);
@@ -125,6 +125,7 @@ Route::group([
             Route::get('/', [SubscriptionController::class, 'subscriptions']);
             Route::get('/create/{subscriptionPriceId}', [SubscriptionController::class, 'subscriptionCreate']);
             Route::post('/store', [SubscriptionController::class, 'subscriptionStore']);
+            Route::get('/subscriptionOrder/{subscriptionPriceId}', [SubscriptionController::class, 'subscriptionOrder']);
             Route::get('/orderFood/{subscriptionPriceId}/{subscripionOrderId}', [SubscriptionController::class, 'subscriptionOrderFood']);
             Route::post('/saveOrderFood', [SubscriptionController::class, 'saveSubscriptionOrderFood']);
         });
@@ -134,7 +135,7 @@ Route::group([
             Route::get('foods/{category_id}' , [RestaurantController::class ,'foods']);
             Route::get('foodDetails/{food_id}' , [RestaurantController::class ,'foodDetails']);
             Route::post('/addFavorite', [RestaurantController::class, 'addFavorite']);
-          
+
             Route::get('/getFavorite', [RestaurantController::class, 'getFavorite']);
            	Route::get('/removeFavorite/{food_id}', [RestaurantController::class, 'removeFavorite']);
             Route::post('/addCart', [RestaurantController::class, 'addCart']);

@@ -90,6 +90,20 @@ class SubscriptionController extends Controller
         return new DatePeriod($begin, $interval, $end);
     }
 
+    public function subscriptionOrder($subscriptionPriceId){
+        $subscriptionPrice = SubscriptionPrice::find($subscriptionPriceId);
+        $subscripionOrder = SubscriptionOrder::create([
+            'subscription_price_id' => $subscriptionPrice->id,
+            'user_id' => auth()->user()->id,
+            'status_id' => 1,
+            'payment_status'=>'not_paid'
+        ]);
+
+        return redirect('subscriptions/orderFood/'.$subscriptionPriceId.'/'.$subscripionOrder->id);
+
+
+    }
+
     public function subscriptionOrderFood($subscription_price_id,$subscription_order_id){
         $time1 = Carbon::tomorrow();
         $time2 =Carbon::now()->addDay(7);
@@ -156,7 +170,7 @@ class SubscriptionController extends Controller
                 }
             }
         }
-       return redirect('/');
+       return redirect('/subscriptions/create/'.$request->subscription_price_id);
     }
 
 

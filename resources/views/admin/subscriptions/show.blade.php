@@ -30,7 +30,7 @@
                             <p><span>@lang('admin.name') :- </span> {{ $subscription->getTranslations('name')['ar'] }} - {{ $subscription->getTranslations('name')['en'] }}</p>
                             <p class="card-text"><span>@lang('admin.details_ar')</span>{!!  $subscription->getTranslations('details')['ar'] !!}</p>
                             <p class="card-text"><span>@lang('admin.details_en')</span>{!!  $subscription->getTranslations('details')['en'] !!}</p>
-
+                            <p class="card-text"><span>@lang('admin.specialist_price') :- </span> {{ $subscription->specialist_price }}</p>
                             <a href="{{route('subscriptions.edit',$subscription->id)}}" class="btn btn-outline-teal">@lang('admin.edit')</a>
                         </div>
                     </div>

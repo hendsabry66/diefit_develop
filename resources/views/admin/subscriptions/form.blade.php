@@ -21,8 +21,14 @@
         <textarea name="details_en"
                   id="tinymce">@if(isset($subscription)) {!! $subscription->getTranslations('details')['en'] !!} @endif </textarea>
     </div>
+    <div class="form-group col-md-6 mb-2">
+        <label for="projectinput4">@lang('admin.specialist_price')</label>
+        <input type="number" class="form-control" @if(isset($subscription))
+        value="{{$subscription->specialist_price}}" @endif placeholder="{{__('admin.specialist_price')}}"
+               name="specialist_price">
+    </div>
 
-    <div class="form-group col-md-12 mb-2">
+    <div class="form-group col-md-6 mb-2">
         <label for="projectinput4">@lang('admin.period')</label>
         <input type="number" class="form-control" name="period" @if(isset($subscription))
         value="{{ $subscription->period }}" @endif>

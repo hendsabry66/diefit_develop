@@ -62,7 +62,7 @@
 
                                {{--   </ul>--}}
                             </div>
-                        
+
                             <div class="price">
                                 <div class="d-flex">
                                     <span class="updated-price">{{$subscription->subscriptionPrices()->first()->price}}</span>
@@ -75,7 +75,7 @@
                                 <p>سعر المختص: <strong>50 ريال</strong></p>
                                 <p>سعر التوصيل في المنطقة : <strong>70 ريال</strong></p>
 
-                                <a href="{{url('/subscriptions/create/'.$subscription->subscriptionPrices()->first()->id)}}" id="sub" class="btn btn-outline-warning" > اشتراك</a>
+                                <a href="{{url('/subscriptions/subscriptionOrder/'.$subscription->subscriptionPrices()->first()->id)}}" id="sub" class="btn btn-outline-warning" > اشتراك</a>
 
 
                             </div>

@@ -20,10 +20,10 @@ class CityController extends AppBaseController
     public function __construct(CityRepository $cityRepo)
     {
         $this->cityRepository = $cityRepo;
-        $this->middleware('permission:city-list|city-create|city-edit|city-delete', ['only' => ['index','show']]);
-        $this->middleware('permission:city-create', ['only' => ['create','store']]);
-        $this->middleware('permission:city-edit', ['only' => ['edit','update']]);
-        $this->middleware('permission:city-delete', ['only' => ['destroy']]);
+//        $this->middleware('permission:city-list|city-create|city-edit|city-delete', ['only' => ['index','show']]);
+//        $this->middleware('permission:city-create', ['only' => ['create','store']]);
+//        $this->middleware('permission:city-edit', ['only' => ['edit','update']]);
+//        $this->middleware('permission:city-delete', ['only' => ['destroy']]);
     }
 
     /**
@@ -68,6 +68,7 @@ class CityController extends AppBaseController
             ],
             'area_id' => $input['area_id'],
             'status' => $input['status'],
+            'delivery_cost' => $input['delivery_cost'],
         ]);
 
         $messages = ['success' => "Successfully added", 'redirect' => route('cities.index')];
@@ -139,6 +140,7 @@ class CityController extends AppBaseController
             ],
             'area_id' => $input['area_id'],
             'status' => $input['status'],
+            'delivery_cost' => $input['delivery_cost'],
         ], $id);
         $messages = ['success' => "Successfully updated", 'redirect' => route('cities.index')];
         return response()->json(['messages' => $messages]);

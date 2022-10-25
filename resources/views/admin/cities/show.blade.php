@@ -29,6 +29,9 @@
                             <p class="card-text"><span>  @lang('admin.area') :- </span>
                                 {{$city->area->getTranslations('name')['ar']}} - {{$city->area->getTranslations('name')['en']}}
                             </p>
+                            <p class="card-text"><span>  @lang('admin.delivery_cost') :- </span>
+                                {{$city->delivery_cost}}
+                            </p>
                             <p class="card-text"><span>  الحالة :- </span>
                                 @if($city->status == 'active')
                                     <span class="badge badge-success">@lang('admin.active')</span>
