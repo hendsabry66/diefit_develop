@@ -33,6 +33,9 @@
                                             {{\App\Models\FoodType::find($foodType)->name}} ,
                                         @endforeach
                                     </p>
+                                    <p>سعر المختص: <strong>{{$subscriptionPrice->subscription->specialist_price}} ريال</strong></p>
+                                    <p>سعر التوصيل في المنطقة : <strong>70 ريال</strong></p>
+
                                 </div>
                                 <div>{{$subscriptionPrice->price}}</div>
                             </div>

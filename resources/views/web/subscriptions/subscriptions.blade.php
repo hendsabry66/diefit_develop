@@ -72,7 +72,7 @@
                             </div>
                             <hr>
                             <div class="text-center">
-                                <p>سعر المختص: <strong>50 ريال</strong></p>
+                                <p>سعر المختص: <strong>{{$subscription->specialist_price}} ريال</strong></p>
                                 <p>سعر التوصيل في المنطقة : <strong>70 ريال</strong></p>
 
                                 <a href="{{url('/subscriptions/subscriptionOrder/'.$subscription->subscriptionPrices()->first()->id)}}" id="sub" class="btn btn-outline-warning" > اشتراك</a>
