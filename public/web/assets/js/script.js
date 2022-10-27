@@ -17,51 +17,57 @@ jQuery(document).ready(function ($) {
         }
     });
 
-  $('.change-qty').click(function () {
+    $('.change-area').change(function () {
+        var getValue = $(this).val();
+        $('.update-delivery-cost').text(getValue + ' ريال');
+        $('.input-delivery-cost').val(getValue);
+    });
 
-    var thisItem = $(this).parents('.cart-item-qty');
-    var thisInput = thisItem.find('.qty');
-    var thisQty = thisInput.val();
-    var thisPrice = thisInput.data('price');
-    var thisMin = thisInput.attr('min');
-    var thisMax = thisInput.attr('max');
-    var totalPrice = 0;
-    var newQty;
+    $('.change-qty').click(function () {
 
-    if ($(this).hasClass('plus')) {
-      	newQty = Number(thisQty) + 1;
-      	if ( newQty < thisMax ){
-          newQty = thisMax;
-        }
-    } else {
-      	if ( thisQty > thisMin ) {
-      		newQty = Number(thisQty) -1;
+        var thisItem = $(this).parents('.cart-item-qty');
+        var thisInput = thisItem.find('.qty');
+        var thisQty = thisInput.val();
+        var thisPrice = thisInput.data('price');
+        var thisMin = thisInput.attr('min');
+        var thisMax = thisInput.attr('max');
+        var totalPrice = 0;
+        var newQty;
+
+        if ($(this).hasClass('plus')) {
+            newQty = Number(thisQty) + 1;
+            if ( newQty < thisMax ){
+                newQty = thisMax;
+            }
         } else {
-          newQty = thisMin;
+            if ( thisQty > thisMin ) {
+                newQty = Number(thisQty) -1;
+            } else {
+                newQty = thisMin;
+            }
         }
-    }
 
-    totalPrice = newQty * thisPrice;
+        totalPrice = newQty * thisPrice;
 
-    thisItem.find('.total-item-price').val(totalPrice);
-    thisItem.find('.total-price-format').text(totalPrice);
+        thisItem.find('.total-item-price').val(totalPrice);
+        thisItem.find('.total-price-format').text(totalPrice);
 
-    auto_update_cart_totel();
+        auto_update_cart_totel();
 
     });
 
 
 });
 
-  function auto_update_cart_totel(){
+function auto_update_cart_totel(){
     var calcTotal = 0;
     $('.total-item-price').each(function(i,e){
-      var currentPrice = $(this).val();
-       calcTotal = Number(calcTotal) + Number(currentPrice);
+        var currentPrice = $(this).val();
+        calcTotal = Number(calcTotal) + Number(currentPrice);
     });
     $('.total-cart-price-formats').text(calcTotal);
     $('.total-cart-price').val(calcTotal);
-  }
+}
 
 let mobile_btn = document.querySelector('.mobile-btn')
 let mobile_icon = document.querySelector('.mobile-icon')

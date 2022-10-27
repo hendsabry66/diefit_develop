@@ -3,7 +3,7 @@
 @font-face {
     font-family: 'Dast Nevis';
     src: url('DastNevis.woff2') format('woff2'),
-        url('DastNevis.woff') format('woff');
+    url('DastNevis.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;

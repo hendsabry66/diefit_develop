@@ -56,11 +56,11 @@
                                     {{--                                <li><span></span>كامل الوجبات</li>--}}
                                 </ul>
                                 {{--  <ul>--}}
-                                  {{--    @foreach($types as $type)--}}
-                                   {{--       <li><span></span> {{$type->name}} </li>--}}
-                                   {{--   @endforeach--}}
+                                {{--    @foreach($types as $type)--}}
+                                {{--       <li><span></span> {{$type->name}} </li>--}}
+                                {{--   @endforeach--}}
 
-                               {{--   </ul>--}}
+                                {{--   </ul>--}}
                             </div>
 
                             <div class="price">
@@ -73,18 +73,20 @@
                             <hr>
                             <div class="text-center">
                                 <p>سعر المختص: <strong>{{$subscription->specialist_price}} ريال</strong></p>
-                                <p>سعر التوصيل في المنطقة : <strong>70 ريال</strong></p>
+                                <p>سعر التوصيل في المنطقة : <strong class="update-delivery-cost">0 ريال</strong></p>
                                 <form action="{{url('/subscriptions/subscriptionOrder')}}" method="get">
                                     <input type="hidden" name="subscription_id" value="{{$subscription->id}}">
                                     <input type="hidden" id="sub" name="subscription_price_id" value="{{$subscription->subscriptionPrices()->first()->id}}">
-                                    <select name="delivery_cost">
+                                    <input type="hidden" name="delivery_cost" class="input-delivery-cost" value="{{$subscription->id}}">
+                                    <select name="delivery_cost" class="change-area">
+                                        <option value="">-- اختر منطقة التوصيل --</option>
                                         @foreach($cities as $city)
                                             <option value="{{$city->delivery_cost}}">{{$city->name}}</option>
                                         @endforeach
                                     </select>
                                     <button type="submit"  class="btn btn-outline-warning">اشتراك </button>
                                 </form>
-{{--                                <a href="{{url('/subscriptions/subscriptionOrder/'.$subscription->subscriptionPrices()->first()->id)}}" id="sub" class="btn btn-outline-warning" > اشتراك</a>--}}
+                                {{--                                <a href="{{url('/subscriptions/subscriptionOrder/'.$subscription->subscriptionPrices()->first()->id)}}" id="sub" class="btn btn-outline-warning" > اشتراك</a>--}}
 
 
                             </div>
