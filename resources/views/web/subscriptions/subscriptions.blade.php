@@ -34,7 +34,10 @@
                                     {!! strip_tags($subscription->details) !!}
                                 </p>
                             </div>
+
                             <hr>
+                            <p> @lang('web.period'): <strong>{{$subscription->period}} @lang('web.days')</strong></p>
+
                             <div class="d-package">
                                 <ul class="change-package">
                                     @foreach($subscription->subscriptionPrices as $key=>$subscriptionPrice)
@@ -63,28 +66,31 @@
                                 {{--   </ul>--}}
                             </div>
 
-                            <div class="price">
-                                <div class="d-flex">
-                                    <span class="updated-price">{{$subscription->subscriptionPrices()->first()->price}}</span>
-                                    <span>ريال
-                                    <br>سعودي</span>
-                                </div>
-                            </div>
+
                             <hr>
                             <div class="text-center">
-                                <p>سعر المختص: <strong>{{$subscription->specialist_price}} ريال</strong></p>
-                                <p>سعر التوصيل في المنطقة : <strong class="update-delivery-cost">0 ريال</strong></p>
-                                <form action="{{url('/subscriptions/subscriptionOrder')}}" method="get">
+                                 <form action="{{url('/subscriptions/subscriptionOrder')}}" method="get">
                                     <input type="hidden" name="subscription_id" value="{{$subscription->id}}">
                                     <input type="hidden" id="sub" name="subscription_price_id" value="{{$subscription->subscriptionPrices()->first()->id}}">
                                     <input type="hidden" name="delivery_cost" class="input-delivery-cost" value="{{$subscription->id}}">
-                                    <select name="delivery_cost" class="change-area">
-                                        <option value="">-- اختر منطقة التوصيل --</option>
+                                    <input type="number" name="specialist_session_number" value="" placeholder="{{__('web.specialist_session_number')}}">
+                                     <select name="delivery_cost" class="change-area">
+                                        <option value="">-- @lang('web.choose_delivery_city') --</option>
                                         @foreach($cities as $city)
                                             <option value="{{$city->delivery_cost}}">{{$city->name}}</option>
                                         @endforeach
                                     </select>
-                                    <button type="submit"  class="btn btn-outline-warning">اشتراك </button>
+                                     <p> @lang('web.specialist_price'): <strong>{{$subscription->specialist_price}} @lang('web.ryal')</strong></p>
+                                     <p>   @lang('web.delivery_cost') : <strong class="update-delivery-cost">0 @lang('web.ryal')</strong></p>
+
+                                     <div class="price">
+                                        <div class="d-flex">
+                                            <span class="updated-price">{{$subscription->subscriptionPrices()->first()->price}}</span>
+                                            <span>ريال
+                                    <br>سعودي</span>
+                                        </div>
+                                    </div>
+                                    <button type="submit"  class="btn btn-outline-warning">@lang('web.subscription') </button>
                                 </form>
                                 {{--                                <a href="{{url('/subscriptions/subscriptionOrder/'.$subscription->subscriptionPrices()->first()->id)}}" id="sub" class="btn btn-outline-warning" > اشتراك</a>--}}
 

@@ -87,7 +87,7 @@ class SubscriptionController extends Controller
         );
 
 
-        return redirect('/')->with('success', __('web.Subscription created successfully'));
+        return redirect()->back()->with('success', __('web.Subscription created successfully'));
 
     }
     public function dateRange($first, $last)
@@ -106,6 +106,7 @@ class SubscriptionController extends Controller
             'status_id' => 1,
             'payment_status'=>'not_paid',
             'delivery_cost'=>$request->delivery_cost,
+            'specialist_session_number'=>$request->specialist_session_number,
         ]);
 
         return redirect('subscriptions/orderFood/'.$request->subscription_price_id.'/'.$subscripionOrder->id);

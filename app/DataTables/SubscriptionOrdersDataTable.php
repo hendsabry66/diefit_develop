@@ -35,7 +35,7 @@ class SubscriptionOrdersDataTable extends DataTable
                 return $q->status->getTranslations('name')['ar'];
             })
             ->editColumn('subscription_price', function ($q) {
-                return $q->subscriptionPrice->price;
+                return $q->subscriptionPrice->price + $q->delivery_cost + $q->subscriptionPrice->subscription->specialist_price;
             })
 
             ->rawColumns(['action','status'])

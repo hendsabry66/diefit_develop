@@ -18,7 +18,11 @@
                 <div class="container">
                     <div class="head">
                         <h2>اشتراكاتي</h2>
+                        <div class="alert alert-info">
+                            @lang('web.You can complete or modify meals when the subscription is completed')
+                        </div>
                         <div class="mt-4 d-md-flex justify-content-between">
+
                             <div>
                                 <p class="m-0">انضم الينا واستمتع بالنتائج المزهلة انضم الينا واستمتع بالنتائج المزهلة انضم
                                     الينا

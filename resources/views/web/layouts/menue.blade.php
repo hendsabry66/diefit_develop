@@ -11,8 +11,8 @@
                             <li><a href="{{ url('/') }}">الرئيسية</a></li>
                             <li><a href="{{ LaravelLocalization::localizeUrl('/articleCategories') }}">@lang('web.articles')</a></li>
                             <li><a href="{{ LaravelLocalization::localizeUrl('/videos') }}">@lang('web.videos')</a></li>
-                            <li><a href="{{ LaravelLocalization::localizeUrl('/restaurant') }}">@lang('web.restaurant')</a></li>
-                            <li><a href="{{ LaravelLocalization::localizeUrl('/store') }}">@lang('web.store')</a></li>
+{{--                            <li><a href="{{ LaravelLocalization::localizeUrl('/restaurant') }}">@lang('web.restaurant')</a></li>--}}
+{{--                            <li><a href="{{ LaravelLocalization::localizeUrl('/store') }}">@lang('web.store')</a></li>--}}
                             <li><a href="{{ LaravelLocalization::localizeUrl('/subscriptions') }}">@lang('web.subscriptions')</a></li>
                           <li><a href="{{ LaravelLocalization::localizeUrl('/getFavorite') }}">@lang('web.favorite')</a></li>
                             {{--  <li class="has-child-menu">--}}

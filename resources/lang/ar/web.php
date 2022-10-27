@@ -151,5 +151,13 @@ return [
     'Choose the bank'=>' البنك المحول له',
      'favorite'=>'المفضلة',
   'apartment'=>'شقة',
+    'period'=>'المدة',
+    'delivery_cost'=>'سعر التوصيل في المنطقه ',
+    'specialist_price'=>'سعر المختص',
+    'choose_delivery_city'=>'اختر مدينة التوصيل',
+    'ryal'=>'ريال',
+    'specialist_session_number'=>'عدد جلسات المختص',
+    'You can complete or modify meals when the subscription is completed'=>'يمكنك إكمال أو تعديل الوجبات عند اكتمال الاشتراك',
+
     ];
 

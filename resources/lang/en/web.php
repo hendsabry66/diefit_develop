@@ -147,7 +147,13 @@ return [
    'message_send_successfully'=>'Message Send Successfully',
     'join_us'=>'join us',
   'favorite'=>'favorite',
-  'apartment'=>'apartment',
+    'period'=>'period',
+    'specialist_price'=>'specialist price',
+    'delivery_cost'=>'delivery cost',
+    'choose_delivery_city'=>'choose delivery city',
+    'ryal'=>'ryal',
+    'specialist_session_number'=>'specialist session number',
+    'You can complete or modify meals when the subscription is completed'=>'You can complete or modify meals when the subscription is completed',
 
 
 

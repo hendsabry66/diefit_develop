@@ -33,11 +33,11 @@
                                             {{\App\Models\FoodType::find($foodType)->name}} ,
                                         @endforeach
                                     </p>
-                                    <p>سعر المختص: <strong>{{$subscriptionPrice->subscription->specialist_price}} ريال</strong></p>
-                                    <p>سعر التوصيل في المنطقة : <strong>{{$subscriptionOrder->delivery_cost}} ريال</strong></p>
+                                    <p> @lang('web.specialist_price'): <strong>{{$subscriptionPrice->subscription->specialist_price * $subscriptionOrder->specialist_session_number }} ريال</strong></p>
+                                    <p>@lang('web.delivery_cost') : <strong>{{$subscriptionOrder->delivery_cost}} ريال</strong></p>
 
                                 </div>
-                                <div>{{$subscriptionPrice->price}}</div>
+                                <div>{{$subscriptionPrice->price + $subscriptionOrder->delivery_cost +( $subscriptionOrder->specialist_session_number * $subscriptionPrice->subscription->specialist_price) }}</div>
                             </div>
                             <hr>
                             <h4> @lang('web.payment_method')</h4>
