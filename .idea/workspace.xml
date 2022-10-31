@@ -4,14 +4,33 @@
     <list default="true" id="601a7e32-5d21-4c74-955e-5f513cb79eb3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/SubscriptionOrdersDataTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/SubscriptionOrdersDataTable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/web/SubscriptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/web/SubscriptionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ar/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/layouts/menue.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/layouts/menue.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/subscriptions/subscriptionConfirmation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/subscriptions/subscriptionConfirmation.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/subscriptions/subscriptionOrderFood.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/subscriptions/subscriptionOrderFood.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/subscriptions/subscriptions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/subscriptions/subscriptions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/areas/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/areas/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/article_categories/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/article_categories/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/articles/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/articles/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/bank_accounts/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/bank_accounts/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/branches/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/branches/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/cities/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/cities/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/client_reviews/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/client_reviews/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/extras/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/extras/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/foodTypes/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/foodTypes/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/food_categories/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/food_categories/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/foods/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/foods/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/orders/restaurant/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/orders/restaurant/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/orders/store/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/orders/store/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/orders/subscription/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/orders/subscription/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/pages/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pages/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/product_categories/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/product_categories/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/product_specification_categories/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/product_specification_categories/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/product_specifications/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/product_specifications/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/products/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/products/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/roles/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/roles/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/sliders/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/sliders/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/subscriptions/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/subscriptions/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/team_members/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/team_members/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/types/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/types/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/video_categories/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/video_categories/datatables/actions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/videos/datatables/actions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/videos/datatables/actions.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,7 +216,8 @@
       <workItem from="1666636883740" duration="619000" />
       <workItem from="1666638343704" duration="2656000" />
       <workItem from="1666692493634" duration="4275000" />
-      <workItem from="1666736947220" duration="11815000" />
+      <workItem from="1666736947220" duration="14518000" />
+      <workItem from="1667206975960" duration="1411000" />
     </task>
     <servers />
   </component>

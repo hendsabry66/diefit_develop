@@ -3,10 +3,10 @@
     <ul class="dropdown-menu custom-dropdown-menu" role="menu">
         <li><a href="{{ route('foodTypes.show', $id) }}"><i class="fa fa-eye fa-fw"></i>@lang('admin.show')</a></li>
         <li><a href="{{ route('foodTypes.edit', $id) }}"><i class="fa fa-edit fa-fw"></i>@lang('admin.edit')</a></li>
-        <li><a href="#" class="delete_confirmation" data-toggle="modal" data-target="#deleteModal" data-action=""><i class="fa fa-trash fa-fw"></i>@lang('admin.delete')</a></li>
+        <li><a href="#" class="delete_confirmation" data-toggle="modal" data-target="#deleteModal_{{$id}}" data-action=""><i class="fa fa-trash fa-fw"></i>@lang('admin.delete')</a></li>
     </ul>
 </div>
-<div id="deleteModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:50px;">
+<div id="deleteModal_{{$id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top:50px;">
     <div class="modal-dialog" style="margin-top:50px;">
         <div class="modal-content">
             <div class="modal-header">
