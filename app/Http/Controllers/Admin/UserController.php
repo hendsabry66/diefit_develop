@@ -203,7 +203,7 @@ class UserController extends AppBaseController
             return Redirect::to('/admin/dashboard');
         }else{
             return redirect::to('/admin/login')
-                ->with('success',__('admin.username_or_password_notcorrect'));
+                ->with('danger',__('admin.username_or_password_notcorrect'));
         }
 
     }

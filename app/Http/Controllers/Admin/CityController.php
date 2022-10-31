@@ -46,7 +46,7 @@ class CityController extends AppBaseController
      */
     public function create()
     {
-        $areas = Area::get();
+        $areas = Area::where('status','active')->get();
         return view('admin.cities.create',compact('areas'));
     }
 
@@ -105,7 +105,7 @@ class CityController extends AppBaseController
     public function edit($id)
     {
         $city = $this->cityRepository->find($id);
-        $areas = Area::get();
+        $areas = Area::where('status','active')->get();
         if (empty($city)) {
             Flash::error('City not found');
 

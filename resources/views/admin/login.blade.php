@@ -47,6 +47,20 @@
                             </div>
                             <div class="card-content">
                                 <div class="card-body">
+                                    @if(Session::has('error'))
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                <li>{{Session::get('error')}}</li>
+                                            </ul>
+                                        </div>
+                                    @endif
+                                    @if(Session::has('danger'))
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                <li>{{Session::get('danger')}}</li>
+                                            </ul>
+                                        </div>
+                                    @endif
                                     <form class="form-horizontal form-simple" action="{{route('admin.postLogin')}}"  method="post" novalidate>
                                         @csrf
                                         <fieldset class="form-group position-relative has-icon-left mb-0">

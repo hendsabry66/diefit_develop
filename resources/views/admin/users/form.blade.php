@@ -19,6 +19,8 @@
         <label for="projectinput4">@lang('admin.password')</label>
         <input type="password"  class="form-control" placeholder="{{__('admin.password')}}" name="password"  >
     </div>
+    @if(isset($user) && $user->id == 1)
+    @else
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput3">@lang('admin.status')</label>
         <select class="select2 form-control" name="status">
@@ -28,6 +30,7 @@
 
         </select>
     </div>
+    @endif
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput4">@lang('admin.roles')</label>
         @if(isset($user))

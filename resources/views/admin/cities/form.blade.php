@@ -27,7 +27,7 @@
 
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput3">@lang('admin.delivery_cost')</label>
-        <input type="number"  class="form-control" @if(isset($city)) value="{{$city->delivery_cost}}" @endif placeholder="{{__('admin.delivery_cost')}}" name="delivery_cost">
+        <input type="number"  min="1" max="1000000" class="form-control" @if(isset($city)) value="{{$city->delivery_cost}}" @endif placeholder="{{__('admin.delivery_cost')}}" name="delivery_cost">
 
     </div>
 
