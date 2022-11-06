@@ -7,6 +7,7 @@ use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\SubscriptionOrderFood;
 use App\Models\SubscriptionPrice;
+use App\Models\SubscriptionOrder;
 use App\Repositories\UserRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
@@ -213,14 +214,16 @@ class UserController extends AppBaseController
     }
 
     public function mySubscription($id){
-        $subScriptions = SubscriptionOrderFood::where('user_id',$id)->get();
-        $foodTypes = json_decode(SubscriptionPrice::find(SubscriptionOrderFood::where('user_id',$id)->first()->subscription_price_id)->food_type);
-        $array=[];
-        foreach ($subScriptions as $key => $value) {
-
-            $array[$value->day][$value->food_type_id][] = $value->food_id;
-
-        }
-        return view('admin.users.subscriptions',compact('array','foodTypes'));
+       $subScriptions = SubscriptionOrder::where('user_id',$id)
+           //->where('payment_status','paid')
+        ->get();
+//        $foodTypes = json_decode(SubscriptionPrice::find(SubscriptionOrderFood::where('user_id',$id)->first()->subscription_price_id)->food_type);
+//        $array=[];
+//        foreach ($subScriptions as $key => $value) {
+//
+//            $array[$value->day][$value->food_type_id][] = $value->food_id;
+//
+//        }
+        return view('admin.users.subscriptions',compact('subScriptions'));
     }
 }

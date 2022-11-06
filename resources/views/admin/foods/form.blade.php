@@ -50,27 +50,27 @@
 
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput3">@lang('admin.price')</label>
-        <input type="number" class="form-control" name="price" @if(isset($food)) value="{{$food->price}}" @endif>
+        <input type="number" min="1" class="form-control" name="price" @if(isset($food)) value="{{$food->price}}" @endif>
     </div>
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput3">@lang('admin.qty')</label>
-        <input type="number" class="form-control" name="qty" @if(isset($food)) value="{{$food->qty}}" @endif>
+        <input type="number" min="1" class="form-control" name="qty" @if(isset($food)) value="{{$food->qty}}" @endif>
     </div>
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput3">@lang('admin.numberOfCalories')</label>
-        <input type="number" class="form-control" name="numberOfCalories" @if(isset($food)) value="{{$food->numberOfCalories}}" @endif>
+        <input type="number"  min="1" class="form-control" name="numberOfCalories" @if(isset($food)) value="{{$food->numberOfCalories}}" @endif>
     </div>
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput3">@lang('admin.fat_percentage')</label>
-        <input type="number" class="form-control" name="fat_percentage" @if(isset($food)) value="{{$food->fat_percentage}}" @endif>
+        <input type="number" min="1" class="form-control" name="fat_percentage" @if(isset($food)) value="{{$food->fat_percentage}}" @endif>
     </div>
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput3">@lang('admin.carbohydrate_percentage')</label>
-        <input type="number" class="form-control" name="carbohydrate_percentage" @if(isset($food)) value="{{$food->carbohydrate_percentage}}" @endif>
+        <input type="number" min="1" class="form-control" name="carbohydrate_percentage" @if(isset($food)) value="{{$food->carbohydrate_percentage}}" @endif>
     </div>
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput3">@lang('admin.protein_percentage')</label>
-        <input type="number" class="form-control" name="protein_percentage" @if(isset($food)) value="{{$food->protein_percentage}}" @endif>
+        <input type="number" min="1" class="form-control" name="protein_percentage" @if(isset($food)) value="{{$food->protein_percentage}}" @endif>
     </div>
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput3">@lang('admin.status')</label>
@@ -83,6 +83,9 @@
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput3">@lang('admin.image')</label>
         <input type="file" name="image" multiple class="form-control">
+        @if(isset($food))
+            <img src="{{url($food->image)}}" style="width: 100px;height: 100px">
+        @endif
     </div>
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput3">@lang('admin.images')</label>

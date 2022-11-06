@@ -291,6 +291,7 @@ return [
     'delivery_cost'=>'تكلفة التوصيل',
 
     'specialist_price'=>'سعر المختص',
+    'username_or_password_notcorrect'=>'اسم المستخدم او كلمة المرور غير صحيحة',
 
 
 

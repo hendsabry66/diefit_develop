@@ -20,10 +20,10 @@ class ArticleCategoryController extends AppBaseController
     public function __construct(ArticleCategoryRepository $articleCategoryRepo)
     {
         $this->articleCategoryRepository = $articleCategoryRepo;
-        $this->middleware('permission:article-category-list|article-category-create|article-category-edit|article-category-delete', ['only' => ['index','show']]);
-        $this->middleware('permission:article-category-create', ['only' => ['create','store']]);
-        $this->middleware('permission:article-category-edit', ['only' => ['edit','update']]);
-        $this->middleware('permission:article-category-delete', ['only' => ['destroy']]);
+//        $this->middleware('permission:article-category-list|article-category-create|article-category-edit|article-category-delete', ['only' => ['index','show']]);
+//        $this->middleware('permission:article-category-create', ['only' => ['create','store']]);
+//        $this->middleware('permission:article-category-edit', ['only' => ['edit','update']]);
+//        $this->middleware('permission:article-category-delete', ['only' => ['destroy']]);
 
     }
 

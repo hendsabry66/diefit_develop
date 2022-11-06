@@ -67,15 +67,17 @@ class SubscriptionController extends AppBaseController
         $subscription = $this->subscriptionRepository->createSubscription($input);
        // $subscription->foodTypes()->sync($input['food_types']);
        // dd( $input['food_types']);
-        foreach ($request->food_types as $key=>$foodType) {
+        if(!empty($request->food_types)) {
+            foreach ($request->food_types as $key => $foodType) {
 
-            SubscriptionPrice::create([
-                'subscription_id' => $subscription->id,
-                'food_type' => json_encode($foodType),
-                'price' => $request->price[$key],
-            ]);
+                SubscriptionPrice::create([
+                    'subscription_id' => $subscription->id,
+                    'food_type' => json_encode($foodType),
+                    'price' => $request->price[$key],
+                ]);
 //
-      }
+            }
+        }
         $messages = ['success' => "Successfully added", 'redirect' => route('subscriptions.index')];
         return response()->json(['messages' => $messages]);
 
@@ -147,7 +149,7 @@ class SubscriptionController extends AppBaseController
 
       //  $subscription->foodTypes()->sync($input['food_types']);
       if(isset($input['food_types'])){
-            $subscription->foodTypes()->sync($input['food_types']); 
+            $subscription->foodTypes()->sync($input['food_types']);
         }
         $messages = ['success' => "Successfully updated", 'redirect' => route('subscriptions.index')];
         return response()->json(['messages' => $messages]);

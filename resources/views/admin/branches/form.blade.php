@@ -18,12 +18,12 @@
 
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput4">@lang('admin.latitude')</label>
-        <input type="text"  class="form-control" @if(isset($branch)) value="{{$branch->latitude}}" @endif placeholder="{{__('admin.latitude')}}" name="latitude">
+        <input type="number" min="1"  class="form-control" @if(isset($branch)) value="{{$branch->latitude}}" @endif placeholder="{{__('admin.latitude')}}" name="latitude">
     </div>
 
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput4">@lang('admin.longitude')</label>
-        <input type="text"  class="form-control" @if(isset($branch)) value="{{$branch->longitude}}" @endif placeholder="{{__('admin.longitude')}}" name="longitude">
+        <input type="number" min="1"  class="form-control" @if(isset($branch)) value="{{$branch->longitude}}" @endif placeholder="{{__('admin.longitude')}}" name="longitude">
     </div>
 
     <div class="form-group col-md-6 mb-2">

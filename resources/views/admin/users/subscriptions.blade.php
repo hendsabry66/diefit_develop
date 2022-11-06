@@ -23,21 +23,25 @@
                 <div class="card">
                     <table class="table table-striped table-bordered table-hover w-100 dataTables_wrapper">
                         <tr>
-                            <th>اليوم </th>
-                            @foreach($foodTypes as $foodType)
-                            <th>{{\App\Models\FoodType::find($foodType)->name}} </th>
-                            @endforeach
+                            <th>اسم الاشتراك  </th>
+                            <th>السعر</th>
+                            <th> حالة الدفع </th>
+
 
                         </tr>
-                        @foreach($array as $key=>$value)
+                        @foreach($subScriptions as $key=>$value)
 
 
                             <tr>
-                                @php $day = explode('/', $key); @endphp
-                                <td>{{$day[1]}} </br> {{$day[2]}}</td>
-                                @foreach($value as $v)
-                                    <td>{{\App\Models\Food::find($v[0])->name}}</td>
-                                @endforeach
+                                <td>{{$value->subscriptionPrice->subscription->name}}</td>
+                                <td>{{$value->subscriptionPrice->price}}</td>
+                                <td>{{$value->payment_status}}</td>
+
+{{--                                @php $day = explode('/', $key); @endphp--}}
+{{--                                <td>{{$day[1]}} </br> {{$day[2]}}</td>--}}
+{{--                                @foreach($value as $v)--}}
+{{--                                    <td>{{\App\Models\Food::find($v[0])->name}}</td>--}}
+{{--                                @endforeach--}}
 
 
                             </tr>
