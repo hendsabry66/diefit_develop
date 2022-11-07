@@ -33,7 +33,7 @@
 
 
                             <tr>
-                                <td>{{$value->subscriptionPrice->subscription->name}}</td>
+                                <td>{{($value->subscriptionPrice->subscription)? $value->subscriptionPrice->subscription->name : '-'}}</td>
                                 <td>{{$value->subscriptionPrice->price}}</td>
                                 <td>{{$value->payment_status}}</td>
 
