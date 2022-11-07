@@ -3,7 +3,7 @@
     <ul class="dropdown-menu custom-dropdown-menu" role="menu">
         <li><a href="{{ route('pages.show', $id) }}"><i class="fa fa-eye fa-fw"></i>@lang('admin.show')</a></li>
         <li><a href="{{ route('pages.edit', $id) }}"><i class="fa fa-edit fa-fw"></i>@lang('admin.edit')</a></li>
-        <li><a href="#" class="delete_confirmation" data-toggle="modal" data-target="#deleteModal_{{$id}}" data-action="{{ route('pages.destroy', $id) }}"><i class="fa fa-trash fa-fw"></i>@lang('admin.delete')</a></li>
+{{--        <li><a href="#" class="delete_confirmation" data-toggle="modal" data-target="#deleteModal_{{$id}}" data-action="{{ route('pages.destroy', $id) }}"><i class="fa fa-trash fa-fw"></i>@lang('admin.delete')</a></li>--}}
     </ul>
 </div>
 

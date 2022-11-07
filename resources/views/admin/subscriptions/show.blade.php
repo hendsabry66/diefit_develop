@@ -20,7 +20,7 @@
     <section id="horizontal-form-layouts">
         <div class="row match-height">
             <div class=" col-sm-12">
-                <div class="card" style="height: 399.797px;">
+                <div class="card" >
                     <div class="card-content">
                         <div class="card-body">
                             @if(!empty($subscription->image))
