@@ -4,6 +4,7 @@
     <list default="true" id="601a7e32-5d21-4c74-955e-5f513cb79eb3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/ar/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/validation.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -168,7 +169,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/cities (4).sql" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../almarsad" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -192,7 +193,8 @@
       <workItem from="1666692493634" duration="4275000" />
       <workItem from="1666736947220" duration="14518000" />
       <workItem from="1667206975960" duration="7436000" />
-      <workItem from="1667760700860" duration="2868000" />
+      <workItem from="1667760700860" duration="4208000" />
+      <workItem from="1668328594588" duration="1651000" />
     </task>
     <servers />
   </component>

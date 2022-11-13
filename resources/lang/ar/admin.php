@@ -176,7 +176,7 @@ return [
 
     'ingredients_ar'=>'مكونات الوجبة بالعربية',
     'ingredients_en'=>'مكونات الوجبة بالانجليزية',
-    'numberOfCalories'=>'عدد الكالريوي',
+    'numberOfCalories'=>'عدد الكالوري',
     'qty'=>'الكمية',
 
     'price'=>'السعر',
