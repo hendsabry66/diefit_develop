@@ -25,8 +25,10 @@ class CreateExtraRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_ar' => 'required|unique:extras,name',
-            'name_en' => 'required|unique:extras,name',
+            'name_ar' => 'unique_translation:extras,name',
+            //'name.*' => 'unique_translation:extras',
+//            'name_ar' => 'required|unique:extras,name',
+//            'name_en' => 'required|unique:extras,name',
           //  'price' => 'required|numeric',
 //            'details_ar' => 'required',
 //            'details_en' => 'required',

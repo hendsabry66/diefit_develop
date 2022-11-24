@@ -1,4 +1,4 @@
-     *      @OA\Parameter(
+     *      @SWG\Parameter(
      *          name="$FIELD_NAME$",
      *          in="query",
      *          description="$DESCRIPTION$",

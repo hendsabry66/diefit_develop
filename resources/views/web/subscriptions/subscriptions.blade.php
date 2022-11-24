@@ -73,13 +73,28 @@
                                     <input type="hidden" name="subscription_id" value="{{$subscription->id}}">
                                     <input type="hidden" id="sub" name="subscription_price_id" value="{{$subscription->subscriptionPrices()->first()->id}}">
                                     <input type="hidden" name="delivery_cost" class="input-delivery-cost" value="{{$subscription->id}}">
-                                    <input type="number" name="specialist_session_number" value="" placeholder="{{__('web.specialist_session_number')}}">
+
+                                     <select name="type_id">
+                                         @foreach(types($subscription->food_type) as $type)
+                                             <option value="{{$type->id}}" data-price="{{$type->price}}">{{$type->value}}{{$subscription->food_type}}</option>
+                                         @endforeach
+                                     </select>
+                                     <select name="days">
+
+                                             <option value="5">5 days</option>
+                                             <option value="7">7 days</option>
+                                             <option value="14">14 days</option>
+                                             <option value="28">28 days</option>
+
+                                     </select>
+{{--                                    <input type="number" name="specialist_session_number" value="" placeholder="{{__('web.specialist_session_number')}}">--}}
                                      <select name="delivery_cost" class="change-area">
                                         <option value="">-- @lang('web.choose_delivery_city') --</option>
                                         @foreach($cities as $city)
                                             <option value="{{$city->delivery_cost}}">{{$city->name}}</option>
                                         @endforeach
                                     </select>
+                                    
                                      <p> @lang('web.specialist_price'): <strong>{{$subscription->specialist_price}} @lang('web.ryal')</strong></p>
                                      <p>   @lang('web.delivery_cost') : <strong class="update-delivery-cost">0 @lang('web.ryal')</strong></p>
 

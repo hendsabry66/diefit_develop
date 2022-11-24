@@ -1,41 +1,34 @@
 /**
-     * @param Request $request
+     * @param Create$MODEL_NAME$APIRequest $request
      * @return Response
      *
-     * @OA\Post(
-     *      path="/$MODEL_NAME_PLURAL_DASHED$",
-     *      summary="create$MODEL_NAME$",
+     * @SWG\Post(
+     *      path="/$MODEL_NAME_PLURAL_CAMEL$",
+     *      summary="Store a newly created $MODEL_NAME$ in storage",
      *      tags={"$MODEL_NAME$"},
-     *      description="Create $MODEL_NAME$",
-     *      @OA\RequestBody(
-     *        required=true,
-     *        @OA\MediaType(
-     *            mediaType="application/x-www-form-urlencoded",
-     *            @OA\Schema(
-     *                type="object",
-     *                required={""},
-     *                @OA\Property(
-     *                    property="name",
-     *                    description="desc",
-     *                    type="string"
-     *                )
-     *            )
-     *        )
+     *      description="Store $MODEL_NAME$",
+     *      produces={"application/json"},
+     *      @SWG\Parameter(
+     *          name="body",
+     *          in="body",
+     *          description="$MODEL_NAME$ that should be stored",
+     *          required=false,
+     *          @SWG\Schema(ref="#/definitions/$MODEL_NAME$")
      *      ),
-     *      @OA\Response(
+     *      @SWG\Response(
      *          response=200,
      *          description="successful operation",
-     *          @OA\Schema(
+     *          @SWG\Schema(
      *              type="object",
-     *              @OA\Property(
+     *              @SWG\Property(
      *                  property="success",
      *                  type="boolean"
      *              ),
-     *              @OA\Property(
+     *              @SWG\Property(
      *                  property="data",
      *                  ref="#/definitions/$MODEL_NAME$"
      *              ),
-     *              @OA\Property(
+     *              @SWG\Property(
      *                  property="message",
      *                  type="string"
      *              )

@@ -15,17 +15,16 @@ use Spatie\Translatable\HasTranslations;
 class Type extends Model
 {
 
-    use HasTranslations;
+
 
     public $table = 'types';
 
-    public $translatable = ['name' ];
-
 
     public $fillable = [
-        'name',
+        'price',
+        'value',
+        'food_type',
         'status',
-
 
     ];
 

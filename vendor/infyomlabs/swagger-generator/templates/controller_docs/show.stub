@@ -2,34 +2,33 @@
      * @param int $id
      * @return Response
      *
-     * @OA\Get(
-     *      path="/$MODEL_NAME_PLURAL_DASHED$/{id}",
-     *      summary="get$MODEL_NAME$Item",
+     * @SWG\Get(
+     *      path="/$MODEL_NAME_PLURAL_CAMEL$/{id}",
+     *      summary="Display the specified $MODEL_NAME$",
      *      tags={"$MODEL_NAME$"},
      *      description="Get $MODEL_NAME$",
-     *      @OA\Parameter(
+     *      produces={"application/json"},
+     *      @SWG\Parameter(
      *          name="id",
      *          description="id of $MODEL_NAME$",
-     *           @OA\Schema(
-     *             type="integer"
-     *          ),
+     *          type="integer",
      *          required=true,
      *          in="path"
      *      ),
-     *      @OA\Response(
+     *      @SWG\Response(
      *          response=200,
      *          description="successful operation",
-     *          @OA\Schema(
+     *          @SWG\Schema(
      *              type="object",
-     *              @OA\Property(
+     *              @SWG\Property(
      *                  property="success",
      *                  type="boolean"
      *              ),
-     *              @OA\Property(
+     *              @SWG\Property(
      *                  property="data",
      *                  ref="#/definitions/$MODEL_NAME$"
      *              ),
-     *              @OA\Property(
+     *              @SWG\Property(
      *                  property="message",
      *                  type="string"
      *              )

@@ -18,6 +18,9 @@ function getCartCount(){
     }
     return $count;
 }
+function types($value){
+    return \App\Models\Type::where('food_type',$value)->get();
+}
 function sendSMS($message,$mobileNumber)
 {
     $user = 'Dietfit';

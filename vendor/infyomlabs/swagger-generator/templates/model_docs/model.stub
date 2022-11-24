@@ -1,6 +1,6 @@
 /**
- * @OA\Schema(
- *      schema="$MODEL_NAME$",
+ * @SWG\Definition(
+ *      definition="$MODEL_NAME$",
  *      required={$REQUIRED_FIELDS$},
 $PROPERTIES$
  * )

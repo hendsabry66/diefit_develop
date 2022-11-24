@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\AreaController;
+use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\Food\FoodCategoryController;
 use App\Http\Controllers\Admin\Food\FoodController;
 use App\Http\Controllers\Admin\PageController;
@@ -94,6 +95,12 @@ Route::group(['middleware' => ['adminAuth']], function() {
     Route::resource('cities', CityController::class);
     Route::post('cities/bulk-delete', [CityController::class, 'bulkDelete'])->name('cities.bulk-delete');
     Route::get('cities/cityAjax/{area_id}', [CityController::class, 'cityAjax'])->name('cities.cityAjax');
+
+    Route::resource('districts', DistrictController::class);
+    Route::post('districts/bulk-delete', [DistrictController::class, 'bulkDelete'])->name('districts.bulk-delete');
+    Route::get('districts/districtAjax/{area_id}', [DistrictController::class, 'districtAjax'])->name('districts.cityAjax');
+
+
 
 
     Route::resource('pages', PageController::class);

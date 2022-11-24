@@ -29,6 +29,7 @@ class Subscription extends Model
         'period',
         'number_of_meals',
         'specialist_price',
+        'food_type',
 
     ];
 

@@ -32,9 +32,6 @@ class TypeDataTable extends DataTable
         return $dataTable
             ->escapeColumns([])
             ->addColumn('check', 'admin.types.datatables.check')
-            ->editColumn('name', function ($q) {
-                return "<a href='".route('types.show', $q->id)."'>".$q->getTranslations('name')['ar']."</a>";
-            })
             ->editColumn('status', function ($q) {
                 if($q->status =='in_active'){
                     return '<span class="badge badge badge-danger">غير فعال</span>';
@@ -89,7 +86,9 @@ class TypeDataTable extends DataTable
         return [
             ['name' => 'check', 'data' => 'check', 'title' => '<label class="mt-checkbox mt-checkbox-single mt-checkbox-outline"><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" id="check_all"/><span></span></label> ', 'exportable' => false, 'printable' => false, 'orderable' => false, 'searchable' => false],
             ['name' => 'id', 'data' => 'id', 'title' => 'الرقم التسلسلى'],
-            ['name' => 'name', 'data' => 'name', 'title' => 'الاسم'],
+            ['name' => 'price', 'data' => 'price', 'title' => 'السعر'],
+            ['name' => 'value', 'data' => 'value', 'title' => 'القيمه'],
+            ['name' => 'food_type', 'data' => 'food_type', 'title' => 'نوع الوجبه '],
             ['name' => 'status', 'data' => 'status', 'title' => 'الحالة'],
             ['name' => 'actions', 'data' => 'actions', 'title' => 'التحكم', 'exportable' => false, 'printable' => false, 'orderable' => false, 'searchable' => false],
         ];

@@ -293,6 +293,18 @@ return [
     'specialist_price'=>'سعر المختص',
     'username_or_password_notcorrect'=>'اسم المستخدم او كلمة المرور غير صحيحة',
 
+    'districts'=>'الاحياء',
+    'addDistrict'=>'اضافة حي',
+    'editDistrict'=>'تعديل حي',
+    'district'=>'حي',
+    'addNewDistrict'=>'اضافة حي جديد',
+    'district_ar'=>'الحي بالعربية',
+    'district_en'=>'الحي بالانجليزية',
+    'food_type'=>'نوع الطعام',
+    'value'=>'القيمة',
+    'calory'=>'السعرات الحرارية',
+    'gram'=>'الجرام',
+
 
 
 

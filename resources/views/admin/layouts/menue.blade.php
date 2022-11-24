@@ -7,6 +7,8 @@
                     </li>
                     <li class="{{ (request()->segment(2) == 'areas') ? 'active' : '' }}"><a class="menu-item" href="{{url('admin/cities')}}" data-i18n="nav.dash.project">@lang('admin.cities')</a>
                     </li>
+                    <li class="{{ (request()->segment(2) == 'districts') ? 'active' : '' }}"><a class="menu-item" href="{{url('admin/districts')}}" data-i18n="nav.dash.project">@lang('admin.districts')</a>
+                    </li>
                 </ul>
             </li>
 

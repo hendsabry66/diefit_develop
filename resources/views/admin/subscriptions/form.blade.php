@@ -34,6 +34,12 @@
         value="{{ $subscription->period }}" @endif>
     </div>
 
+    <div class="form-group col-md-6 mb-2">
+        <label for="projectinput4">@lang('admin.food_type')</label>
+        <input type="radio"  value="gram" name="food_type"> @lang('admin.gram')
+        <input type="radio"  value="calory" name="food_type"> @lang('admin.calory')
+    </div>
+
 
     <div class="mb-2 col-lg-12">
         <div class="row align-items-end">

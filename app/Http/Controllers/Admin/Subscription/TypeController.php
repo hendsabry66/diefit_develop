@@ -55,13 +55,7 @@ class TypeController extends AppBaseController
     {
         $input = $request->all();
 
-        $type = $this->typeRepository->create([
-            'name' =>[
-                'en' => $input['name_en'],
-                'ar' => $input['name_ar'],
-            ],
-            'status' => $input['status'],
-        ]);
+        $type = $this->typeRepository->create($input);
 
         $messages = ['success' => "Successfully added", 'redirect' => route('types.index')];
         return response()->json(['messages' => $messages]);
@@ -126,12 +120,7 @@ class TypeController extends AppBaseController
         }
         $input = $request->all();
 
-        $type = $this->typeRepository->update(
-            ['name' =>[
-                'en' => $input['name_en'],
-                'ar' => $input['name_ar'],
-            ],
-            'status' => $input['status']], $id);
+        $type = $this->typeRepository->update($input, $id);
 
         $messages = ['success' => "Successfully updated", 'redirect' => route('types.index')];
         return response()->json(['messages' => $messages]);

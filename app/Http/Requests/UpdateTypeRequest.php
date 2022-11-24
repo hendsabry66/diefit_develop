@@ -25,8 +25,9 @@ class UpdateTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_ar' => 'required',
-            'name_en' => 'required',
+            'price' => 'required',
+            'value' => 'required',
+            'food_type' => 'required',
             'status' => 'required',
         ];
 
