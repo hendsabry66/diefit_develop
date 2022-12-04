@@ -36,7 +36,7 @@
                             </div>
 
                             <hr>
-                            <p> @lang('web.period'): <strong>{{$subscription->period}} @lang('web.days')</strong></p>
+{{--                            <p> @lang('web.period'): <strong>{{$subscription->period}} @lang('web.days')</strong></p>--}}
 
                             <div class="d-package">
                                 <ul class="change-package">
@@ -73,12 +73,13 @@
                                     <input type="hidden" name="subscription_id" value="{{$subscription->id}}">
                                     <input type="hidden" id="sub" name="subscription_price_id" value="{{$subscription->subscriptionPrices()->first()->id}}">
                                     <input type="hidden" name="delivery_cost" class="input-delivery-cost" value="{{$subscription->id}}">
-
+                                    @if($subscription->food_type !== 'without')
                                      <select name="type_id">
                                          @foreach(types($subscription->food_type) as $type)
                                              <option value="{{$type->id}}" data-price="{{$type->price}}">{{$type->value}}{{$subscription->food_type}}</option>
                                          @endforeach
                                      </select>
+                                    @endif
                                      <select name="days">
 
                                              <option value="5">5 days</option>
@@ -94,8 +95,8 @@
                                             <option value="{{$city->delivery_cost}}">{{$city->name}}</option>
                                         @endforeach
                                     </select>
-                                    
-                                     <p> @lang('web.specialist_price'): <strong>{{$subscription->specialist_price}} @lang('web.ryal')</strong></p>
+
+{{--                                     <p> @lang('web.specialist_price'): <strong>{{$subscription->specialist_price}} @lang('web.ryal')</strong></p>--}}
                                      <p>   @lang('web.delivery_cost') : <strong class="update-delivery-cost">0 @lang('web.ryal')</strong></p>
 
                                      <div class="price">

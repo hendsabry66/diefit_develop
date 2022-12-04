@@ -21,21 +21,22 @@
         <textarea name="details_en"
                   id="tinymce">@if(isset($subscription)) {!! $subscription->getTranslations('details')['en'] !!} @endif </textarea>
     </div>
-    <div class="form-group col-md-6 mb-2">
-        <label for="projectinput4">@lang('admin.specialist_price')</label>
-        <input type="number" class="form-control" @if(isset($subscription))
-        value="{{$subscription->specialist_price}}" @endif placeholder="{{__('admin.specialist_price')}}"
-               name="specialist_price">
-    </div>
+{{--    <div class="form-group col-md-6 mb-2">--}}
+{{--        <label for="projectinput4">@lang('admin.specialist_price')</label>--}}
+{{--        <input type="number" class="form-control" @if(isset($subscription))--}}
+{{--        value="{{$subscription->specialist_price}}" @endif placeholder="{{__('admin.specialist_price')}}"--}}
+{{--               name="specialist_price">--}}
+{{--    </div>--}}
 
-    <div class="form-group col-md-6 mb-2">
-        <label for="projectinput4">@lang('admin.period')</label>
-        <input type="number" class="form-control" name="period" @if(isset($subscription))
-        value="{{ $subscription->period }}" @endif>
-    </div>
+{{--    <div class="form-group col-md-6 mb-2">--}}
+{{--        <label for="projectinput4">@lang('admin.period')</label>--}}
+{{--        <input type="number" class="form-control" name="period" @if(isset($subscription))--}}
+{{--        value="{{ $subscription->period }}" @endif>--}}
+{{--    </div>--}}
 
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput4">@lang('admin.food_type')</label>
+        <input type="radio"  value="without" name="food_type"> @lang('admin.without')
         <input type="radio"  value="gram" name="food_type"> @lang('admin.gram')
         <input type="radio"  value="calory" name="food_type"> @lang('admin.calory')
     </div>
@@ -51,7 +52,7 @@
                     @foreach($foodTypes as $foodType)
 
                         <option value="{{$foodType->id}}" @if(isset($subscription) && in_array($foodType->id ,
-                        $subscription->foodTypes()->pluck('food_type_id')->toArray()) )) selected
+                        $foodTypesSelected) )) selected
                             @endif>{{$foodType->getTranslations('name')['ar']}}</option>
                     @endforeach
                 </select>
@@ -60,7 +61,7 @@
             <div class="form-group col-md-4 mb-2">
                 <label for="projectinput4">@lang('admin.price')</label>
                 <input type="number" class="form-control" name="price[]" @if(isset($subscription))
-                value="{{ $subscription->price }}" @endif>
+                value="{{ $subscription->subscriptionPrices[0]->price }}" @endif>
             </div>
             <div class="col-auto form-group">
                 <button onclick="add();return false;" class="btn btn-primary">اضف</button>

@@ -105,9 +105,11 @@
                                                 @foreach($foods as $food)
 
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="{{$food}}"  name="day[{{$key1}}][food_id][]" id="flexCheckDefault">
+                                                        <input class="form-check-input" type="radio" value="{{$food}}"  name="day[{{$key1}}][food_id][]" id="flexCheckDefault">
                                                         <label class="form-check-label" for="flexCheckDefault">
-                                                           <a target="_blank" href="{{url('restaurant/foodDetails/'.$food)}}">{{\App\Models\Food::find($food)->name}}</a>
+                                                            @php $food=\App\Models\Food::find($food) @endphp
+
+                                                           <a target="_blank" href="{{url('restaurant/foodDetails/'.$food)}}">{{$food->name}}<img src="{{$food->image}}"></a>
                                                         </label>
                                                     </div>
                                                 @endforeach

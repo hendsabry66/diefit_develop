@@ -31,7 +31,7 @@ class CreateSubscriptionRequest extends FormRequest
             'price' => 'required',
             'details_ar' => 'required|min:10',
             'details_en' => 'required|min:10',
-            'period' => 'required',
+           // 'period' => 'required',
         ];
     }
 }

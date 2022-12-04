@@ -119,11 +119,21 @@ class SubscriptionController extends AppBaseController
             return response()->json(['messages' => $messages]);
 
         }
+        $foodTypesSelected =[];
+        foreach ($subscription->subscriptionPrices as $item) {
+            foreach (json_decode($item->food_type) as $v) {
+                array_push($foodTypesSelected,$v) ;
+            }
+
+
+        }
+
+
         $types = $this->typeRepository->all();
 
         $foodTypes = $this->foodTypeRepository->all();
 
-        return view('admin.subscriptions.edit', compact('subscription','types','foodTypes'));
+        return view('admin.subscriptions.edit', compact('subscription','types','foodTypes','foodTypesSelected'));
     }
 
     /**
@@ -146,11 +156,23 @@ class SubscriptionController extends AppBaseController
 
         $input = $request->all();
         $subscription = $this->subscriptionRepository->updateSubscription($input, $id);
+        $subscription->subscriptionPrices()->delete();
+        if(!empty($request->food_types)) {
+            foreach ($request->food_types as $key => $foodType) {
+
+                SubscriptionPrice::create([
+                    'subscription_id' => $subscription->id,
+                    'food_type' => json_encode($foodType),
+                    'price' => $request->price[$key],
+                ]);
+//
+            }
+        }
 
       //  $subscription->foodTypes()->sync($input['food_types']);
-      if(isset($input['food_types'])){
-            $subscription->foodTypes()->sync($input['food_types']);
-        }
+//      if(isset($input['food_types'])){
+//            $subscription->foodTypes()->sync($input['food_types']);
+//        }
         $messages = ['success' => "Successfully updated", 'redirect' => route('subscriptions.index')];
         return response()->json(['messages' => $messages]);
 
