@@ -24,10 +24,10 @@ class VideoController extends AppBaseController
         $this->videoCategoryRepository = $videoCategoryRepo;
         $this->videoRepository = $videoRepo;
         $this->userRepository = $userRepo;
-//        $this->middleware('permission:video-list|video-create|video-edit|video-delete', ['only' => ['index','show']]);
-//        $this->middleware('permission:video-create', ['only' => ['create','store']]);
-//        $this->middleware('permission:video-edit', ['only' => ['edit','update']]);
-//        $this->middleware('permission:video-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:video-list|video-create|video-edit|video-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:video-create', ['only' => ['create','store']]);
+        $this->middleware('permission:video-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:video-delete', ['only' => ['destroy']]);
 
     }
 

@@ -22,6 +22,12 @@ class WeekFoodController extends AppBaseController
         $this->weekFoodRepository = $weekFoodRepo;
         $this->foodTypeRepository = $foodTypeRepo;
         $this->foodRepository = $foodRepo;
+
+        $this->middleware('permission:week-food-list|week-food-create|week-food-edit|week-food-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:week-food-create', ['only' => ['create','store']]);
+        $this->middleware('permission:week-food-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:week-food-delete', ['only' => ['destroy']]);
+
     }
 
 

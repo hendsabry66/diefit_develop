@@ -26,10 +26,10 @@ class ArticleController extends AppBaseController
         $this->articleCategoryRepository = $articleCategoryRepo;
         $this->articleRepository = $articleRepo;
         $this->userRepository = $userRepo;
-//        $this->middleware('permission:article-list|article-create|article-edit|article-delete', ['only' => ['index','show']]);
-//        $this->middleware('permission:article-create', ['only' => ['create','store']]);
-//        $this->middleware('permission:article-edit', ['only' => ['edit','update']]);
-//        $this->middleware('permission:article-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:article-list|article-create|article-edit|article-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:article-create', ['only' => ['create','store']]);
+        $this->middleware('permission:article-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:article-delete', ['only' => ['destroy']]);
 
     }
 

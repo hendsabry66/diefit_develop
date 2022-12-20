@@ -20,6 +20,10 @@ class DistrictController extends AppBaseController
     public function __construct(DistrictRepository $districtRepo)
     {
         $this->districtRepository = $districtRepo;
+        $this->middleware('permission:district-list|district-create|district-edit|district-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:district-create', ['only' => ['create','store']]);
+        $this->middleware('permission:district-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:district-delete', ['only' => ['destroy']]);
     }
 
     /**

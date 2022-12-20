@@ -23,6 +23,10 @@ class ProductSpecificationController extends AppBaseController
         $this->productSpecificationRepository = $productSpecificationRepo;
         $this->productRepository = $productRepo;
         $this->productSpecificationCategoryRepository = $productSpecificationCategoryRepo;
+        $this->middleware('permission:product-specification-list|product-specification-create|product-specification-edit|product-specification-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:product-specification-create', ['only' => ['create','store']]);
+        $this->middleware('permission:product-specification-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:product-specification-delete', ['only' => ['destroy']]);
     }
 
 

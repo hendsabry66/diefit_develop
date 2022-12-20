@@ -7,6 +7,7 @@ use App\Http\Requests\CreateBranchRequest;
 use App\Http\Requests\UpdateBranchRequest;
 use App\Repositories\BranchRepository;
 use App\Repositories\CityRepository;
+use App\Repositories\DistrictRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
@@ -17,16 +18,19 @@ class BranchController extends AppBaseController
     /** @var BranchRepository $branchRepository*/
     private $branchRepository;
     private $cityRepository;
+    private $districtRepository;
 
-    public function __construct(BranchRepository $branchRepo , CityRepository $cityRepo)
+    public function __construct(BranchRepository $branchRepo , CityRepository $cityRepo , DistrictRepository $districtRepo)
     {
         $this->branchRepository = $branchRepo;
         $this->cityRepository = $cityRepo;
+        $this->districtRepository = $districtRepo;
 
-        //$this->middleware('permission:branch-list|branch-create|branch-edit|branch-delete', ['only' => ['index','show']]);
-//        $this->middleware('permission:branch-create', ['only' => ['create','store']]);
-//        $this->middleware('permission:branch-edit', ['only' => ['edit','update']]);
-//        $this->middleware('permission:branch-delete', ['only' => ['destroy']]);
+
+        $this->middleware('permission:branch-list|branch-create|branch-edit|branch-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:branch-create', ['only' => ['create','store']]);
+        $this->middleware('permission:branch-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:branch-delete', ['only' => ['destroy']]);
     }
 
     /**
@@ -50,7 +54,8 @@ class BranchController extends AppBaseController
     public function create()
     {
         $cities = $this->cityRepository->all();
-        return view('admin.branches.create', compact('cities'));
+        $districts = $this->districtRepository->all();
+        return view('admin.branches.create', compact('cities', 'districts'));
     }
 
     /**
@@ -107,8 +112,9 @@ class BranchController extends AppBaseController
 
         }
         $cities = $this->cityRepository->all();
+        $districts = $this->districtRepository->all();
 
-        return view('admin.branches.edit', compact('branch', 'cities'));
+        return view('admin.branches.edit', compact('branch', 'cities', 'districts'));
     }
 
     /**

@@ -19,6 +19,10 @@ class StatusController extends AppBaseController
     public function __construct(StatusRepository $statusRepo)
     {
         $this->statusRepository = $statusRepo;
+        $this->middleware('permission:status-list|status-create|status-edit|status-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:status-create', ['only' => ['create','store']]);
+        $this->middleware('permission:status-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:status-delete', ['only' => ['destroy']]);
     }
 
     /**

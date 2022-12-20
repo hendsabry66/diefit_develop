@@ -20,10 +20,10 @@ class ClientReviewController extends AppBaseController
     public function __construct(ClientReviewRepository $clientReviewRepo)
     {
         $this->clientReviewRepository = $clientReviewRepo;
-        //        $this->middleware('permission:clientReview-list|clientReview-create|clientReview-edit|clientReview-delete', ['only' => ['index','show']]);
-//        $this->middleware('permission:clientReview-create', ['only' => ['create','store']]);
-//        $this->middleware('permission:clientReview-edit', ['only' => ['edit','update']]);
-//        $this->middleware('permission:clientReview-delete', ['only' => ['destroy']]);
+                $this->middleware('permission:clientReview-list|clientReview-create|clientReview-edit|clientReview-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:clientReview-create', ['only' => ['create','store']]);
+        $this->middleware('permission:clientReview-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:clientReview-delete', ['only' => ['destroy']]);
     }
 
     /**

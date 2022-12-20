@@ -19,6 +19,10 @@ class FoodTypeController extends AppBaseController
     public function __construct(FoodTypeRepository $foodTypeRepo)
     {
         $this->foodTypeRepository = $foodTypeRepo;
+        $this->middleware('permission:food-type-list|food-type-create|food-type-edit|food-type-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:food-type-create', ['only' => ['create','store']]);
+        $this->middleware('permission:food-type-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:food-type-delete', ['only' => ['destroy']]);
     }
 
     /**

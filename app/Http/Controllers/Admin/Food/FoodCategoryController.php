@@ -19,10 +19,10 @@ class FoodCategoryController extends AppBaseController
     public function __construct(FoodCategoryRepository $foodCategoryRepo)
     {
         $this->foodCategoryRepository = $foodCategoryRepo;
-//        $this->middleware('permission:food-category-list|food-category-create|food-category-edit|food-category-delete', ['only' => ['index','show']]);
-//        $this->middleware('permission:food-category-create', ['only' => ['create','store']]);
-//        $this->middleware('permission:food-category-edit', ['only' => ['edit','update']]);
-//        $this->middleware('permission:food-category-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:food-category-list|food-category-create|food-category-edit|food-category-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:food-category-create', ['only' => ['create','store']]);
+        $this->middleware('permission:food-category-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:food-category-delete', ['only' => ['destroy']]);
 
     }
 

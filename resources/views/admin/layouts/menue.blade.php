@@ -9,6 +9,8 @@
                     </li>
                     <li class="{{ (request()->segment(2) == 'districts') ? 'active' : '' }}"><a class="menu-item" href="{{url('admin/districts')}}" data-i18n="nav.dash.project">@lang('admin.districts')</a>
                     </li>
+                    <li class="{{ (request()->segment(2) == 'branches') ? 'active' : '' }}"><a class="menu-item" href="{{url('admin/branches')}}" data-i18n="nav.dash.project">@lang('admin.branches')</a>
+                    </li>
                 </ul>
             </li>
 

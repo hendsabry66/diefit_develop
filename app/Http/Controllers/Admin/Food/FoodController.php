@@ -25,6 +25,10 @@ class FoodController extends AppBaseController
         $this->foodRepository = $foodRepo;
         $this->foodCategoryRepository = $foodCategoryRepo;
         $this->extraRepository = $extraRepo;
+        $this->middleware('permission:food-list|food-create|food-edit|food-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:food-create', ['only' => ['create','store']]);
+        $this->middleware('permission:food-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:food-delete', ['only' => ['destroy']]);
     }
 
 

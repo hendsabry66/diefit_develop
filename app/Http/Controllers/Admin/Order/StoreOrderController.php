@@ -16,6 +16,10 @@ class StoreOrderController  extends AppBaseController
     {
         $this->orderRepository = $orderRepository;
         $this->statusRepository = $statusRepository;
+        $this->middleware('permission:store-order-list|store-order-create|store-order-edit|store-order-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:store-order-create', ['only' => ['create','store']]);
+        $this->middleware('permission:store-order-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:store-order-delete', ['only' => ['destroy']]);
     }
 
 

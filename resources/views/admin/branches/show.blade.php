@@ -25,11 +25,10 @@
                         <div class="card-body">
                             <h4 class="card-title"># {{$branch->id}} </h4>
                             <p><span>@lang('admin.name') :- </span> {{ $branch->getTranslations('name')['ar'] }} - {{ $branch->getTranslations('name')['en'] }}</p>
-                            <p class="card-text"><span>@lang('admin.details_ar')</span>{!!  $branch->getTranslations('details')['ar'] !!}</p>
-                            <p class="card-text"><span>@lang('admin.details_en')</span>{!!  $branch->getTranslations('details')['en'] !!}</p>
-                            <p class="card-text"><span>@lang('admin.latitude')</span>{{ $branch->latitude }}</p>
-                            <p class="card-text"><span>@lang('admin.longitude')</span>{{ $branch->longitude }}</p>
+                            <p class="card-text"><span>@lang('admin.address_ar')</span>{!!  $branch->getTranslations('address')['ar'] !!}</p>
+                            <p class="card-text"><span>@lang('admin.address_en')</span>{!!  $branch->getTranslations('address')['en'] !!}</p>
                             <p class="card-text"><span>@lang('admin.city')</span>{{ $branch->city->getTranslations('name')['ar'] }}</p>
+                            <p class="card-text"><span>@lang('admin.district')</span>{{ $branch->district->getTranslations('name')['ar'] }}</p>
                             <a href="{{route('branches.edit',$branch->id)}}" class="btn btn-outline-teal">@lang('admin.edit')</a>
                         </div>
                     </div>

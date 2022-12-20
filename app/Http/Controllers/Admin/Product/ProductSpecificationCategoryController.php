@@ -19,6 +19,10 @@ class ProductSpecificationCategoryController extends AppBaseController
     public function __construct(ProductSpecificationCategoryRepository $productSpecificationCategoryRepo)
     {
         $this->productSpecificationCategoryRepository = $productSpecificationCategoryRepo;
+        $this->middleware('permission:product-specification-category-list|product-specification-category-create|product-specification-category-edit|product-specification-category-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:product-specification-category-create', ['only' => ['create','store']]);
+        $this->middleware('permission:product-specification-category-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:product-specification-category-delete', ['only' => ['destroy']]);
     }
 
     /**

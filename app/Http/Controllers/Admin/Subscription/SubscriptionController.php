@@ -24,6 +24,11 @@ class SubscriptionController extends AppBaseController
         $this->subscriptionRepository = $subscriptionRepo;
         $this->typeRepository = $typeRepo;
         $this->foodTypeRepository = $foodTypeRepo;
+
+        $this->middleware('permission:subscription-list|subscription-create|subscription-edit|subscription-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:subscription-create', ['only' => ['create','store']]);
+        $this->middleware('permission:subscription-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:subscription-delete', ['only' => ['destroy']]);
     }
 
 
@@ -62,22 +67,23 @@ class SubscriptionController extends AppBaseController
      */
     public function store(CreateSubscriptionRequest $request)
     {
-           $input = $request->except('price','food_types');
+//           $input = $request->except('price','food_types');
+        $input = $request->all();
 
         $subscription = $this->subscriptionRepository->createSubscription($input);
        // $subscription->foodTypes()->sync($input['food_types']);
        // dd( $input['food_types']);
-        if(!empty($request->food_types)) {
-            foreach ($request->food_types as $key => $foodType) {
-
-                SubscriptionPrice::create([
-                    'subscription_id' => $subscription->id,
-                    'food_type' => json_encode($foodType),
-                    'price' => $request->price[$key],
-                ]);
+//        if(!empty($request->food_types)) {
+//            foreach ($request->food_types as $key => $foodType) {
 //
-            }
-        }
+//                SubscriptionPrice::create([
+//                    'subscription_id' => $subscription->id,
+//                    'food_type' => json_encode($foodType),
+//                    'price' => $request->price[$key],
+//                ]);
+////
+//            }
+//        }
         $messages = ['success' => "Successfully added", 'redirect' => route('subscriptions.index')];
         return response()->json(['messages' => $messages]);
 
@@ -119,19 +125,19 @@ class SubscriptionController extends AppBaseController
             return response()->json(['messages' => $messages]);
 
         }
-        $foodTypesSelected =[];
-        foreach ($subscription->subscriptionPrices as $item) {
-            foreach (json_decode($item->food_type) as $v) {
-                array_push($foodTypesSelected,$v) ;
-            }
-
-
-        }
-
-
-        $types = $this->typeRepository->all();
-
-        $foodTypes = $this->foodTypeRepository->all();
+//        $foodTypesSelected =[];
+//        foreach ($subscription->subscriptionPrices as $item) {
+//            foreach (json_decode($item->food_type) as $v) {
+//                array_push($foodTypesSelected,$v) ;
+//            }
+//
+//
+//        }
+//
+//
+//        $types = $this->typeRepository->all();
+//
+//        $foodTypes = $this->foodTypeRepository->all();
 
         return view('admin.subscriptions.edit', compact('subscription','types','foodTypes','foodTypesSelected'));
     }
@@ -156,18 +162,18 @@ class SubscriptionController extends AppBaseController
 
         $input = $request->all();
         $subscription = $this->subscriptionRepository->updateSubscription($input, $id);
-        $subscription->subscriptionPrices()->delete();
-        if(!empty($request->food_types)) {
-            foreach ($request->food_types as $key => $foodType) {
-
-                SubscriptionPrice::create([
-                    'subscription_id' => $subscription->id,
-                    'food_type' => json_encode($foodType),
-                    'price' => $request->price[$key],
-                ]);
+//        $subscription->subscriptionPrices()->delete();
+//        if(!empty($request->food_types)) {
+//            foreach ($request->food_types as $key => $foodType) {
 //
-            }
-        }
+//                SubscriptionPrice::create([
+//                    'subscription_id' => $subscription->id,
+//                    'food_type' => json_encode($foodType),
+//                    'price' => $request->price[$key],
+//                ]);
+////
+//            }
+//        }
 
       //  $subscription->foodTypes()->sync($input['food_types']);
 //      if(isset($input['food_types'])){

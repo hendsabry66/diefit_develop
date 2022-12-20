@@ -19,16 +19,15 @@ class Branch extends Model
 
     public $table = 'branches';
 
-    public $translatable = ['name' ,'details'];
+    public $translatable = ['name' ,'address'];
 
 
 
     public $fillable = [
         'name',
-        'details',
-        'latitude',
-        'longitude',
+        'address',
         'city_id',
+        'district_id',
     ];
 
     /**
@@ -55,6 +54,15 @@ class Branch extends Model
     public function city()
     {
         return $this->belongsTo(City::class);
+    }
+
+    /**
+     * district relation
+     */
+
+    public function district()
+    {
+        return $this->belongsTo(District::class);
     }
 
 

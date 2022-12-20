@@ -48,9 +48,9 @@ class BranchRepository extends BaseRepository
             'en' => $input['name_en'],
             'ar' => $input['name_ar']
         ];
-        $input['details']=[
-            'en' => $input['details_en'],
-            'ar' => $input['details_ar']
+        $input['address']=[
+            'en' => $input['address_en'],
+            'ar' => $input['address_ar']
         ];
 
 
@@ -68,9 +68,9 @@ class BranchRepository extends BaseRepository
             'en' => $input['name_en'],
             'ar' => $input['name_ar']
         ];
-        $input['details']=[
-            'en' => $input['details_en'],
-            'ar' => $input['details_ar']
+        $input['address']=[
+            'en' => $input['address_en'],
+            'ar' => $input['address_ar']
         ];
 
         $branch = $this->update($input, $id);

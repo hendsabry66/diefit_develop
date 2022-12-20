@@ -27,11 +27,10 @@ class UpdateBranchRequest extends FormRequest
         return [
             'name_ar' => 'required',
             'name_en'=>'required',
-            'details_ar'=>'required|min:10',
-            'details_en'=>'required|min:10',
-            'latitude'=>'required',
-            'longitude'=>'required',
             'city_id'=>'required',
+            'district_id'=>'required',
+            'address_ar'=>'required',
+            'address_en'=>'required',
 
 
         ];

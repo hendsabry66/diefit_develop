@@ -19,10 +19,10 @@ class AreaController extends AppBaseController
     public function __construct(AreaRepository $areaRepository)
     {
         $this->areaRepository = $areaRepository;
-//        $this->middleware('permission:area-list|area-create|area-edit|area-delete', ['only' => ['index','show']]);
-//        $this->middleware('permission:area-create', ['only' => ['create','store']]);
-//        $this->middleware('permission:area-edit', ['only' => ['edit','update']]);
-//        $this->middleware('permission:area-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:area-list|area-create|area-edit|area-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:area-create', ['only' => ['create','store']]);
+        $this->middleware('permission:area-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:area-delete', ['only' => ['destroy']]);
     }
 
     /**

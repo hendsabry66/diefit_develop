@@ -19,6 +19,10 @@ class BankAccountsController extends AppBaseController
     public function __construct(BankAccountsRepository $bankAccountsRepo)
     {
         $this->bankAccountsRepository = $bankAccountsRepo;
+        $this->middleware('permission:bank-accounts-list|bank-accounts-create|bank-accounts-edit|bank-accounts-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:bank-accounts-create', ['only' => ['create','store']]);
+        $this->middleware('permission:bank-accounts-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:bank-accounts-delete', ['only' => ['destroy']]);
     }
 
     /**

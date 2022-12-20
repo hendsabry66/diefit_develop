@@ -19,6 +19,10 @@ class ExtraController extends AppBaseController
     public function __construct(ExtraRepository $extraRepo)
     {
         $this->extraRepository = $extraRepo;
+        $this->middleware('permission:extra-list|extra-create|extra-edit|extra-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:extra-create', ['only' => ['create','store']]);
+        $this->middleware('permission:extra-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:extra-delete', ['only' => ['destroy']]);
     }
 
     /**

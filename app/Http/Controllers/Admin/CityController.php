@@ -20,10 +20,10 @@ class CityController extends AppBaseController
     public function __construct(CityRepository $cityRepo)
     {
         $this->cityRepository = $cityRepo;
-//        $this->middleware('permission:city-list|city-create|city-edit|city-delete', ['only' => ['index','show']]);
-//        $this->middleware('permission:city-create', ['only' => ['create','store']]);
-//        $this->middleware('permission:city-edit', ['only' => ['edit','update']]);
-//        $this->middleware('permission:city-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:city-list|city-create|city-edit|city-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:city-create', ['only' => ['create','store']]);
+        $this->middleware('permission:city-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:city-delete', ['only' => ['destroy']]);
     }
 
     /**

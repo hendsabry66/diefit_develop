@@ -305,6 +305,22 @@ return [
     'calory'=>'السعرات الحرارية',
     'gram'=>'الجرام',
     'without'=>'بدون',
+    'address_ar'=>'العنوان بالعربية',
+    'address_en'=>'العنوان بالانجليزية',
+    'permissions'=>'الصلاحيات',
+    'has_specialist'=>'يوجد مختص',
+    'yes'=>'نعم',
+    'no'=>'لا',
+    'specialist_price_for_session'=>'سعر المختص للجلسة',
+    'suggested_session_number'=>'عدد الجلسات المقترحة',
+    'has_calories'=>'يوجد سعرات حرارية',
+    'calories'=>'السعرات الحرارية',
+    'has_quantities'=>'يوجد كميات',
+    'quantities'=>'الكميات',
+    'has_meals'=>'يوجد وجبات',
+    'meals'=>'الوجبات',
+    'number_of_delivery_days'=>'عدد ايام التوصيل',
+
 
 
 

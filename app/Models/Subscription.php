@@ -22,14 +22,22 @@ class Subscription extends Model
 
 
     public $fillable = [
-        'type_id',
-        'name',
-        'details',
-        'price',
-        'period',
-        'number_of_meals',
-        'specialist_price',
-        'food_type',
+          'type_id',
+          'name',
+          'details',
+          'has_specialist',
+          'specialist_price_for_session',
+          'suggested_session_number',
+          'period',
+          'has_calories',
+          'calories',
+          'has_quantities',
+          'quantities',
+          'has_meals',
+          'meals',
+          'number_of_delivery_days',
+            'price',
+
 
     ];
 

@@ -19,10 +19,10 @@ class VideoCategoryController extends AppBaseController
     public function __construct(VideoCategoryRepository $videoCategoryRepo)
     {
         $this->videoCategoryRepository = $videoCategoryRepo;
-//        $this->middleware('permission:video-category-list|video-category-create|video-category-edit|video-category-delete', ['only' => ['index','show']]);
-//        $this->middleware('permission:video-category-create', ['only' => ['create','store']]);
-//        $this->middleware('permission:video-category-edit', ['only' => ['edit','update']]);
-//        $this->middleware('permission:video-category-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:video-category-list|video-category-create|video-category-edit|video-category-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:video-category-create', ['only' => ['create','store']]);
+        $this->middleware('permission:video-category-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:video-category-delete', ['only' => ['destroy']]);
 
     }
 

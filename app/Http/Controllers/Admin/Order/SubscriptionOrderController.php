@@ -21,6 +21,10 @@ class SubscriptionOrderController extends AppBaseController
     {
         $this->subscriptionOrderRepository = $subscriptionOrderRepository;
         $this->statusRepository = $statusRepository;
+        $this->middleware('permission:subscription-order-list|subscription-order-create|subscription-order-edit|subscription-order-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:subscription-order-create', ['only' => ['create','store']]);
+        $this->middleware('permission:subscription-order-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:subscription-order-delete', ['only' => ['destroy']]);
     }
 
 

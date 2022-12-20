@@ -20,10 +20,10 @@ class TeamMemberController extends AppBaseController
     public function __construct(TeamMemberRepository $teamMemberRepo)
     {
         $this->teamMemberRepository = $teamMemberRepo;
-//        $this->middleware('permission:teamMember-list|teamMember-create|teamMember-edit|teamMember-delete', ['only' => ['index','show']]);
-//        $this->middleware('permission:teamMember-create', ['only' => ['create','store']]);
-//        $this->middleware('permission:teamMember-edit', ['only' => ['edit','update']]);
-//        $this->middleware('permission:teamMember-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:teamMember-list|teamMember-create|teamMember-edit|teamMember-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:teamMember-create', ['only' => ['create','store']]);
+        $this->middleware('permission:teamMember-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:teamMember-delete', ['only' => ['destroy']]);
     }
 
     /**

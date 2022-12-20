@@ -16,6 +16,10 @@ class RestaurantOrderController  extends AppBaseController
     {
         $this->restaurantOrderRepository = $restaurantOrderRepo;
         $this->statusRepository = $statusRepo;
+        $this->middleware('permission:restaurant-order-list|restaurant-order-create|restaurant-order-edit|restaurant-order-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:restaurant-order-create', ['only' => ['create','store']]);
+        $this->middleware('permission:restaurant-order-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:restaurant-order-delete', ['only' => ['destroy']]);
     }
 
     public function index( RestaurantOrdersDataTable $dataTable)

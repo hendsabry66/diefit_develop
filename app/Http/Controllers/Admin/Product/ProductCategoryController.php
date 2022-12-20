@@ -20,10 +20,10 @@ class ProductCategoryController extends AppBaseController
     public function __construct(ProductCategoryRepository $productCategoryRepo)
     {
         $this->productCategoryRepository = $productCategoryRepo;
-//        $this->middleware('permission:product-category-list|product-category-create|product-category-edit|product-category-delete', ['only' => ['index','show']]);
-//        $this->middleware('permission:product-category-create', ['only' => ['create','store']]);
-//        $this->middleware('permission:product-category-edit', ['only' => ['edit','update']]);
-//        $this->middleware('permission:product-category-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:product-category-list|product-category-create|product-category-edit|product-category-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:product-category-create', ['only' => ['create','store']]);
+        $this->middleware('permission:product-category-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:product-category-delete', ['only' => ['destroy']]);
 
     }
 

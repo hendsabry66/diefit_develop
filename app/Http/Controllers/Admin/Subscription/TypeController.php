@@ -19,6 +19,11 @@ class TypeController extends AppBaseController
     public function __construct(TypeRepository $typeRepo)
     {
         $this->typeRepository = $typeRepo;
+        $this->middleware('permission:type-list|type-create|type-edit|type-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:type-create', ['only' => ['create','store']]);
+        $this->middleware('permission:type-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:type-delete', ['only' => ['destroy']]);
+
     }
 
     /**
