@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateSubscriptionRequest;
 use App\Repositories\SubscriptionRepository;
 use App\Repositories\FoodTypeRepository;
 use App\Repositories\TypeRepository;
+use App\Repositories\FoodRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
@@ -17,13 +18,15 @@ use App\Models\SubscriptionPrice;
 class SubscriptionController extends AppBaseController
 {
     /** @var SubscriptionRepository $subscriptionRepository*/
-    private $subscriptionRepository , $typeRepository , $foodTypeRepository;
+    private $subscriptionRepository , $typeRepository , $foodTypeRepository, $foodRepository;
 
-    public function __construct(SubscriptionRepository $subscriptionRepo , TypeRepository $typeRepo , FoodTypeRepository $foodTypeRepo)
+    public function __construct(SubscriptionRepository $subscriptionRepo , TypeRepository $typeRepo , FoodTypeRepository $foodTypeRepo , FoodRepository $foodRepo)
     {
         $this->subscriptionRepository = $subscriptionRepo;
         $this->typeRepository = $typeRepo;
         $this->foodTypeRepository = $foodTypeRepo;
+        $this->foodRepository = $foodRepo;
+
 
         $this->middleware('permission:subscription-list|subscription-create|subscription-edit|subscription-delete', ['only' => ['index','show']]);
         $this->middleware('permission:subscription-create', ['only' => ['create','store']]);
@@ -55,7 +58,8 @@ class SubscriptionController extends AppBaseController
     {
         $types = $this->typeRepository->all();
         $foodTypes = $this->foodTypeRepository->all();
-        return view('admin.subscriptions.create')->with('types',$types)->with('foodTypes',$foodTypes);
+        $foods = $this->foodRepository->all();
+        return view('admin.subscriptions.create', compact('types' , 'foodTypes' , 'foods'));
     }
 
     /**

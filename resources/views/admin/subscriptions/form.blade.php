@@ -61,22 +61,22 @@
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput4">@lang('admin.calories')</label>
         <input type="number" class="form-control" name="calories" @if(isset($subscription))
-        value="{{ $subscription->calories }}" @endif>
+        value="{{ $subscription->calories }}" @endif> +
     </div>
 
-    <div class="form-group col-md-6 mb-2">
-        <label for="projectinput4">@lang('admin.has_quantities')</label>
-        <select name="has_quantities" class="form-control">
-            <option value="1">@lang('admin.yes')</option>
-            <option value="0">@lang('admin.no')</option>
-        </select>
-    </div>
+{{--    <div class="form-group col-md-6 mb-2">--}}
+{{--        <label for="projectinput4">@lang('admin.has_quantities')</label>--}}
+{{--        <select name="has_quantities" class="form-control">--}}
+{{--            <option value="1">@lang('admin.yes')</option>--}}
+{{--            <option value="0">@lang('admin.no')</option>--}}
+{{--        </select>--}}
+{{--    </div>--}}
 
-    <div class="form-group col-md-6 mb-2">
-        <label for="projectinput4">@lang('admin.quantities')</label>
-        <input type="number" class="form-control" name="quantities" @if(isset($subscription))
-        value="{{ $subscription->quantities }}" @endif>
-    </div>
+{{--    <div class="form-group col-md-6 mb-2">--}}
+{{--        <label for="projectinput4">@lang('admin.quantities')</label>--}}
+{{--        <input type="number" class="form-control" name="quantities" @if(isset($subscription))--}}
+{{--        value="{{ $subscription->quantities }}" @endif>--}}
+{{--    </div>--}}
 
 {{--    <div class="form-group col-md-6 mb-2">--}}
 {{--        <label for="projectinput4">@lang('admin.food_type')</label>--}}
@@ -94,9 +94,16 @@
     </div>
 
     <div class="form-group col-md-6 mb-2">
-        <label for="projectinput4">@lang('admin.meals')</label>
-        <input type="number" class="form-control" name="meals" @if(isset($subscription))
-        value="{{ $subscription->meals }}" @endif>
+        <label for="projectinput4">@lang('admin.foods')</label>
+        <select name="foods">
+            <option value="1">@lang('admin.choose')</option>
+            @foreach($foods as $food)
+                <option value="{{$food->id}}">{{$food->name}}</option>
+            @endforeach
+
+        </select>
+{{--        <input type="number" class="form-control" name="meals" @if(isset($subscription))--}}
+{{--        value="{{ $subscription->meals }}" @endif>--}}
     </div>
 
     <div class="form-group col-md-6 mb-2">
