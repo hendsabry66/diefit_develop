@@ -25,8 +25,8 @@
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput4">@lang('admin.has_specialist')</label>
         <select name="has_specialist" class="form-control select-specialist">
-            <option value="1" @if($subscription->has_specialist== 1) selected @endif >@lang('admin.yes')</option>
-            <option value="0" @if($subscription->has_specialist== 0) selected @endif >@lang('admin.no')</option>
+            <option value="1" @if(isset($subscription)) @if($subscription->has_specialist== 1) selected @endif @endif >@lang('admin.yes')</option>
+            <option value="0" @if(isset($subscription)) @if($subscription->has_specialist== 0) selected @endif @endif>@lang('admin.no')</option>
         </select>
     </div>
     <div class="form-group col-md-6 mb-2 action-for-specialist">
@@ -51,8 +51,8 @@
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput4">@lang('admin.has_calories')</label>
         <select name="has_calories" class="form-control select-calories">
-            <option value="1" @if($subscription->has_calories== 1) selected @endif>@lang('admin.yes')</option>
-            <option value="0" @if($subscription->has_calories== 0) selected @endif>@lang('admin.no')</option>
+            <option value="1" @if(isset($subscription)) @if($subscription->has_calories== 1) selected @endif @endif>@lang('admin.yes')</option>
+            <option value="0" @if(isset($subscription)) @if($subscription->has_calories== 0) selected @endif @endif>@lang('admin.no')</option>
         </select>
 
     </div>
