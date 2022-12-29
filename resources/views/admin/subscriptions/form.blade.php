@@ -65,7 +65,7 @@
                     <label for="projectinput4">@lang('admin.calories')</label>
                     <input type="number" class="form-control" name="calories[]" value="{{ $calorie }}">
                     <div class="list-of-calories"></div>
-                    <button type="button" class="add-new-calories">+</button>
+                    <button type="button" class="add-new-calories btn btn-primary">+</button>
                 </div>
             @endforeach
                 @else
@@ -73,7 +73,7 @@
                     <label for="projectinput4">@lang('admin.calories')</label>
                     <input type="number" class="form-control" name="calories[]">
                     <div class="list-of-calories"></div>
-                    <button type="button" class="add-new-calories">+</button>
+                    <button type="button" class="add-new-calories btn btn-primary">+</button>
                 </div>
             @endif
             @else
@@ -81,7 +81,7 @@
             <label for="projectinput4">@lang('admin.calories')</label>
             <input type="number" class="form-control" name="calories[]" >
             <div class="list-of-calories"></div>
-            <button type="button" class="add-new-calories">+</button>
+            <button type="button" class="add-new-calories btn btn-primary">+</button>
         </div>
         @endif
 
@@ -125,7 +125,7 @@
             @endforeach
 
         </select>
-        <button type="button" class="add-new-food">add</button>
+        <button type="button" class="add-new-food btn btn-primary">اضافة</button>
         {{--        <input type="number" class="form-control" name="meals" @if(isset($subscription))--}}
         {{--        value="{{ $subscription->meals }}" @endif>--}}
     </div>
