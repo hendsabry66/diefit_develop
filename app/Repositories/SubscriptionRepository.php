@@ -61,6 +61,7 @@ class SubscriptionRepository extends BaseRepository
             'en' => $input['details_en'],
             'ar' => $input['details_ar'],
         ];
+        $input['calories']= json_encode($input['calories']);
         $subscription = $this->create($input);
         return $subscription;
     }
@@ -87,6 +88,7 @@ class SubscriptionRepository extends BaseRepository
             'en' => $input['details_en'],
             'ar' => $input['details_ar'],
         ];
+        $input['calories']= json_encode($input['calories']);
         $subscription = $this->update($input, $id);
         return $subscription;
     }

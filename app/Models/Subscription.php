@@ -80,6 +80,22 @@ class Subscription extends Model
         return $this->hasMany(SubscriptionPrice::class);
     }
 
+    /**
+     * SubscriptionFood relation
+     */
+    public function Foods(){
+        return $this->belongsToMany(Food::class, 'subscription_food' , 'subscription_id' , 'food_id');
+    }
+
+    /**
+     * subscription food
+     */
+    public function subscriptionFoods()
+    {
+        return $this->hasMany(SubscriptionFood::class);
+    }
+
+
 
 
 

@@ -48,29 +48,29 @@
         // Top Navbars - Hide on Scroll
         if ($(".navbar-hide-on-scroll").length > 0) {
             $(".navbar-hide-on-scroll.fixed-top").headroom({
-              "offset": 205,
-              "tolerance": 5,
-              "classes": {
-                 // when element is initialised
-                initial : "headroom",
-                // when scrolling up
-                pinned : "headroom--pinned-top",
-                // when scrolling down
-                unpinned : "headroom--unpinned-top",
-              }
+                "offset": 205,
+                "tolerance": 5,
+                "classes": {
+                    // when element is initialised
+                    initial : "headroom",
+                    // when scrolling up
+                    pinned : "headroom--pinned-top",
+                    // when scrolling down
+                    unpinned : "headroom--unpinned-top",
+                }
             });
             // Bottom Navbars - Hide on Scroll
             $(".navbar-hide-on-scroll.fixed-bottom").headroom({
-              "offset": 205,
-              "tolerance": 5,
-              "classes": {
-                 // when element is initialised
-                initial : "headroom",
-                // when scrolling up
-                pinned : "headroom--pinned-bottom",
-                // when scrolling down
-                unpinned : "headroom--unpinned-bottom",
-              }
+                "offset": 205,
+                "tolerance": 5,
+                "classes": {
+                    // when element is initialised
+                    initial : "headroom",
+                    // when scrolling up
+                    pinned : "headroom--pinned-bottom",
+                    // when scrolling down
+                    unpinned : "headroom--unpinned-bottom",
+                }
             });
         }
 
@@ -145,7 +145,7 @@
 
         $('.card .heading-elements a[data-action="collapse"]').on('click',function(){
             var $this = $(this),
-            card = $this.closest('.card');
+                card = $this.closest('.card');
             var cardHeight;
 
             if(parseInt(card[0].style.height,10) > 0){
@@ -184,25 +184,25 @@
 
         //  Dynamic height for the chartjs div for the chart animations to work
         var chartjsDiv = $('.chartjs'),
-        canvasHeight = chartjsDiv.children('canvas').attr('height');
+            canvasHeight = chartjsDiv.children('canvas').attr('height');
         chartjsDiv.css('height', canvasHeight);
 
         if($body.hasClass('boxed-layout')){
             if($body.hasClass('vertical-overlay-menu') || $body.hasClass('vertical-compact-menu')){
-               var menuWidth= $('.main-menu').width();
-               var contentPosition = $('.app-content').position().left;
-               var menuPositionAdjust = contentPosition-menuWidth;
-               if($body.hasClass('menu-flipped')){
+                var menuWidth= $('.main-menu').width();
+                var contentPosition = $('.app-content').position().left;
+                var menuPositionAdjust = contentPosition-menuWidth;
+                if($body.hasClass('menu-flipped')){
                     $('.main-menu').css('right',menuPositionAdjust+'px');
-               }else{
+                }else{
                     $('.main-menu').css('left',menuPositionAdjust+'px');
-               }
+                }
             }
         }
 
         $('.nav-link-search').on('click',function(){
             var $this = $(this),
-            searchInput = $(this).siblings('.search-input');
+                searchInput = $(this).siblings('.search-input');
 
             if(searchInput.hasClass('open')){
                 searchInput.removeClass('open');
@@ -212,6 +212,82 @@
             }
         });
     });
+
+    $(document).on('change', '.select-specialist', function() {
+        var getValue = $(this).val();
+        if (getValue == 0){
+            $('.action-for-specialist').slideUp('fast');
+        } else {
+            $('.action-for-specialist').slideDown('fast');
+        }
+    });
+
+    $(document).on('change', '.select-calories', function() {
+        var getValue = $(this).val();
+        if (getValue == 0){
+            $('.action-for-calories').slideUp('fast');
+        } else {
+            $('.action-for-calories').slideDown('fast');
+        }
+    });
+
+    $(document).on('change', '.select-meals', function() {
+        var getValue = $(this).val();
+        if (getValue == 0){
+            $('.action-for-meals').slideUp('fast');
+        } else {
+            $('.action-for-meals').slideDown('fast');
+        }
+    });
+
+    $(document).on('click', '.add-new-calories', function() {
+        var newInput = '<div class="row mt-1 mb-1 one-new-calories"><div class="col-11"><input type="number" class="form-control" name="calories[]"></div><div class="col-1"><button type="button" class="remove-calories">-</button></div></div>';
+        $('.list-of-calories').append(newInput);
+    });
+
+    $(document).on('click', '.remove-calories', function() {
+        $(this).parents('.one-new-calories').slideUp('fast',function(){
+            $(this).remove();
+        });
+    });
+
+    $(document).on('click', '.add-new-food', function() {
+        var newSelectOptions = $('.select-foods').html();
+        var newSelect = '<div class="form-group col-md-12 mb-2 one-food-select"><select name="foods[]" class="select-foods">' + newSelectOptions + '</select><button type="button" class="remove-food-menu">remove</button><div class="form-group col-md-12 mb-2 list-of-this-food"></div></div>';
+        $('.list-of-foods').append(newSelect);
+    });
+
+    var inputsRow = '<div class="row one-of-food-ingrediant"><div class="form-group col-md-5 mb-2"> <label for="projectinput4">مكون</label> <input type="text" class="form-control" value="" placeholder="مكون" name="foodsitems[$][ingrediant][]"> </div> <div class="form-group col-md-5 mb-2"> <label for="projectinput4">الكميه</label> <input type="text" class="form-control" placeholder="الكميه" name="foodsitems[$][quantity][]"> </div><div class="form-group col-md-2 mb-2"><button type="button" class="remove-food">remove</button></div></div>';
+
+    $(document).on('change', '.select-foods', function() {
+        var thisSelector = $(this).parents('.one-food-select');
+        var getValue = $(this).val();
+        var newInputs = '<button type="button" class="add-new-ingredients">add</button>';
+
+        if (getValue != 1){
+            thisSelector.find('.list-of-this-food').html(inputsRow.replaceAll('$',getValue));
+            thisSelector.append(newInputs);
+        }
+    });
+
+    $(document).on('click', '.add-new-ingredients', function() {
+        var thisSelector = $(this).parents('.one-food-select');
+        var getValue = thisSelector.find('.select-foods').val();
+        thisSelector.find('.list-of-this-food').append(inputsRow.replaceAll('$',getValue));
+    });
+
+    $(document).on('click', '.remove-food', function() {
+        $(this).parents('.one-of-food-ingrediant').slideUp('fast',function(){
+            $(this).remove();
+        });
+    });
+
+    $(document).on('click', '.remove-food-menu', function() {
+        $(this).parents('.one-food-select').slideUp('fast',function(){
+            $(this).remove();
+        });
+    });
+
 
 
     $(document).on('click', '.menu-toggle, .modern-nav-toggle', function(e) {
@@ -275,7 +351,7 @@
     $('.navigation').find('li').has('ul').addClass('has-sub');
 
     $('.carousel').carousel({
-      interval: 2000
+        interval: 2000
     });
 
     // Page full screen
@@ -306,8 +382,8 @@
     $(document).ready(function(){
 
         /**********************************
-        *   Form Wizard Step Icon
-        **********************************/
+         *   Form Wizard Step Icon
+         **********************************/
         $('.step-icon').each(function(){
             var $this = $(this);
             if($this.siblings('span.step').length > 0){
@@ -325,7 +401,7 @@
     // TODO : Tabs dropdown fix, remove this code once fixed in bootstrap 4.
     $('.nav.nav-tabs a.dropdown-item').on('click',function(){
         var $this = $(this),
-        href = $this.attr('href');
+            href = $this.attr('href');
         var tabs = $this.closest('.nav');
         tabs.find('.nav-link').removeClass('active');
         $this.closest('.nav-item').find('.nav-link').addClass('active');
@@ -339,7 +415,7 @@
         e.preventDefault();
         e.stopPropagation();
         var $this = $(this),
-        href= $this.attr('href');
+            href= $this.attr('href');
         var offset = $(href).offset();
         var scrollto = offset.top - 80; // minus fixed header height
         $('html, body').animate({scrollTop:scrollto}, 0);

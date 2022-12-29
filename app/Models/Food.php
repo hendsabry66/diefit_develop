@@ -94,4 +94,18 @@ class Food extends Model
         return $this->hasMany('App\Models\FoodImage', 'food_id');
     }
 
+    /*
+     * subscriptions
+     */
+    public function subscriptions(){
+        return $this->belongsToMany('App\Models\Subscription', 'subscription_foods', 'food_id', 'subscription_id');
+    }
+    /*
+     * ingredients
+     */
+    public function ingredients()
+    {
+        return $this->hasMany('App\Models\SubsrcriptionFoodIngredient', 'food_id');
+    }
+
 }

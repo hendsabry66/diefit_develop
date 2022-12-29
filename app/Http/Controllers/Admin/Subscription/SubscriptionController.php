@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 use App\Models\SubscriptionPrice;
+use App\Models\SubscriptionFood;
+use App\Models\SubsrcriptionFoodIngredient;
 
 class SubscriptionController extends AppBaseController
 {
@@ -71,23 +73,23 @@ class SubscriptionController extends AppBaseController
      */
     public function store(CreateSubscriptionRequest $request)
     {
-//           $input = $request->except('price','food_types');
         $input = $request->all();
-
         $subscription = $this->subscriptionRepository->createSubscription($input);
-       // $subscription->foodTypes()->sync($input['food_types']);
-       // dd( $input['food_types']);
-//        if(!empty($request->food_types)) {
-//            foreach ($request->food_types as $key => $foodType) {
-//
-//                SubscriptionPrice::create([
-//                    'subscription_id' => $subscription->id,
-//                    'food_type' => json_encode($foodType),
-//                    'price' => $request->price[$key],
-//                ]);
-////
-//            }
-//        }
+        foreach ($input['foods'] as $food) {
+            $subscription_food = SubscriptionFood::create([
+                'subscription_id' => $subscription->id,
+                'food_id' => $food,
+            ]);
+
+            foreach ($input['foodsitems'][$food]['ingrediant'] as $key=>$item) {
+
+                SubsrcriptionFoodIngredient::create([
+                    'subscription_food_id' => $subscription_food->id,
+                    'ingredient' => $item,
+                    'qty' => $input['foodsitems'][$food]['quantity'][$key],
+                ]);
+            }
+        }
         $messages = ['success' => "Successfully added", 'redirect' => route('subscriptions.index')];
         return response()->json(['messages' => $messages]);
 
@@ -123,6 +125,9 @@ class SubscriptionController extends AppBaseController
     public function edit($id)
     {
         $subscription = $this->subscriptionRepository->find($id);
+        $foods = $this->foodRepository->all();
+        $types = $this->typeRepository->all();
+        $foodTypes = $this->foodTypeRepository->all();
 
         if (empty($subscription)) {
             $messages = ['success' => "Subscription not found", 'redirect' => route('subscriptions.index')];
@@ -143,7 +148,7 @@ class SubscriptionController extends AppBaseController
 //
 //        $foodTypes = $this->foodTypeRepository->all();
 
-        return view('admin.subscriptions.edit', compact('subscription','types','foodTypes','foodTypesSelected'));
+        return view('admin.subscriptions.edit', compact('subscription' , 'foods', 'types' , 'foodTypes'));
     }
 
     /**
@@ -164,25 +169,27 @@ class SubscriptionController extends AppBaseController
 
         }
 
+
         $input = $request->all();
         $subscription = $this->subscriptionRepository->updateSubscription($input, $id);
-//        $subscription->subscriptionPrices()->delete();
-//        if(!empty($request->food_types)) {
-//            foreach ($request->food_types as $key => $foodType) {
-//
-//                SubscriptionPrice::create([
-//                    'subscription_id' => $subscription->id,
-//                    'food_type' => json_encode($foodType),
-//                    'price' => $request->price[$key],
-//                ]);
-////
-//            }
-//        }
+        if(!empty($input['foods'])){
+            foreach ($input['foods'] as $food) {
+                $subscription_food = SubscriptionFood::create([
+                    'subscription_id' => $subscription->id,
+                    'food_id' => $food,
+                ]);
 
-      //  $subscription->foodTypes()->sync($input['food_types']);
-//      if(isset($input['food_types'])){
-//            $subscription->foodTypes()->sync($input['food_types']);
-//        }
+                foreach ($input['foodsitems'][$food]['ingrediant'] as $key=>$item) {
+
+                    SubsrcriptionFoodIngredient::create([
+                        'subscription_food_id' => $subscription_food->id,
+                        'ingredient' => $item,
+                        'qty' => $input['foodsitems'][$food]['quantity'][$key],
+                    ]);
+                }
+            }
+        }
+
         $messages = ['success' => "Successfully updated", 'redirect' => route('subscriptions.index')];
         return response()->json(['messages' => $messages]);
 
