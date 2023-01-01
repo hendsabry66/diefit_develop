@@ -42,11 +42,7 @@
                name="suggested_session_number">
     </div>
 
-    <div class="form-group col-md-6 mb-2">
-        <label for="projectinput4">مده اشتراك العميل </label>
-        <input type="number" class="form-control" name="period" @if(isset($subscription))
-        value="{{ $subscription->period }}" @endif>
-    </div>
+
 
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput4">@lang('admin.has_calories')</label>
@@ -134,8 +130,13 @@
 
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput4">عدد ايام توصيل المطبخ</label>
-        <input type="number" class="form-control" name="number_of_delivery_days" @if(isset($subscription))
+        <input type="number" class="form-control" name="number_of_delivery_days[]" @if(isset($subscription))
         value="{{ $subscription->number_of_delivery_days }}" @endif>
+    </div>
+    <div class="form-group col-md-6 mb-2">
+        <label for="projectinput4">مده اشتراك العميل </label>
+        <input type="number" class="form-control" name="period[]" @if(isset($subscription))
+        value="{{ $subscription->period }}" @endif>
     </div>
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput4">@lang('admin.price')</label>
