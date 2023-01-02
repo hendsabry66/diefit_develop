@@ -35,6 +35,13 @@ class SubscriptionDataTable extends DataTable
             ->editColumn('name', function ($q) {
                 return "<a href='".route('subscriptions.show', $q->id)."'>".$q->getTranslations('name')['ar']."</a>";
             })
+            ->editColumn('has_calories', function ($q) {
+                return $q->has_calories ? 'نعم' : 'لا';
+            })
+
+            ->editColumn('has_specialist', function ($q) {
+                return $q->has_specialist ? 'نعم' : 'لا';
+            })
 
             ->rawColumns(['action','status'])
             ->addColumn('actions', 'admin.subscriptions.datatables.actions');
@@ -82,6 +89,9 @@ class SubscriptionDataTable extends DataTable
             ['name' => 'check', 'data' => 'check', 'title' => '<label class="mt-checkbox mt-checkbox-single mt-checkbox-outline"><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" id="check_all"/><span></span></label> ', 'exportable' => false, 'printable' => false, 'orderable' => false, 'searchable' => false],
             ['name' => 'id', 'data' => 'id', 'title' => 'الرقم التسلسلى'],
             ['name' => 'name', 'data' => 'name', 'title' => 'الاسم'],
+            ['name' => 'price', 'data' => 'price', 'title' => 'السعر'],
+            ['name' => 'has_specialist', 'data' => 'has_specialist', 'title' => 'هل يوجد مختص'],
+            ['name' => 'has_calories', 'data' => 'has_calories', 'title' => 'هل يوجد سعرات حراريه '],
             ['name' => 'actions', 'data' => 'actions', 'title' => 'التحكم', 'exportable' => false, 'printable' => false, 'orderable' => false, 'searchable' => false],
         ];
     }

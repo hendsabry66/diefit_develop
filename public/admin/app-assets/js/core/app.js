@@ -241,12 +241,31 @@
     });
 
     $(document).on('click', '.add-new-calories', function() {
-        var newInput = '<div class="row mt-1 mb-1 one-new-calories"><div class="col-11"><input type="number" class="form-control" name="calories[]"></div><div class="col-1"><button type="button" class="remove-calories btn btn-danger">-</button></div></div>';
+        var newInput = '<div class="row mt-1 mb-1 one-new-calories"><div class="col-11"><input type="number" class="form-control" name="calories[]"></div><div class="col-1"><button type="button" class="remove-calories btn btn-danger"><i class="fa fa-trash"></i></button></div></div>';
         $('.list-of-calories').append(newInput);
     });
 
     $(document).on('click', '.remove-calories', function() {
         $(this).parents('.one-new-calories').slideUp('fast',function(){
+            $(this).remove();
+        });
+    });
+
+    //delivery
+    $(document).on('click', '.add-new-delivery', function() {
+        var newInput = '<div class="row one-new-delivery"> <div class="form-group col-md-5 mb-2">\n' +
+            '        <label for="projectinput4">عدد ايام توصيل المطبخ</label>\n' +
+            '        <input type="number" class="form-control" name="number_of_delivery_days[]" >\n' +
+            '    </div>\n' +
+            '    <div class="form-group col-md-5 mb-2">\n' +
+            '        <label for="projectinput4">مده اشتراك العميل </label>\n' +
+            '        <input type="number" class="form-control" name="period[]" >\n' +
+            '    </div><button type="button" class="remove-delivery btn btn-danger col-md-2 mb-2">-</button></div></div>';
+        $('.list-of-delivery').append(newInput);
+    });
+
+    $(document).on('click', '.remove-delivery', function() {
+        $(this).parents('.one-new-delivery').slideUp('fast',function(){
             $(this).remove();
         });
     });

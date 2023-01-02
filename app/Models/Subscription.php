@@ -95,6 +95,14 @@ class Subscription extends Model
         return $this->hasMany(SubscriptionFood::class);
     }
 
+    /**
+     * subscription delivery days
+     */
+    public function subscriptionDelivery()
+    {
+        return $this->hasMany(SubscriptionDelivery::class);
+    }
+
 
 
 

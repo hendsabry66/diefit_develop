@@ -16,6 +16,8 @@ use Response;
 use App\Models\SubscriptionPrice;
 use App\Models\SubscriptionFood;
 use App\Models\SubsrcriptionFoodIngredient;
+use App\Models\SubscriptionDelivery;
+use App\Models\Food;
 
 class SubscriptionController extends AppBaseController
 {
@@ -73,22 +75,33 @@ class SubscriptionController extends AppBaseController
      */
     public function store(CreateSubscriptionRequest $request)
     {
-        $input = $request->all();
+        //return $request->all();
+        $input = $request->except(['_token' , 'number_of_delivery_days' , 'period']);
         $subscription = $this->subscriptionRepository->createSubscription($input);
-        foreach ($input['foods'] as $food) {
-            $subscription_food = SubscriptionFood::create([
+        if(isset($input['foods'])) {
+            foreach ($input['foods'] as $food) {
+                $subscription_food = SubscriptionFood::create([
+                    'subscription_id' => $subscription->id,
+                    'food_id' => $food,
+                ]);
+
+                foreach ($input['foodsitems'][$food]['ingrediant'] as $key => $item) {
+
+                    SubsrcriptionFoodIngredient::create([
+                        'subscription_food_id' => $subscription_food->id,
+                        'ingredient' => $item,
+                        'qty' => $input['foodsitems'][$food]['quantity'][$key],
+                    ]);
+                }
+            }
+        }
+        foreach ($request->number_of_delivery_days  as $key => $value) {
+            SubscriptionDelivery::create([
                 'subscription_id' => $subscription->id,
-                'food_id' => $food,
+                'number_of_delivery_days' => $value,
+                'period' => $request->period[$key],
             ]);
 
-            foreach ($input['foodsitems'][$food]['ingrediant'] as $key=>$item) {
-
-                SubsrcriptionFoodIngredient::create([
-                    'subscription_food_id' => $subscription_food->id,
-                    'ingredient' => $item,
-                    'qty' => $input['foodsitems'][$food]['quantity'][$key],
-                ]);
-            }
         }
         $messages = ['success' => "Successfully added", 'redirect' => route('subscriptions.index')];
         return response()->json(['messages' => $messages]);
@@ -124,10 +137,18 @@ class SubscriptionController extends AppBaseController
      */
     public function edit($id)
     {
+
         $subscription = $this->subscriptionRepository->find($id);
         $foods = $this->foodRepository->all();
         $types = $this->typeRepository->all();
         $foodTypes = $this->foodTypeRepository->all();
+
+        foreach ($subscription->subscriptionFoods->pluck('food_id','id')->toArray() as $key=>$food) {
+
+            $subscription_foods[$key]['id'] = Food::find($food)->id;
+            $subscription_foods[$key]['name'] = Food::find($food)->name;
+            $subscription_foods[$key]['ingrediants'] = SubsrcriptionFoodIngredient::where('subscription_food_id',$key)->select('ingredient','qty')->get()->toArray();
+        }
 
         if (empty($subscription)) {
             $messages = ['success' => "Subscription not found", 'redirect' => route('subscriptions.index')];
@@ -148,7 +169,7 @@ class SubscriptionController extends AppBaseController
 //
 //        $foodTypes = $this->foodTypeRepository->all();
 
-        return view('admin.subscriptions.edit', compact('subscription' , 'foods', 'types' , 'foodTypes'));
+        return view('admin.subscriptions.edit', compact('subscription' , 'foods', 'types' , 'foodTypes','subscription_foods'));
     }
 
     /**
@@ -171,14 +192,21 @@ class SubscriptionController extends AppBaseController
 
 
         $input = $request->all();
+
         $subscription = $this->subscriptionRepository->updateSubscription($input, $id);
+
         if(!empty($input['foods'])){
+            foreach(SubscriptionFood::where('subscription_id',$id)->get() as $item){
+
+                SubsrcriptionFoodIngredient::where('subscription_food_id',$item->id)->delete();
+                $item->delete();
+            }
             foreach ($input['foods'] as $food) {
                 $subscription_food = SubscriptionFood::create([
                     'subscription_id' => $subscription->id,
                     'food_id' => $food,
                 ]);
-
+                SubsrcriptionFoodIngredient::where('subscription_food_id',$subscription_food->id)->delete();
                 foreach ($input['foodsitems'][$food]['ingrediant'] as $key=>$item) {
 
                     SubsrcriptionFoodIngredient::create([
@@ -189,7 +217,17 @@ class SubscriptionController extends AppBaseController
                 }
             }
         }
+        if (!empty($input['number_of_delivery_days'])) {
+            $subscription->subscriptionDelivery()->delete();
+            foreach ($request->number_of_delivery_days  as $key => $value) {
+                SubscriptionDelivery::create([
+                    'subscription_id' => $subscription->id,
+                    'number_of_delivery_days' => $value,
+                    'period' => $request->period[$key],
+                ]);
 
+            }
+        }
         $messages = ['success' => "Successfully updated", 'redirect' => route('subscriptions.index')];
         return response()->json(['messages' => $messages]);
 

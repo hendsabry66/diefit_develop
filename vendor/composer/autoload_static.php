@@ -805,6 +805,7 @@ class ComposerStaticInitd93ea9e822c08da7ab3da23e0307934b
         'App\\Models\\Slider' => __DIR__ . '/../..' . '/app/Models/Slider.php',
         'App\\Models\\Status' => __DIR__ . '/../..' . '/app/Models/Status.php',
         'App\\Models\\Subscription' => __DIR__ . '/../..' . '/app/Models/Subscription.php',
+        'App\\Models\\SubscriptionDelivery' => __DIR__ . '/../..' . '/app/Models/SubscriptionDelivery.php',
         'App\\Models\\SubscriptionFood' => __DIR__ . '/../..' . '/app/Models/SubscriptionFood.php',
         'App\\Models\\SubscriptionOrder' => __DIR__ . '/../..' . '/app/Models/SubscriptionOrder.php',
         'App\\Models\\SubscriptionOrderFood' => __DIR__ . '/../..' . '/app/Models/SubscriptionOrderFood.php',

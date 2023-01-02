@@ -22,13 +22,18 @@
         <textarea name="details_en"
                   id="tinymce">@if(isset($subscription)) {!! $subscription->getTranslations('details')['en'] !!} @endif </textarea>
     </div>
-    <div class="form-group col-md-6 mb-2">
+</div>
+
+    <h4 class="form-section"><i class="fa fa-clipboard"></i> المختص </h4>
+<div class="row">
+    <div class="form-group col-md-12 mb-2">
         <label for="projectinput4">@lang('admin.has_specialist')</label>
         <select name="has_specialist" class="form-control select-specialist">
             <option value="1" @if(isset($subscription)) @if($subscription->has_specialist== 1) selected @endif @endif >@lang('admin.yes')</option>
             <option value="0" @if(isset($subscription)) @if($subscription->has_specialist== 0) selected @endif @endif>@lang('admin.no')</option>
         </select>
     </div>
+    @if(isset($subscription) && $subscription->has_specialist ==1)
     <div class="form-group col-md-6 mb-2 action-for-specialist">
         <label for="projectinput4">@lang('admin.specialist_price_for_session')</label>
         <input type="number" class="form-control" @if(isset($subscription))
@@ -41,10 +46,23 @@
         value="{{$subscription->suggested_session_number}}" @endif placeholder="{{__('admin.suggested_session_number')}}"
                name="suggested_session_number">
     </div>
+    @else
+    <div class="form-group col-md-6 mb-2 action-for-specialist" style="display: none">
+        <label for="projectinput4">@lang('admin.specialist_price_for_session')</label>
+        <input type="number" class="form-control" placeholder="{{__('admin.specialist_price_for_session')}}"
+               name="specialist_price_for_session">
+    </div>
+    <div class="form-group col-md-6 mb-2 action-for-specialist" style="display: none">
+        <label for="projectinput4">@lang('admin.suggested_session_number')</label>
+        <input type="number" class="form-control" placeholder="{{__('admin.suggested_session_number')}}"
+               name="suggested_session_number">
+    </div>
+    @endif
 
-
-
-    <div class="form-group col-md-6 mb-2">
+</div>
+    <h4 class="form-section"><i class="fa fa-clipboard"></i> السعرات الحراريه </h4>
+<div class="row">
+    <div class="form-group col-md-12 mb-2">
         <label for="projectinput4">@lang('admin.has_calories')</label>
         <select name="has_calories" class="form-control select-calories">
             <option value="1" @if(isset($subscription)) @if($subscription->has_calories== 1) selected @endif @endif>@lang('admin.yes')</option>
@@ -52,93 +70,125 @@
         </select>
 
     </div>
+    <div class="form-group col-md-12 mb-2 action-for-calories">
+        <label for="projectinput4">@lang('admin.calories')</label>
+        <button type="button" class="add-new-calories col-md-2 btn btn-primary">+</button>
 
-
-        @if(isset($subscription))
-            @if(!empty($subscription->calories))
+        @if(isset($subscription) && $subscription->has_calories ==1)
             @foreach(json_decode($subscription->calories) as $calorie)
-                <div class="form-group col-md-6 mb-2 action-for-calories">
-                    <label for="projectinput4">@lang('admin.calories')</label>
-                    <input type="number" class="form-control" name="calories[]" value="{{ $calorie }}">
-                    <div class="list-of-calories"></div>
-                    <button type="button" class="add-new-calories btn btn-primary">+</button>
+                <div class="row mt-1 mb-1 one-new-calories">
+                    <div class="col-11">
+                        <input type="number" class="form-control" name="calories[]" value="{{$calorie}}">
+                    </div>
+                    <div class="col-1">
+                        <button type="button" class="remove-calories btn btn-danger"><i class="fa fa-trash"></i></button>
+                    </div>
                 </div>
             @endforeach
-                @else
-                <div class="form-group col-md-6 mb-2 action-for-calories">
-                    <label for="projectinput4">@lang('admin.calories')</label>
-                    <input type="number" class="form-control" name="calories[]">
-                    <div class="list-of-calories"></div>
-                    <button type="button" class="add-new-calories btn btn-primary">+</button>
-                </div>
-            @endif
-            @else
-        <div class="form-group col-md-6 mb-2 action-for-calories">
-            <label for="projectinput4">@lang('admin.calories')</label>
-            <input type="number" class="form-control" name="calories[]" >
-            <div class="list-of-calories"></div>
-            <button type="button" class="add-new-calories btn btn-primary">+</button>
-        </div>
+        @else
+            <input type="number" class="form-control" name="calories[]" style="display: none">
         @endif
+    </div>
 
+    <div class="list-of-calories form-group col-md-12 mb-2">
 
-
-    {{--    <div class="form-group col-md-6 mb-2">--}}
-    {{--        <label for="projectinput4">@lang('admin.has_quantities')</label>--}}
-    {{--        <select name="has_quantities" class="form-control">--}}
-    {{--            <option value="1">@lang('admin.yes')</option>--}}
-    {{--            <option value="0">@lang('admin.no')</option>--}}
-    {{--        </select>--}}
-    {{--    </div>--}}
-
-    {{--    <div class="form-group col-md-6 mb-2">--}}
-    {{--        <label for="projectinput4">@lang('admin.quantities')</label>--}}
-    {{--        <input type="number" class="form-control" name="quantities" @if(isset($subscription))--}}
-    {{--        value="{{ $subscription->quantities }}" @endif>--}}
-    {{--    </div>--}}
-
-    {{--    <div class="form-group col-md-6 mb-2">--}}
-    {{--        <label for="projectinput4">@lang('admin.food_type')</label>--}}
-    {{--        <input type="radio"  value="without" name="food_type"> @lang('admin.without')--}}
-    {{--        <input type="radio"  value="gram" name="food_type"> @lang('admin.gram')--}}
-    {{--        <input type="radio"  value="calory" name="food_type"> @lang('admin.calory')--}}
-    {{--    </div>--}}
-
-    <div class="form-group col-md-6 mb-2">
+    </div>
+</div>
+    <h4 class="form-section"><i class="fa fa-clipboard"></i> الوجبات</h4>
+<div class="row">
+    <div class="form-group col-md-12 mb-2">
         <label for="projectinput4">@lang('admin.has_meals')</label>
         <select name="has_meals" class="form-control select-meals">
             <option value="1">@lang('admin.yes')</option>
             <option value="0">@lang('admin.no')</option>
         </select>
     </div>
+    @if(isset($subscription) && $subscription->has_meals =1)
 
-    <div class="form-group col-md-12 mb-2 action-for-meals">
-        <label for="projectinput4">@lang('admin.foods')</label>
-        <select class="select-foods hidden">
-            <option value="1">@lang('admin.choose')</option>
-            @foreach($foods as $food)
-                <option value="{{$food->id}}">{{$food->name}}</option>
+        @if(!empty($subscription_foods))
+            @foreach($subscription_foods as $food)
+                <div class="form-group col-md-12 mb-2 one-food-select">
+                    <select name="foods[]" class="select-foods form-control">
+                        <option value="{{$food['id']}}">{{$food['name']}}</option>
+                    </select>
+                    <button type="button" class="remove-food-menu btn btn-danger">remove</button>
+                    <div class="form-group col-md-12 mb-2 list-of-this-food">
+                        @foreach($food['ingrediants'] as $ingrediant)
+
+                            <div class="row one-of-food-ingrediant">
+                            <div class="form-group col-md-5 mb-2">
+                                <label for="projectinput4">مكون</label>
+                                <input type="text" class="form-control" placeholder="مكون" name="foodsitems[{{$food['id']}}][ingrediant][]" value="{{$ingrediant['ingredient']}}">
+                            </div>
+                            <div class="form-group col-md-5 mb-2">
+                                <label for="projectinput4">الكميه</label>
+                                <input type="text" class="form-control" placeholder="الكميه" name="foodsitems[{{$food['id']}}][quantity][]" value="{{$ingrediant['qty']}}">
+                            </div>
+                            <div class="form-group col-md-2 mb-2">
+                                <button type="button" class="remove-food btn btn-danger">remove</button>
+                            </div>
+                        </div>
+                        @endforeach
+
+                    </div>
+                </div>
             @endforeach
+        @endif
+    @else
+        <div class="form-group col-md-12 mb-2 action-for-meals">
+            <label for="projectinput4">@lang('admin.foods')</label>
+            <select class="select-foods hidden">
+                <option value="">@lang('admin.choose')</option>
+                @foreach($foods as $food)
+                    <option value="{{$food->id}}">{{$food->name}}</option>
+                @endforeach
 
-        </select>
-        <button type="button" class="add-new-food btn btn-primary">اضافة</button>
-        {{--        <input type="number" class="form-control" name="meals" @if(isset($subscription))--}}
-        {{--        value="{{ $subscription->meals }}" @endif>--}}
-    </div>
-    <div class="col-md-12 mb-2 list-of-foods action-for-meals"></div>
+            </select>
+            <button type="button" class="add-new-food btn btn-primary">اضافة</button>
+            {{--        <input type="number" class="form-control" name="meals" @if(isset($subscription))--}}
+            {{--        value="{{ $subscription->meals }}" @endif>--}}
+        </div>
+        <div class="col-md-12 mb-2 list-of-foods action-for-meals"></div>
+    @endif
 
 
-    <div class="form-group col-md-6 mb-2">
-        <label for="projectinput4">عدد ايام توصيل المطبخ</label>
-        <input type="number" class="form-control" name="number_of_delivery_days[]" @if(isset($subscription))
-        value="{{ $subscription->number_of_delivery_days }}" @endif>
-    </div>
-    <div class="form-group col-md-6 mb-2">
-        <label for="projectinput4">مده اشتراك العميل </label>
-        <input type="number" class="form-control" name="period[]" @if(isset($subscription))
-        value="{{ $subscription->period }}" @endif>
-    </div>
-    <div class="form-group col-md-6 mb-2">
+</div>
+    <h4 class="form-section"><i class="fa fa-clipboard"></i> مدة التوصيل </h4>
+<div class="row">
+    @if(isset($subscription) && !empty($subscription->subscriptionDelivery))
+        <div class="col-md-12">
+        @foreach($subscription->subscriptionDelivery as $delivery)
+            <div class="row one-new-delivery">
+                <div class="form-group col-md-5 mb-2">
+                    <label for="projectinput4">عدد ايام توصيل المطبخ</label>
+                    <input type="number" class="form-control" name="number_of_delivery_days[]" value="{{$delivery->number_of_delivery_days}}" >
+                </div>
+                <div class="form-group col-md-5 mb-2">
+                    <label for="projectinput4">مده اشتراك العميل </label>
+                    <input type="number" class="form-control" name="period[]" value="{{$delivery->period}}" >
+                </div>
+                <button type="button" class="remove-delivery btn btn-danger col-md-2 mb-2">-</button>
+            </div>
+
+        @endforeach
+        </div>
+    @else
+        <div class="form-group col-md-5 mb-2">
+            <label for="projectinput4">عدد ايام توصيل المطبخ</label>
+            <input type="number" class="form-control" name="number_of_delivery_days[]" >
+        </div>
+        <div class="form-group col-md-5 mb-2">
+            <label for="projectinput4">مده اشتراك العميل </label>
+            <input type="number" class="form-control" name="period[]" >
+        </div>
+    @endif
+
+    <button type="button" class="add-new-delivery btn btn-primary col-md-2 mb-2">اضافة</button>
+    <div class="list-of-delivery col-md-12"></div>
+</div>
+    <h4 class="form-section"><i class="fa fa-clipboard"></i> السعر</h4>
+<div class="row">
+    <div class="form-group col-md-12 mb-2">
         <label for="projectinput4">@lang('admin.price')</label>
         <input type="number" class="form-control" name="price" @if(isset($subscription))
         value="{{ $subscription->price }}" @endif>

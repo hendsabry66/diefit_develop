@@ -174,6 +174,7 @@ return array(
     'App\\Models\\Slider' => $baseDir . '/app/Models/Slider.php',
     'App\\Models\\Status' => $baseDir . '/app/Models/Status.php',
     'App\\Models\\Subscription' => $baseDir . '/app/Models/Subscription.php',
+    'App\\Models\\SubscriptionDelivery' => $baseDir . '/app/Models/SubscriptionDelivery.php',
     'App\\Models\\SubscriptionFood' => $baseDir . '/app/Models/SubscriptionFood.php',
     'App\\Models\\SubscriptionOrder' => $baseDir . '/app/Models/SubscriptionOrder.php',
     'App\\Models\\SubscriptionOrderFood' => $baseDir . '/app/Models/SubscriptionOrderFood.php',
