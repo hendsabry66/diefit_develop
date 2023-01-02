@@ -142,7 +142,7 @@ class SubscriptionController extends AppBaseController
         $foods = $this->foodRepository->all();
         $types = $this->typeRepository->all();
         $foodTypes = $this->foodTypeRepository->all();
-
+        $subscription_foods = [];
         foreach ($subscription->subscriptionFoods->pluck('food_id','id')->toArray() as $key=>$food) {
 
             $subscription_foods[$key]['id'] = Food::find($food)->id;
