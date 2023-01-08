@@ -33,61 +33,83 @@
                                 <p class="mb-0">
                                     {!! strip_tags($subscription->details) !!}
                                 </p>
+                                @if($subscription->has_specialist == 1)
+                                <p><span>سعر المختص للجلسه </span>{{$subscription->specialist_price_for_session}}</p>
+                                <p><span>  عدد الجلسات المقترحه  </span>{{$subscription->suggested_session_number}}</p>
+                                @endif
+
                             </div>
 
-                            <hr>
-                            {{-- <p> @lang('web.period'): <strong>{{$subscription->period}} @lang('web.days')</strong></p> --}}
+{{--                            <hr>--}}
+{{--                             <p> @lang('web.period'): <strong>{{$subscription->period}} @lang('web.days')</strong></p>--}}
 
-                            <div class="d-package">
-                                <ul class="change-package">
-                                    @foreach($subscription->subscriptionPrices as $key=>$subscriptionPrice)
-                                        <li id ="{{$subscriptionPrice->id}}" data-price="{{$subscriptionPrice->price}}">
-                                            @if($key == 0)
-                                                <span class="on"><i class="fa-solid fa-check"></i></span>
-                                            @else
-                                                <span></span>
-                                            @endif
+{{--                            <div class="d-package">--}}
+{{--                                <ul class="change-package">--}}
+{{--                                    @foreach($subscription->subscriptionPrices as $key=>$subscriptionPrice)--}}
+{{--                                        <li id ="{{$subscriptionPrice->id}}" data-price="{{$subscriptionPrice->price}}">--}}
+{{--                                            @if($key == 0)--}}
+{{--                                                <span class="on"><i class="fa-solid fa-check"></i></span>--}}
+{{--                                            @else--}}
+{{--                                                <span></span>--}}
+{{--                                            @endif--}}
 
-                                            @foreach(json_decode($subscriptionPrice->food_type) as $foodType)
-                                                {{\App\Models\FoodType::find($foodType)->name}} ,
-                                            @endforeach
+{{--                                            @foreach(json_decode($subscriptionPrice->food_type) as $foodType)--}}
+{{--                                                {{\App\Models\FoodType::find($foodType)->name}} ,--}}
+{{--                                            @endforeach--}}
 
-                                        </li>
-                                    @endforeach
-                                    {{--                                <li><span class="on"><i class="fa-solid fa-check"></i></span>وجبة واحدة</li>--}}
-                                    {{--                                <li><span></span>وجبتين</li>--}}
-                                    {{--                                <li><span></span>كامل الوجبات</li>--}}
-                                </ul>
-                                {{--  <ul>--}}
-                                {{--    @foreach($types as $type)--}}
-                                {{--       <li><span></span> {{$type->name}} </li>--}}
-                                {{--   @endforeach--}}
+{{--                                        </li>--}}
+{{--                                    @endforeach--}}
+{{--                                    --}}{{--                                <li><span class="on"><i class="fa-solid fa-check"></i></span>وجبة واحدة</li>--}}
+{{--                                    --}}{{--                                <li><span></span>وجبتين</li>--}}
+{{--                                    --}}{{--                                <li><span></span>كامل الوجبات</li>--}}
+{{--                                </ul>--}}
+{{--                                --}}{{--  <ul>--}}
+{{--                                --}}{{--    @foreach($types as $type)--}}
+{{--                                --}}{{--       <li><span></span> {{$type->name}} </li>--}}
+{{--                                --}}{{--   @endforeach--}}
 
-                                {{--   </ul>--}}
-                            </div>
+{{--                                --}}{{--   </ul>--}}
+{{--                            </div>--}}
 
 
                             <hr>
                             <div class="text-center one-pack-itme">
                                 <form action="{{url('/subscriptions/subscriptionOrder')}}" method="get">
                                     <input type="hidden" name="subscription_id" value="{{$subscription->id}}">
-                                    <input type="hidden" id="sub" name="subscription_price_id" value="{{$subscription->subscriptionPrices()->first()->id}}">
-                                    <input type="hidden" id="subscription_price" name="subscription_price" value="{{$subscription->subscriptionPrices()->first()->price}}">
-                                    {{--     <input type="hidden" name="delivery_cost" class="input-delivery-cost" value="{{$subscription->id}}"> --}}
-                                    <label>@lang('web.'.$subscription->food_type)</label>
-                                    <select name="type_id" class="change-type">
-                                        @foreach(types($subscription->food_type) as $type)
-                                            <option value="{{$type->id}}" data-price="{{$type->price}}">{{$type->value}}{{$subscription->food_type}}</option>
+                                    <select name="subscription_delivery_id" >
+                                        <option value="">-- مده التوصيل  --</option>
+                                        @foreach($subscription->subscriptionDelivery as  $subscriptionDelivery)
+                                            <option value="{{$subscriptionDelivery->id}}" >{{$subscriptionDelivery->period}}</option>
                                         @endforeach
                                     </select>
-                                    <label>@lang('web.days')</label>
-                                    <select name="days" class="change-days">
-                                        <option value="5">5 days</option>
-                                        <option value="7">7 days</option>
-                                        <option value="14">14 days</option>
-                                        <option value="28">28 days</option>
+                                    <br>
+                                    @if($subscription->has_calories == 1)
 
-                                    </select>
+                                        <select name="calories" >
+                                            <option value="">--  السعرات الحراريه  --</option>
+                                            @foreach(json_decode($subscription->calories) as  $calorie)
+                                                <option value="{{$calorie}}" >{{$calorie}}</option>
+                                            @endforeach
+                                        </select>
+<br>
+                                    @endif
+{{--                                    <input type="hidden" id="sub" name="subscription_price_id" value="{{$subscription->subscriptionPrices()->first()->id}}">--}}
+{{--                                    <input type="hidden" id="subscription_price" name="subscription_price" value="{{$subscription->subscriptionPrices()->first()->price}}">--}}
+                                    {{--     <input type="hidden" name="delivery_cost" class="input-delivery-cost" value="{{$subscription->id}}"> --}}
+{{--                                    <label>@lang('web.'.$subscription->food_type)</label>--}}
+{{--                                    <select name="type_id" class="change-type">--}}
+{{--                                        @foreach(types($subscription->food_type) as $type)--}}
+{{--                                            <option value="{{$type->id}}" data-price="{{$type->price}}">{{$type->value}}{{$subscription->food_type}}</option>--}}
+{{--                                        @endforeach--}}
+{{--                                    </select>--}}
+{{--                                    <label>@lang('web.days')</label>--}}
+{{--                                    <select name="days" class="change-days">--}}
+{{--                                        <option value="5">5 days</option>--}}
+{{--                                        <option value="7">7 days</option>--}}
+{{--                                        <option value="14">14 days</option>--}}
+{{--                                        <option value="28">28 days</option>--}}
+
+{{--                                    </select>--}}
                                     {{--                                    <input type="number" name="specialist_session_number" value="" placeholder="{{__('web.specialist_session_number')}}">--}}
                                     <select name="delivery_cost" class="change-area">
                                         <option value="">-- @lang('web.choose_delivery_city') --</option>
@@ -101,7 +123,7 @@
 
                                     <div class="price">
                                         <div class="d-flex">
-                                            <span class="updated-price">{{$subscription->subscriptionPrices()->first()->price}}</span>
+                                            <span class="updated-price">{{$subscription->price}}</span>
                                             <span>ريال
                                     <br>سعودي</span>
                                         </div>

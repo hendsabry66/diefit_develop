@@ -9,8 +9,9 @@ class SubscriptionOrder extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'subscription_price_id', 'user_id', 'status_id', 'payment',
-        'name', 'account_number', 'amount', 'ipan','bank_id','image' , 'start_date' , 'end_date','delivery_cost','payment_status'];
+        'subscription_id', 'user_id', 'status_id', 'payment',
+        'name', 'account_number', 'amount', 'ipan','bank_id','image' , 'start_date' , 'end_date','delivery_cost','payment_status'
+          ,'specialist_session_number','calories','subscription_delivery_id' ];
 
     public function user()
     {

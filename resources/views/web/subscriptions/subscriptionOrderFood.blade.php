@@ -66,7 +66,7 @@
 
                     <form action="{{url('subscriptions/saveOrderFood')}}" method="post">
                         <input type="hidden" name="subscription_order_id" value="{{$subscription_order_id}}">
-                        <input type="hidden" name="subscription_price_id" value="{{$subscription_price_id}}">
+                        <input type="hidden" name="subscription_id" value="{{$subscription->id}}">
                         @csrf
 
                         <div class="entry-content d-table">
@@ -76,45 +76,45 @@
                                     <div>
                                         <span>الاسبوع الأول</span>
                                     </div>
-                                    @foreach($food_types as $key=>$food_type)
-                                        <div>
-                                            <span>{{$food_type->name}}</span>
-                                        </div>
-                                    @endforeach
+{{--                                    @foreach($food_types as $key=>$food_type)--}}
+{{--                                        <div>--}}
+{{--                                            <span>{{$food_type->name}}</span>--}}
+{{--                                        </div>--}}
+{{--                                    @endforeach--}}
 
                                 </div>
                             </div>
 
                             <div class="d-body">
 
-                                @foreach($array as $key1=>$value)
+                                @foreach($dateAndDay as $key=>$value)
 
 
                                     <div class="d-rt d-flex">
                                         <div>
-                                            <span>{{$days[$key1] }} <br> {{$dateAndDay[$days[$key1]]}} </span>
-                                            <input type="hidden" name="day[{{$key1}}]" value="{{$key1}}">
-                                            <input type="hidden" name="day[{{$key1}}][day]" value="{{$days[$key1] }}">
-                                            <input type="hidden" name="day[{{$key1}}][date]" value="{{$dateAndDay[$days[$key1]]}}">
+                                            <span>{{$value[1]}} <br> {{$value[0]}} </span>
+{{--                                            <input type="hidden" name="day[{{$key1}}]" value="{{$key1}}">--}}
+                                            <input type="hidden" name="day" value="{{$value[1]}}">
+                                            <input type="hidden" name="date" value="{{$value[0]}}">
                                         </div>
-                                        @foreach($value as $key=>$foods)
+                                        @foreach($subscription->foods as $food)
 
 
-                                            <div>
-                                                <input type="hidden" name="day[{{$key1}}][food_type_id][]" value="{{$key}}">
-                                                @foreach($foods as $food)
+{{--                                            <div>--}}
+{{--                                                <input type="hidden" name="day[{{$key1}}][food_type_id][]" value="{{$key}}">--}}
+{{--                                                @foreach($foods as $food)--}}
 
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" value="{{$food}}"  name="day[{{$key1}}][food_id][]" id="flexCheckDefault">
+                                                        <input class="form-check-input" type="radio" value="{{$food->id}}"  name="food_day[{{$value[0]}}{{'/'}}{{$value[1]}}][food_id][]" id="flexCheckDefault">
                                                         <label class="form-check-label" for="flexCheckDefault">
-                                                            @php $food=\App\Models\Food::find($food) @endphp
 
-                                                           <a target="_blank" href="{{url('restaurant/foodDetails/'.$food)}}">{{$food->name}}<img src="{{$food->image}}"></a>
+
+                                                           <a target="_blank" href="{{url('restaurant/foodDetails/'.$food->id)}}">{{$food->name}}<img src="{{$food->image}}"></a>
                                                         </label>
                                                     </div>
-                                                @endforeach
+{{--                                                @endforeach--}}
 
-                                            </div>
+{{--                                            </div>--}}
                                         @endforeach
 
                                     </div>

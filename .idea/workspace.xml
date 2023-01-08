@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="601a7e32-5d21-4c74-955e-5f513cb79eb3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Subscription/SubscriptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Subscription/SubscriptionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/subscriptions/subscriptions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/subscriptions/subscriptions.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +168,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../frcem" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -219,7 +219,12 @@
       <workItem from="1672556209312" duration="2473000" />
       <workItem from="1672568866105" duration="8594000" />
       <workItem from="1672604439664" duration="6202000" />
-      <workItem from="1672645535322" duration="4068000" />
+      <workItem from="1672645535322" duration="4729000" />
+      <workItem from="1672823924270" duration="171000" />
+      <workItem from="1672832051770" duration="863000" />
+      <workItem from="1672844299063" duration="591000" />
+      <workItem from="1673126666163" duration="877000" />
+      <workItem from="1673185318131" duration="35000" />
     </task>
     <servers />
   </component>

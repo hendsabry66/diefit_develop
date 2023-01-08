@@ -21,6 +21,7 @@ jQuery(document).ready(function ($) {
         var getValue = $(this).val();
         $('.update-delivery-cost').text(getValue + ' ريال');
         $('.input-delivery-cost').val(getValue);
+
     });
 
     $('.change-qty').click(function () {

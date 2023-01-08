@@ -28,23 +28,23 @@
                             <div class="d-flex justify-content-between align-items-center header">
                                 <div>
                                     <h4>@lang('web.cost')</h4>
-                                    <p>{{$subscriptionPrice->subscription->name}} -
-                                        @foreach(json_decode($subscriptionPrice->food_type) as $foodType)
-                                            {{\App\Models\FoodType::find($foodType)->name}} ,
-                                        @endforeach
+                                    <p>{{$subscription->name}} -
+{{--                                        @foreach(json_decode($subscriptionPrice->food_type) as $foodType)--}}
+{{--                                            {{\App\Models\FoodType::find($foodType)->name}} ,--}}
+{{--                                        @endforeach--}}
                                     </p>
-                                    <p> @lang('web.specialist_price'): <strong>{{$subscriptionPrice->subscription->specialist_price * $subscriptionOrder->specialist_session_number }} ريال</strong></p>
+                                    <p> @lang('web.specialist_price'): <strong>{{$subscription->specialist_price_for_session * $subscription->suggested_session_number }} ريال</strong></p>
                                     <p>@lang('web.delivery_cost') : <strong>{{$subscriptionOrder->delivery_cost}} ريال</strong></p>
 
                                 </div>
-                                <div>{{$subscriptionPrice->price + $subscriptionOrder->delivery_cost +( $subscriptionOrder->specialist_session_number * $subscriptionPrice->subscription->specialist_price) }}</div>
+                                <div>{{$subscription->price + $subscriptionOrder->delivery_cost +( $subscription->specialist_price_for_session * $subscription->suggested_session_number) }}</div>
                             </div>
                             <hr>
                             <h4> @lang('web.payment_method')</h4>
                             <p>@lang('web.Choose the payment method that suits you')</p>
                             <form method="post" action="{{url('subscriptions/store')}}">
                                 @csrf
-                                <input type="hidden" name="subscription_price_id" value="{{$subscriptionPrice->id}}">
+                                <input type="hidden" name="subscription_id" value="{{$subscription->id}}">
                                 <input type="hidden" name="subscription_order_id" value="{{$subscriptionOrder->id}}">
                                 <div class="form-check form-check-inline payment-menthod bank-accounts">
                                     <input class="form-check-input" type="radio" name="payment" id="inlineRadio1"

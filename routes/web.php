@@ -123,10 +123,10 @@ Route::group([
 
         Route::group( ['prefix' => 'subscriptions'], function () {
             Route::get('/', [SubscriptionController::class, 'subscriptions']);
-            Route::get('/create/{subscriptionPriceId}/{subscriptionOrderId}', [SubscriptionController::class, 'subscriptionCreate']);
+            Route::get('/create/{subscriptionId}/{subscriptionOrderId}', [SubscriptionController::class, 'subscriptionCreate']);
             Route::post('/store', [SubscriptionController::class, 'subscriptionStore']);
             Route::get('/subscriptionOrder', [SubscriptionController::class, 'subscriptionOrder']);
-            Route::get('/orderFood/{subscriptionPriceId}/{subscripionOrderId}', [SubscriptionController::class, 'subscriptionOrderFood']);
+            Route::get('/orderFood/{subscriptionId}/{subscripionOrderId}', [SubscriptionController::class, 'subscriptionOrderFood']);
             Route::post('/saveOrderFood', [SubscriptionController::class, 'saveSubscriptionOrderFood']);
         });
 
