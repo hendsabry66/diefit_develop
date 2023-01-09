@@ -97,6 +97,22 @@
     <h4 class="form-section"><i class="fa fa-clipboard"></i> الوجبات</h4>
 <div class="row">
     <div class="form-group col-md-12 mb-2">
+        <label for="projectinput4">هل يوجد اوقات وجبات </label>
+        <select name="has_food_type" class="form-control select-meals">
+            <option value="1">@lang('admin.yes')</option>
+            <option value="0">@lang('admin.no')</option>
+        </select>
+    </div>
+    <div class="form-group col-md-12">
+        <label for="projectinput4">اوقات الوجبات </label>
+        <select name="food_types[]" class=" form-control">
+            @foreach($foodTypes as $foodType)
+                <option value="{{$foodType->id}}">{{$foodType->name}}</option>
+            @endforeach
+
+        </select>
+    </div>
+    <div class="form-group col-md-12 mb-2">
         <label for="projectinput4">@lang('admin.has_meals')</label>
         <select name="has_meals" class="form-control select-meals">
             <option value="1">@lang('admin.yes')</option>
