@@ -32,4 +32,6 @@ class SubscriptionOrder extends Model
     {
         return $this->hasMany(SubscriptionOrderFood::class);
     }
+
+
 }

@@ -12,12 +12,12 @@
         value="{{$subscription->getTranslations('name')['en']}}" @endif placeholder="{{__('admin.name_en')}}"
                name="name_en">
     </div>
-    <div class="form-group col-md-12 mb-2">
+    <div class="form-group col-md-6 mb-2">
         <label for="projectinput4">@lang('admin.details_ar')</label>
         <textarea name="details_ar"
                   id="tinymce">@if(isset($subscription)) {!! $subscription->getTranslations('details')['ar'] !!} @endif </textarea>
     </div>
-    <div class="form-group col-md-12 mb-2">
+    <div class="form-group col-md-6 mb-2">
         <label for="projectinput4">@lang('admin.details_en')</label>
         <textarea name="details_en"
                   id="tinymce">@if(isset($subscription)) {!! $subscription->getTranslations('details')['en'] !!} @endif </textarea>

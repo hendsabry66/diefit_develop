@@ -3,18 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="601a7e32-5d21-4c74-955e-5f513cb79eb3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Setting/BranchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Setting/BranchController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Subscription/SubscriptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Subscription/SubscriptionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/web/SubscriptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/web/SubscriptionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/District.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/District.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Subscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Subscription.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/SubscriptionFood.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SubscriptionFood.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/app-assets/js/core/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/app-assets/js/core/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin/assets/css/style-rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/assets/css/style-rtl.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/branches/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/branches/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/branches/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/branches/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/subscriptions/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/subscriptions/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/subscriptions/subscriptionOrderFood.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/subscriptions/subscriptionOrderFood.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/SubscriptionOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SubscriptionOrder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/web/subscriptions/subscriptions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/subscriptions/subscriptions.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -251,7 +241,7 @@
       <workItem from="1673297664327" duration="6155000" />
       <workItem from="1673362827345" duration="39000" />
       <workItem from="1673386122832" duration="1211000" />
-      <workItem from="1673417913109" duration="2372000" />
+      <workItem from="1673417913109" duration="6251000" />
     </task>
     <servers />
   </component>

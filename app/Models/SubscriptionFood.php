@@ -29,4 +29,6 @@ class SubscriptionFood extends Model
      {
          return $this->hasMany('App\Models\SubsrcriptionFoodIngredient' , 'subscription_food_id');
      }
+
+
 }
