@@ -26,6 +26,7 @@ class District extends Model
         'name',
         'status',
 
+
     ];
 
     /**

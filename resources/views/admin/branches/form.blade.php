@@ -27,9 +27,9 @@
     </div>
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput3">@lang('admin.district')</label>
-        <select class="select2 form-control" name="district_id">
+        <select class="select2 form-control" name="district_id[]" multiple>
             @foreach($districts as $district)
-                <option value="{{$district->id}}">{{$district->getTranslations('name')['ar']}} - {{$district->getTranslations('name')['en']}}</option>
+                <option value="{{$district->id}}" @if(isset($branch)) @if(in_array($district->id ,$selectedDistricts)) selected @endif @endif>{{$district->getTranslations('name')['ar']}} - {{$district->getTranslations('name')['en']}}</option>
             @endforeach
         </select>
     </div>

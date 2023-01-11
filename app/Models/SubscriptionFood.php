@@ -12,6 +12,7 @@ class SubscriptionFood extends Model
     protected $fillable = [
         'subscription_id',
         'food_id',
+        'food_type_id'
     ];
 
     public function subscription()

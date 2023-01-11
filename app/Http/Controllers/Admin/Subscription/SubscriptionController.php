@@ -75,24 +75,40 @@ class SubscriptionController extends AppBaseController
      */
     public function store(CreateSubscriptionRequest $request)
     {
-        //return $request->all();
+
         $input = $request->except(['_token' , 'number_of_delivery_days' , 'period']);
         $subscription = $this->subscriptionRepository->createSubscription($input);
-        if(isset($input['foods'])) {
-            foreach ($input['foods'] as $food) {
-                $subscription_food = SubscriptionFood::create([
-                    'subscription_id' => $subscription->id,
-                    'food_id' => $food,
-                ]);
+        if(isset($input['foodsitems'])) {
 
-                foreach ($input['foodsitems'][$food]['ingrediant'] as $key => $item) {
+            foreach ($input['foodsitems'] as $key=>$food) {
 
-                    SubsrcriptionFoodIngredient::create([
-                        'subscription_food_id' => $subscription_food->id,
-                        'ingredient' => $item,
-                        'qty' => $input['foodsitems'][$food]['quantity'][$key],
+                foreach ($food as $key2=>$value){
+
+                    $subscriptionFood = SubscriptionFood::create([
+                        'subscription_id' => $subscription->id,
+                        'food_id' => $key2,
+                        'food_type_id' => $key,
                     ]);
+
+                    foreach ($value['ingrediant'] as $key3=>$ingredient){
+
+                        SubsrcriptionFoodIngredient::create([
+                            'subscription_food_id' => $subscriptionFood->id,
+                            'ingredient' => $ingredient,
+                            'qty' => $value['quantity'][$key3],
+                        ]);
+                    }
+
                 }
+
+//                foreach ($input['foodsitems'][$food]['ingrediant'] as $key => $item) {
+//
+//                    SubsrcriptionFoodIngredient::create([
+//                        'subscription_food_id' => $subscription_food->id,
+//                        'ingredient' => $item,
+//                        'qty' => $input['foodsitems'][$food]['quantity'][$key],
+//                    ]);
+//                }
             }
         }
         foreach ($request->number_of_delivery_days  as $key => $value) {

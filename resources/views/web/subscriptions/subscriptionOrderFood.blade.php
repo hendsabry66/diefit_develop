@@ -76,11 +76,13 @@
                                     <div>
                                         <span>الاسبوع الأول</span>
                                     </div>
-{{--                                    @foreach($food_types as $key=>$food_type)--}}
-{{--                                        <div>--}}
-{{--                                            <span>{{$food_type->name}}</span>--}}
-{{--                                        </div>--}}
-{{--                                    @endforeach--}}
+                                    @if(!empty($food_types))
+                                        @foreach($food_types as $key=>$food_type)
+                                            <div>
+                                                <span>{{$food_type->name}}</span>
+                                            </div>
+                                        @endforeach
+                                    @endif
 
                                 </div>
                             </div>
@@ -97,25 +99,51 @@
                                             <input type="hidden" name="day" value="{{$value[1]}}">
                                             <input type="hidden" name="date" value="{{$value[0]}}">
                                         </div>
-                                        @foreach($subscription->foods as $food)
+
+                                        @if(count($food_types) != 0)
+
+                                        @foreach($food_types as $key=>$food_type)
 
 
-{{--                                            <div>--}}
+                                            <div>
 {{--                                                <input type="hidden" name="day[{{$key1}}][food_type_id][]" value="{{$key}}">--}}
-{{--                                                @foreach($foods as $food)--}}
+                                                @foreach($array[$food_type->id] as $food)
 
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" value="{{$food->id}}"  name="food_day[{{$value[0]}}{{'/'}}{{$value[1]}}][food_id][]" id="flexCheckDefault">
+                                                        <input class="form-check-input" type="radio" value="{{$food->id}}"  name="food_day[{{$value[0]}}{{'/'}}{{$value[1]}}][{{$food_type->id}}][food_id][]" id="flexCheckDefault">
                                                         <label class="form-check-label" for="flexCheckDefault">
 
 
-                                                           <a target="_blank" href="{{url('restaurant/foodDetails/'.$food->id)}}">{{$food->name}}<img src="{{$food->image}}"></a>
+                                                            <a target="_blank" href="{{url('restaurant/foodDetails/'.$food->id)}}">{{$food->name}}<img src="{{$food->image}}"></a>
                                                         </label>
                                                     </div>
-{{--                                                @endforeach--}}
+                                                @endforeach
 
-{{--                                            </div>--}}
+                                            </div>
                                         @endforeach
+                                        @else
+
+                                            @foreach($array[0] as $key=>$food)
+
+
+                                                <div>
+                                                    {{--                                                <input type="hidden" name="day[{{$key1}}][food_type_id][]" value="{{$key}}">--}}
+{{--                                                    @foreach($array[$food_type->id] as $food)--}}
+
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" value="{{$food->id}}"  name="food_day[{{$value[0]}}{{'/'}}{{$value[1]}}][food_id][]" id="flexCheckDefault">
+                                                            <label class="form-check-label" for="flexCheckDefault">
+
+
+                                                                <a target="_blank" href="{{url('restaurant/foodDetails/'.$food->id)}}">{{$food->name}}<img src="{{$food->image}}"></a>
+                                                            </label>
+                                                        </div>
+{{--                                                    @endforeach--}}
+
+                                                </div>
+                                            @endforeach
+                                        @endif
+
 
                                     </div>
                                 @endforeach

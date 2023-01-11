@@ -93,6 +93,10 @@
                                         </select>
 <br>
                                     @endif
+                                    @if($subscription->has_specialist == 1)
+                                       <input name="specialist_session_number" value="" placeholder="عدد الجلسات مع المختص ">
+                                        <br>
+                                    @endif
 {{--                                    <input type="hidden" id="sub" name="subscription_price_id" value="{{$subscription->subscriptionPrices()->first()->id}}">--}}
 {{--                                    <input type="hidden" id="subscription_price" name="subscription_price" value="{{$subscription->subscriptionPrices()->first()->price}}">--}}
                                     {{--     <input type="hidden" name="delivery_cost" class="input-delivery-cost" value="{{$subscription->id}}"> --}}

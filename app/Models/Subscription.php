@@ -37,6 +37,7 @@ class Subscription extends Model
           'meals',
           'number_of_delivery_days',
             'price',
+            'has_food_type',
 
 
     ];
@@ -101,6 +102,16 @@ class Subscription extends Model
     public function subscriptionDelivery()
     {
         return $this->hasMany(SubscriptionDelivery::class);
+    }
+
+    /**
+     * food type
+     *
+     */
+
+    public function foodType()
+    {
+        return $this->belongsToMany('App\Models\FoodType', 'subscription_food', 'subscription_id', 'food_type_id');
     }
 
 

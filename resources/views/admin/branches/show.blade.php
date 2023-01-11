@@ -28,7 +28,14 @@
                             <p class="card-text"><span>@lang('admin.address_ar')</span>{!!  $branch->getTranslations('address')['ar'] !!}</p>
                             <p class="card-text"><span>@lang('admin.address_en')</span>{!!  $branch->getTranslations('address')['en'] !!}</p>
                             <p class="card-text"><span>@lang('admin.city')</span>{{ $branch->city->getTranslations('name')['ar'] }}</p>
-                            <p class="card-text"><span>@lang('admin.district')</span>{{ $branch->district->getTranslations('name')['ar'] }}</p>
+                            <p class="card-text"><span>@lang('admin.district')</span>
+
+                                @foreach(json_decode($branch->district_id) as $district)
+
+                                    {{ \App\Models\District::find($district)->getTranslations('name')['ar'] }} -
+                                @endforeach
+
+                            </p>
                             <a href="{{route('branches.edit',$branch->id)}}" class="btn btn-outline-teal">@lang('admin.edit')</a>
                         </div>
                     </div>

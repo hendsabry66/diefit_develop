@@ -68,6 +68,8 @@ class BranchController extends AppBaseController
     public function store(CreateBranchRequest $request)
     {
         $input = $request->all();
+        $input['district_id'] = json_encode($input['district_id']);
+
 
         $branch = $this->branchRepository->createBranch($input);
 
@@ -113,8 +115,9 @@ class BranchController extends AppBaseController
         }
         $cities = $this->cityRepository->all();
         $districts = $this->districtRepository->all();
+        $selectedDistricts = json_decode($branch->district_id);
 
-        return view('admin.branches.edit', compact('branch', 'cities', 'districts'));
+        return view('admin.branches.edit', compact('branch', 'cities', 'districts','selectedDistricts'));
     }
 
     /**
@@ -136,6 +139,7 @@ class BranchController extends AppBaseController
         }
 
         $input = $request->all();
+        $input['district_id'] = json_encode($input['district_id']);
 
         $branch = $this->branchRepository->updateBranch($input, $id);
 

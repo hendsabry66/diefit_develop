@@ -7,8 +7,10 @@ use App\Models\BankAccounts;
 use App\Models\FoodType;
 use App\Models\SubscriptionOrder;
 use App\Models\SubscriptionOrderFood;
+use App\Models\SubscriptionFood;
 use App\Models\SubscriptionPrice;
 use App\Models\WeekFood;
+use App\Models\Food;
 use App\Models\City;
 use App\Models\SubscriptionDelivery;
 use Carbon\Carbon;
@@ -50,7 +52,7 @@ class SubscriptionController extends Controller
             'status_id' => 1,
             'payment_status'=>'not_paid',
             'delivery_cost'=>$request->delivery_cost,
-            //'specialist_session_number'=>$request->specialist_session_number,
+            'specialist_session_number'=>$request->specialist_session_number,
             'calories'=>$request->calories,
             'subscription_delivery_id'=>$request->subscription_delivery_id,
         ]);
@@ -90,14 +92,31 @@ class SubscriptionController extends Controller
         $rangeDayNumber =["Wed"=>5, "Thu"=>6, "Fri"=>7, "Sat"=>1, "Sun"=>2,"Mon"=>3, "Tue"=>4];
         $days =[5=>"Wed", 6=>"Thu", 7=>"Fri", 1=>"Sat", 2=>"Sun",3=>"Mon", 4=>"Tue"];
 
+
+
         // ****************** //
-//        $food_type_ids = json_decode(SubscriptionPrice::find($subscription_price_id)->food_type);
-//        $food_types = FoodType::whereIn('id', $food_type_ids)->get();
+        $food_type_ids = array_unique($subscription->foodType()->pluck('food_type_id')->toArray());
+
+        $food_types = FoodType::whereIn('id', $food_type_ids)->get();
+        $array = [];
+        if(!empty($food_type_ids)){
+            foreach ($food_types as $food_type) {
+                $food_ids =  SubscriptionFood::where('subscription_id', $subscription->id)->where('food_type_id', $food_type->id)->pluck('food_id')->toArray();
+                $array[$food_type->id] = Food::whereIn('id', $food_ids)->get();
+
+            }
+
+        }else{
+            $food_ids =  SubscriptionFood::where('subscription_id', $subscription->id)->where('food_type_id', 0)->pluck('food_id')->toArray();
+            $array[] = Food::whereIn('id', $food_ids)->get();
+
+        }
+
 //        $weekFood1 = WeekFood::whereIn('food_type_id', $food_type_ids)->where('day','>=',$rangeDayNumber[date('D',strtotime($time1))])->get();
 //
 //        $weekFood2 = WeekFood::whereIn('food_type_id', $food_type_ids)->whereNotIn('id',$weekFood1->pluck('id'))->orderBy('day')->get();
 //        $weekFood = $weekFood1->merge($weekFood2);
-//        $array = [];
+//
 //
 //        foreach ($weekFood as $key => $value) {
 //
@@ -106,16 +125,9 @@ class SubscriptionController extends Controller
 //        }
 
 
-        return view('web.subscriptions.subscriptionOrderFood',compact('subscription_order_id','subscription','days','dateAndDay'));
+        return view('web.subscriptions.subscriptionOrderFood',compact('subscription_order_id','subscription','days','dateAndDay','array','food_types'));
 
     }
-
-
-
-
-
-
-
 
     public function subscriptionCreate($subscriptionId,$subscriptionOrderId){
 
@@ -187,24 +199,16 @@ class SubscriptionController extends Controller
     //subscription order food store
     public function saveSubscriptionOrderFood(Request $request){
 
-        $array =[];
 
-        foreach ($request->food_day as $data) {
+        if (isset($request->food_day) && count($request->food_day) < 3  ) {
 
-            if (isset($data['food_id'])) {
-                array_push($array, $data['food_id']);
-            }
-        }
-
-        if(count($array) < 3 ){
-            return redirect()->back()->with('error',__('web.Please select at least 3 food'));
+                    return redirect()->back()->with('error',__('web.Please select at least 3 food'));
         }
 
         foreach ($request->food_day as $key=>$value) {
+            foreach ($value as $k => $v) {
+                foreach ($v['food_id'] as $food_id){
 
-            if (isset($value['food_id'])) {
-
-                foreach ($value['food_id'] as $k => $v) {
 
                     $subscriptionOrderFood = new SubscriptionOrderFood;
                     $subscriptionOrderFood->subscription_order_id = $request->subscription_order_id ;
@@ -212,8 +216,8 @@ class SubscriptionController extends Controller
                     $subscriptionOrderFood->user_id = auth()->user()->id ;
 
                     $subscriptionOrderFood->day = $key ;
-
-                    $subscriptionOrderFood->food_id = $v ;
+                    $subscriptionOrderFood->food_type_id = $k ;
+                    $subscriptionOrderFood->food_id = $food_id ;
                     $subscriptionOrderFood->save();
 
                 }

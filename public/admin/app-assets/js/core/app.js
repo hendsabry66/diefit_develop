@@ -271,20 +271,23 @@
     });
 
     $(document).on('click', '.add-new-food', function() {
+        var foodTypeId = $(this).data('food-type');
         var newSelectOptions = $('.select-foods').html();
-        var newSelect = '<div class="form-group col-md-12 mb-2 one-food-select"><select name="foods[]" class="select-foods form-control">' + newSelectOptions + '</select><button type="button" class="remove-food-menu btn btn-danger">remove</button><div class="form-group col-md-12 mb-2 list-of-this-food"></div></div>';
-        $('.list-of-foods').append(newSelect);
+        var newSelect = '<div class="form-group col-md-12 mb-2 one-food-select"><select name="foods['+foodTypeId+'][]" class="select-foods form-control">' + newSelectOptions + '</select><button type="button" class="remove-food-menu btn btn-danger">remove</button><div class="form-group col-md-12 mb-2 list-of-this-food"></div></div>';
+        $('.list-of-foods.foods-type-'+foodTypeId).append(newSelect);
     });
 
-    var inputsRow = '<div class="row one-of-food-ingrediant"><div class="form-group col-md-5 mb-2"> <label for="projectinput4">مكون</label> <input type="text" class="form-control" value="" placeholder="مكون" name="foodsitems[$][ingrediant][]"> </div> <div class="form-group col-md-5 mb-2"> <label for="projectinput4">الكميه</label> <input type="text" class="form-control" placeholder="الكميه" name="foodsitems[$][quantity][]"> </div><div class="form-group col-md-2 mb-2"><button type="button" class="remove-food btn btn-danger">remove</button></div></div>';
+    var inputsRow = '<div class="row one-of-food-ingrediant"><div class="form-group col-md-5 mb-2"> <label for="projectinput4">مكون</label> <input type="text" class="form-control" value="" placeholder="مكون" name="foodsitems[@][$][ingrediant][]"> </div> <div class="form-group col-md-5 mb-2"> <label for="projectinput4">الكميه</label> <input type="text" class="form-control" placeholder="الكميه" name="foodsitems[@][$][quantity][]"> </div><div class="form-group col-md-2 mb-2"><button type="button" class="remove-food btn btn-danger">remove</button></div></div>';
 
     $(document).on('change', '.select-foods', function() {
+        var thisFoodType = $(this).parents('.one-food-type');
         var thisSelector = $(this).parents('.one-food-select');
         var getValue = $(this).val();
+        var foodTypeId = thisFoodType.find('.add-new-food').data('food-type');
         var newInputs = '<button type="button" class="add-new-ingredients btn btn-primary">add</button>';
 
         if (getValue != 1){
-            thisSelector.find('.list-of-this-food').html(inputsRow.replaceAll('$',getValue));
+            thisSelector.find('.list-of-this-food').html(inputsRow.replaceAll('@',foodTypeId).replaceAll('$',getValue));
             thisSelector.append(newInputs);
         }
     });
