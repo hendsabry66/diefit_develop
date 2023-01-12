@@ -18,10 +18,10 @@ jQuery(document).ready(function ($) {
     });
 
     $('.change-area').change(function () {
+        var thisS = $(this).parents('.one-pack-itme');
         var getValue = $(this).val();
-        $('.update-delivery-cost').text(getValue + ' ريال');
-        $('.input-delivery-cost').val(getValue);
-
+        thisS.find('.update-delivery-cost').text(getValue + ' ريال');
+        thisS.find('.input-delivery-cost').val(getValue);
     });
 
     $('.change-qty').click(function () {
@@ -58,7 +58,49 @@ jQuery(document).ready(function ($) {
     });
 
 
+    $('.select-period, .select-calorie, .change-area, .specialist_session_number').change(function () {
+        var thisS = $(this).parents('.one-pack-itme');
+        auto_update_subscription_price(thisS);
+    });
+
+    $('.select-delivery').click(function () {
+        var thisS = $(this).parents('.one-pack-itme');
+        var getDelivery = thisS.find('.select-delivery:checked').val();
+        if ( getDelivery == 1 ) {
+            thisS.find('.list-cities').show();
+        } else {
+            thisS.find('.list-cities').hide();
+        }
+        auto_update_subscription_price(thisS);
+    });
+
 });
+
+function auto_update_subscription_price(selector){
+    var getPeriod = selector.find('.select-period option:selected').data('period-days');
+    var getCalories = selector.find('.select-calorie').val();
+    var getDelivery = selector.find('.select-delivery:checked').val();
+    var getArea = selector.find('.change-area').val();
+    var getSpecialistP = selector.find('#specialist_price').val();
+    var getSubscriptionP = selector.find('#subscription_price').val();
+    var getSpecialistN = selector.find('.specialist_session_number').val();
+    var deliveryCost = 0;
+    var specialistCost = 0;
+    var getAll = 0;
+
+    if ( getPeriod != undefined && getDelivery == 1 && getArea != undefined ){
+        deliveryCost = getPeriod * getArea;
+    }
+
+    if ( getSpecialistN != '' ) {
+        specialistCost = getSpecialistP * getSpecialistN;
+    }
+
+    getAll = Number( getSubscriptionP ) + Number( deliveryCost ) + Number( specialistCost );
+
+    selector.find('.updated-price').text( getAll );
+
+}
 
 function auto_update_cart_totel(){
     var calcTotal = 0;

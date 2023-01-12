@@ -35,7 +35,7 @@
                             <h2>{{$subscription->name}}</h2>
                             <div class="desc">
                                 <p class="mb-0">
-                                    {!! strip_tags($subscription->details) !!}
+                                    {!! substr(strip_tags($subscription->details),100) !!}
                                 </p>
                             </div>
 
@@ -59,41 +59,41 @@
 
                                     </div>
                                 @endif
-                                <div class="mb-3">
-                                    <label class="form-label" style="font-weight: 800"> @lang('web.period') </label>
-                                    <select name="subscription_delivery_id" class="form-select">
-                                        <option value="">-- مده التوصيل  --</option>
-                                        @foreach($subscription->subscriptionDelivery as  $subscriptionDelivery)
-                                            <option value="{{$subscriptionDelivery->id}}" >{{$subscriptionDelivery->period}} <span> يوم </span></option>
-                                        @endforeach
-                                    </select>
-                                </div>
+
                                 <div class="one-pack-itme">
                                     <input type="hidden" name="subscription_id" value="{{$subscription->id}}">
 
-
+                                    <div class="mb-3">
+                                        <label class="form-label" style="font-weight: 800"> @lang('web.period') </label>
+                                        <select name="subscription_delivery_id" class="form-select select-period">
+                                            <option value="">-- مده التوصيل  --</option>
+                                            @foreach($subscription->subscriptionDelivery as  $subscriptionDelivery)
+                                                <option value="{{$subscriptionDelivery->id}}" data-period-days="{{$subscriptionDelivery->period}}" >{{$subscriptionDelivery->period}} <span> يوم </span></option>
+                                            @endforeach
+                                        </select>
+                                    </div>
 
                                     @if($subscription->has_calories == 1)
                                         <div class="mb-3">
                                             <label class="form-label" style="font-weight: 800"> السعرات الحراريه </label>
-                                            <select name="calories" class="form-select">
+                                            <select name="calories" class="form-select select-calorie">
                                                 <option value="">--  السعرات الحراريه  --</option>
                                                 @foreach(json_decode($subscription->calories) as  $calorie)
-                                                    <option value="{{$calorie}}" >{{$calorie}}<span> سعر حراري</span></option>
+                                                    <option value="{{$calorie}}">{{$calorie}}<span> سعر حراري</span></option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     @endif
                                     <div class="mb-3">
                                         <div class="form-check form-check-inline">
-                                            <input type="radio" class="form-check-input" name="delivery" value="1" id="delivery1"><label class="form-check-label" for="delivery1">توصيل</label>
+                                            <input type="radio" class="form-check-input select-delivery" name="delivery" value="1" id="delivery1"><label class="form-check-label" for="delivery1">توصيل</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input type="radio" class="form-check-input" name="delivery" value="0" id="delivery2" checked><label class="form-check-label" for="delivery2">بدون توصيل </label>
+                                            <input type="radio" class="form-check-input select-delivery" name="delivery" value="0" id="delivery2" checked><label class="form-check-label" for="delivery2">بدون توصيل </label>
                                         </div>
                                     </div>
 
-                                    <div class="mb-3" id="city" style="background: #f7f7f7;padding: 15px;border-radius: 10px; display: none">
+                                    <div class="mb-3 list-cities" style="background: #f7f7f7;padding: 15px;border-radius: 10px; display: none">
                                         <label class="form-label" style="font-weight: 800"> المدينة </label>
                                         <select name="delivery_cost" class="change-area form-select">
                                             <option value="">-- @lang('web.choose_delivery_city') --</option>
@@ -103,22 +103,10 @@
                                         </select>
                                     </div>
 
-                                    <script>
-                                        var delivery1 = document.getElementById('delivery1');
-                                        var delivery2 = document.getElementById('delivery2');
-                                        var city = document.getElementById('city');
-                                        delivery1.addEventListener('change',()=>{
-                                            city.style.display = 'block';
-                                        })
-                                        delivery2.addEventListener('change',()=>{
-                                            city.style.display = 'none';
-                                        })
-                                    </script>
-
                                     @if($subscription->has_specialist == 1)
                                         <div class="mb-3">
                                             <label class="form-label" style="font-weight: 800"> عدد الجلسات مع المختص </label>
-                                            <input class="form-control" name="specialist_session_number" value="" placeholder="عدد الجلسات مع المختص ">
+                                            <input class="form-control specialist_session_number" name="specialist_session_number" value="" placeholder="عدد الجلسات مع المختص ">
                                         </div>
                                     @endif
                                     {{--                                    <input type="hidden" id="sub" name="subscription_price_id" value="{{$subscription->subscriptionPrices()->first()->id}}">--}}
@@ -157,7 +145,13 @@
 
 
                                     <div class="text-center">
-                                        <button type="submit"  class="btn btn-outline-warning">@lang('web.subscription') </button>
+                                        @if($subscription->has_specialist == 1)
+                                            <input type="hidden" id="specialist_price" name="specialist_price" value="{{$subscription->specialist_price_for_session}}">
+                                        @else
+                                            <input type="hidden" id="specialist_price" name="specialist_price" value="0">
+                                        @endif
+                                        <input type="hidden" id="subscription_price" name="subscription_price" value="{{$subscription->price}}">
+                                        <button type="submit"  class="btn btn-outline-warning submitSubscription">@lang('web.subscription') </button>
                                     </div>
                             </form>
                             {{--                                <a href="{{url('/subscriptions/subscriptionOrder/'.$subscription->subscriptionPrices()->first()->id)}}" id="sub" class="btn btn-outline-warning" > اشتراك</a>--}}
