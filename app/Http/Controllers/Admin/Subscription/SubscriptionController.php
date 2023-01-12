@@ -110,15 +110,31 @@ class SubscriptionController extends AppBaseController
 //                    ]);
 //                }
             }
-        }
-        foreach ($request->number_of_delivery_days  as $key => $value) {
-            SubscriptionDelivery::create([
-                'subscription_id' => $subscription->id,
-                'number_of_delivery_days' => $value,
-                'period' => $request->period[$key],
-            ]);
+        }else{
+            $subscription->delete();
+            $messages = ['errors' => "    يجب ادخال وجبات للاشتراك ", 'redirect' => ''];
 
+            return response()->json(['messages' => $messages]);
         }
+
+        if(!empty($request->number_of_delivery_days) && $request->number_of_delivery_days[0] != null) {
+
+            foreach ($request->number_of_delivery_days  as $key => $value) {
+                SubscriptionDelivery::create([
+                    'subscription_id' => $subscription->id,
+                    'number_of_delivery_days' => $value,
+                    'period' => $request->period[$key],
+                ]);
+
+            }
+
+        }else{
+            $subscription->delete();
+            $messages = ['errors' => "مدة التوصيل  مطلوبه  ", 'redirect' => ''];
+
+            return response()->json(['messages' => $messages]);
+        }
+
         $messages = ['success' => "Successfully added", 'redirect' => route('subscriptions.index')];
         return response()->json(['messages' => $messages]);
 

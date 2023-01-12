@@ -29,6 +29,7 @@
     <div class="form-group col-md-12 mb-2">
         <label for="projectinput4">@lang('admin.has_specialist')</label>
         <select name="has_specialist" class="form-control select-specialist">
+            <option> يوجد مختص </option>
             <option value="1" @if(isset($subscription)) @if($subscription->has_specialist== 1) selected @endif @endif >@lang('admin.yes')</option>
             <option value="0" @if(isset($subscription)) @if($subscription->has_specialist== 0) selected @endif @endif>@lang('admin.no')</option>
         </select>

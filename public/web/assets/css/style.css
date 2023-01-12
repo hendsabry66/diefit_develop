@@ -1094,8 +1094,6 @@ i.fa-star {
     display: flex;
     flex-wrap: wrap;
     margin: 0;
-    width: 50%;
-    float: right;
 }
 
 .package .item .d-package ul li {
@@ -1103,7 +1101,9 @@ i.fa-star {
     flex: 0 0 auto;
     margin: 0 0 20px;
 }
-
+.package .item .d-package ul li:last-child{
+    margin:0
+}
 .price {
     clear: both;
 }
