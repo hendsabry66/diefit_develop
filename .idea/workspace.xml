@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="601a7e32-5d21-4c74-955e-5f513cb79eb3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/subscriptions/subscriptions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/subscriptions/subscriptions.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +176,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../dash" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -240,6 +241,7 @@
       <workItem from="1673386122832" duration="1211000" />
       <workItem from="1673417913109" duration="7359000" />
       <workItem from="1673503556730" duration="3799000" />
+      <workItem from="1673527687890" duration="1067000" />
     </task>
     <servers />
   </component>

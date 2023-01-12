@@ -35,7 +35,7 @@
                             <h2>{{$subscription->name}}</h2>
                             <div class="desc">
                                 <p class="mb-0">
-                                    {!! substr(strip_tags($subscription->details),100) !!}
+                                    {!! Str::limit(strip_tags($subscription->details),100)!!}
                                 </p>
                             </div>
 
