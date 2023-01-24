@@ -55,6 +55,7 @@ class SubscriptionController extends Controller
             'specialist_session_number'=>$request->specialist_session_number,
             'calories'=>$request->calories,
             'subscription_delivery_id'=>$request->subscription_delivery_id,
+            'snack_id'=>json_encode($request->snacks),
         ]);
 
         return redirect('subscriptions/orderFood/'.$request->subscription_id.'/'.$subscripionOrder->id);

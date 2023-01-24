@@ -18,6 +18,7 @@ use App\Models\SubscriptionFood;
 use App\Models\SubsrcriptionFoodIngredient;
 use App\Models\SubscriptionDelivery;
 use App\Models\Food;
+use App\Models\SubscriptionSnack;
 
 class SubscriptionController extends AppBaseController
 {
@@ -76,8 +77,30 @@ class SubscriptionController extends AppBaseController
     public function store(CreateSubscriptionRequest $request)
     {
 
+
         $input = $request->except(['_token' , 'number_of_delivery_days' , 'period']);
+
+        $gram_array = [];
+        if($request->has_calories == 0){
+            foreach ($request->grams as $key=>$gram){
+                $gram_array[$request->prices[$key]]=$gram;
+            }
+            $input['grams'] = json_encode($gram_array);
+        }
         $subscription = $this->subscriptionRepository->createSubscription($input);
+
+        //snacks
+        if(isset($input['snacks'])){
+            foreach ($input['snacks'] as $key=>$snack){
+                $subscriptionSnack = SubscriptionSnack::create([
+                    'subscription_id' => $subscription->id,
+                    'food_id' => $snack,
+                    'price' => $input['snack_prices'][$key],
+                ]);
+            }
+        }
+
+
         if(isset($input['foodsitems'])) {
 
             foreach ($input['foodsitems'] as $key=>$food) {

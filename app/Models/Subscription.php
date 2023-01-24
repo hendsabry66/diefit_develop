@@ -38,6 +38,7 @@ class Subscription extends Model
           'number_of_delivery_days',
             'price',
             'has_food_type',
+        'grams',
 
 
     ];
@@ -115,7 +116,12 @@ class Subscription extends Model
     }
 
 
-
+    /**
+     * subscription snack
+     */
+    public function subscriptionSnack(){
+        return $this->hasMany(SubscriptionSnack::class);
+    }
 
 
 }

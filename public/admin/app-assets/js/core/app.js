@@ -226,8 +226,12 @@
         var getValue = $(this).val();
         if (getValue == 0){
             $('.action-for-calories').slideUp('fast');
+            $('.action-for-grams').slideDown('fast');
+            $('.action-for-snacks').slideDown('fast');
         } else {
             $('.action-for-calories').slideDown('fast');
+            $('.action-for-grams').slideUp('fast');
+
         }
     });
 
@@ -247,6 +251,34 @@
 
     $(document).on('click', '.remove-calories', function() {
         $(this).parents('.one-new-calories').slideUp('fast',function(){
+            $(this).remove();
+        });
+    });
+
+    //grams
+    $(document).on('click', '.add-new-grams', function() {
+        var newInput = '<div class="row mt-1 mb-1 one-new-grams"><div class="col-5"><input type="number" placeholder="عدد الجرامات" class="form-control" name="grams[]"></div><div class="col-5"><input type="number" placeholder="السعر " class="form-control" name="prices[]"></div><div class="col-1"><button type="button" class="remove-grams btn btn-danger"><i class="fa fa-trash"></i></button></div></div>';
+        $('.list-of-grams').append(newInput);
+    });
+
+    $(document).on('click', '.remove-grams', function() {
+        $(this).parents('.one-new-grams').slideUp('fast',function(){
+            $(this).remove();
+        });
+    });
+
+    //snacks
+    $(document).on('click', '.add-new-snacks', function() {
+        var newSelectOptions = $('.select-foods').html();
+        var newSelect = '<div class="row mt-1 mb-1 one-new-snacks"><div class=" col-md-5 mb-2"><select name="snacks[]" class="select-foods form-control">' + newSelectOptions + '</select></div><div class="col-5"><input type="number" placeholder="السعر " class="form-control" name="snack_prices[]"> </div> <button type="button" class="remove-food-menu btn btn-danger">remove</button></div>';
+        $('.list-of-snacks').append(newSelect);
+
+        // var newInput = '<div class="row mt-1 mb-1 one-new-grams"><div class="col-5"><input type="number" placeholder="عدد الجرامات" class="form-control" name="grams[]"></div><div class="col-5"><input type="number" placeholder="السعر " class="form-control" name="prices[]"></div><div class="col-1"><button type="button" class="remove-grams btn btn-danger"><i class="fa fa-trash"></i></button></div></div>';
+        // $('.list-of-snacks').append(newInput);
+    });
+
+    $(document).on('click', '.remove-snacks', function() {
+        $(this).parents('.one-new-snacks').slideUp('fast',function(){
             $(this).remove();
         });
     });

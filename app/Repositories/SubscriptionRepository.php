@@ -62,7 +62,8 @@ class SubscriptionRepository extends BaseRepository
             'ar' => $input['details_ar'],
         ];
 
-        $input['calories']= json_encode($input['calories']);
+        $input['calories']= (isset($input['calories'])) ? json_encode($input['calories']) : null;
+        $input['grams']= (isset($input['grams'])) ? $input['grams'] : null;;
         $subscription = $this->create($input);
         return $subscription;
     }

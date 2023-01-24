@@ -62,7 +62,16 @@
 
                                 <div class="one-pack-itme">
                                     <input type="hidden" name="subscription_id" value="{{$subscription->id}}">
+                                    <div class="mb-3">
+                                        <label class="form-label" style="font-weight: 800">  عدد الوجبات  </label>
+                                        <select name="meals" class="form-select">
+                                            <option value="">--   عدد الوجبات   --</option>
+                                            <option value="1">وجبه</option>
+                                            <option value="2">وجبتين</option>
+                                            <option value="3">تلات وجبات </option>
 
+                                        </select>
+                                    </div>
                                     <div class="mb-3">
                                         <label class="form-label" style="font-weight: 800"> @lang('web.period') </label>
                                         <select name="subscription_delivery_id" class="form-select select-period">
@@ -83,6 +92,28 @@
                                                 @endforeach
                                             </select>
                                         </div>
+                                    @else
+                                        <div class="mb-3">
+                                            <label class="form-label" style="font-weight: 800">  عدد الجرامات  </label>
+                                            <select name="grams" class="form-select select-gram">
+                                                <option value="">--  عدد الجرامات    --</option>
+                                                @foreach(json_decode($subscription->grams) as  $key=>$gram)
+                                                    <option value="{{$key}}">{{$gram}}<span>  جرام</span></option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label" style="font-weight: 800">   السناكس  </label>
+                                            <select name="snacks[]" class="form-select select-gram" multiple>
+                                                <option value="">--   السناكس    --</option>
+
+                                                @foreach($subscription->subscriptionSnack as  $subscriptionSnack)
+                                                    <option value="{{$subscriptionSnack->price}}">{{$subscriptionSnack->food->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
                                     @endif
                                     <div class="mb-3">
                                         <div class="form-check form-check-inline">

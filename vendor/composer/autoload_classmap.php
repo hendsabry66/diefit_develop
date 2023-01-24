@@ -179,6 +179,7 @@ return array(
     'App\\Models\\SubscriptionOrder' => $baseDir . '/app/Models/SubscriptionOrder.php',
     'App\\Models\\SubscriptionOrderFood' => $baseDir . '/app/Models/SubscriptionOrderFood.php',
     'App\\Models\\SubscriptionPrice' => $baseDir . '/app/Models/SubscriptionPrice.php',
+    'App\\Models\\SubscriptionSnack' => $baseDir . '/app/Models/SubscriptionSnack.php',
     'App\\Models\\SubsrcriptionFoodIngredient' => $baseDir . '/app/Models/SubsrcriptionFoodIngredient.php',
     'App\\Models\\TeamMember' => $baseDir . '/app/Models/TeamMember.php',
     'App\\Models\\Type' => $baseDir . '/app/Models/Type.php',

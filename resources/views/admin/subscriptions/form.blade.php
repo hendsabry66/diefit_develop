@@ -87,13 +87,37 @@
                 </div>
             @endforeach
         @else
-            <input type="number" class="form-control" name="calories[]" style="display: none">
+{{--            <input type="number" class="form-control" name="calories[]" style="display: none">--}}
         @endif
     </div>
+{{--    grams--}}
 
+    <div class="form-group col-md-12 mb-2 action-for-grams" style="display: none">
+        <label for="projectinput4">@lang('admin.grams')</label>
+        <button type="button" class="add-new-grams col-md-2 btn btn-primary">+</button>
+
+{{--            <input type="number" class="form-control" name="grams[]" style="display: none">--}}
+
+    </div>
     <div class="list-of-calories form-group col-md-12 mb-2">
 
     </div>
+    <div class="list-of-grams form-group col-md-12 mb-2">
+
+    </div>
+
+    <div class="form-group col-md-12 mb-2 action-for-snacks" style="display: none">
+        <label for="projectinput4">@lang('admin.snacks')</label>
+        <button type="button" class="add-new-snacks col-md-2 btn btn-primary">+</button>
+
+        {{--            <input type="number" class="form-control" name="grams[]" style="display: none">--}}
+
+    </div>
+    <div class="list-of-snacks form-group col-md-12 mb-2">
+
+    </div>
+
+
 </div>
 <h4 class="form-section"><i class="fa fa-clipboard"></i> الوجبات</h4>
 <div class="row">
