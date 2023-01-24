@@ -16,7 +16,6 @@
         "infyomlabs/laravel-generator": "^3.1",
         "infyomlabs/swagger-generator": "dev-master",
         "intervention/image": "^2.7",
-        "jorenvanhocht/laravel-share": "^4.2",
         "laravel/framework": "^8.0",
         "laravel/helpers": "^1.5",
         "laravel/tinker": "^2.0",
