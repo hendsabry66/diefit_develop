@@ -105,13 +105,21 @@
 
                                         <div class="mb-3">
                                             <label class="form-label" style="font-weight: 800">   السناكس  </label>
-                                            <select name="snacks[]" class="form-select select-gram" multiple>
-                                                <option value="">--   السناكس    --</option>
+                                            <br>
+                                            @foreach($subscription->subscriptionSnack as  $subscriptionSnack)
+                                                <input type="checkbox" id="" name="snacks[]" value="{{$subscriptionSnack->id}}">
+                                                <label for=""> {{$subscriptionSnack->food->name}}</label><br>
 
-                                                @foreach($subscription->subscriptionSnack as  $subscriptionSnack)
-                                                    <option value="{{$subscriptionSnack->price}}">{{$subscriptionSnack->food->name}}</option>
-                                                @endforeach
-                                            </select>
+                                            @endforeach
+
+
+{{--                                            <select name="snacks[]" class="form-select select-gram" multiple>--}}
+{{--                                                <option value="">--   السناكس    --</option>--}}
+
+{{--                                                @foreach($subscription->subscriptionSnack as  $subscriptionSnack)--}}
+{{--                                                    <option value="{{$subscriptionSnack->price}}">{{$subscriptionSnack->food->name}}</option>--}}
+{{--                                                @endforeach--}}
+{{--                                            </select>--}}
                                         </div>
 
                                     @endif
