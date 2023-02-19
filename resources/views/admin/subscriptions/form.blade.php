@@ -106,43 +106,43 @@
 
     </div>
 
-    <div class="form-group col-md-12 mb-2 action-for-snacks" style="display: none">
-        <label for="projectinput4">@lang('admin.snacks')</label>
-        <button type="button" class="add-new-snacks col-md-2 btn btn-primary">+</button>
+{{--    <div class="form-group col-md-12 mb-2 action-for-snacks" style="display: none">--}}
+{{--        <label for="projectinput4">@lang('admin.snacks')</label>--}}
+{{--        <button type="button" class="add-new-snacks col-md-2 btn btn-primary">+</button>--}}
 
-        {{--            <input type="number" class="form-control" name="grams[]" style="display: none">--}}
+{{--        --}}{{--            <input type="number" class="form-control" name="grams[]" style="display: none">--}}
 
-    </div>
-    <div class="list-of-snacks form-group col-md-12 mb-2">
+{{--    </div>--}}
+{{--    <div class="list-of-snacks form-group col-md-12 mb-2">--}}
 
-    </div>
+{{--    </div>--}}
 
-
-</div>
-<h4 class="form-section"><i class="fa fa-clipboard"></i> الوجبات</h4>
-<div class="row">
-    <div class="form-group col-md-12 one-food-type">
-        <h5>بدون وقت</h5>
-        <button type="button" class="add-new-food btn btn-primary" data-food-type="0">+</button>
-        <div class="col-md-12 mb-2 list-of-foods action-for-meals foods-type-0 text-left"></div>
-    </div>
-    @foreach($foodTypes as $foodType)
-        <div class="form-group col-md-12 one-food-type">
-            <h5>{{$foodType->name}}</h5>
-            <button type="button" class="add-new-food btn btn-primary" data-food-type="{{$foodType->id}}">+</button>
-            <div class="col-md-12 mb-2 list-of-foods action-for-meals foods-type-{{$foodType->id}} text-left"></div>
-        </div>
-    @endforeach
-
-    <select class="select-foods hidden">
-        <option value="">@lang('admin.choose')</option>
-        @foreach($foods as $food)
-            <option value="{{$food->id}}">{{$food->name}}</option>
-        @endforeach
-
-    </select>
 
 </div>
+{{--<h4 class="form-section"><i class="fa fa-clipboard"></i> الوجبات</h4>--}}
+{{--<div class="row">--}}
+{{--    <div class="form-group col-md-12 one-food-type">--}}
+{{--        <h5>بدون وقت</h5>--}}
+{{--        <button type="button" class="add-new-food btn btn-primary" data-food-type="0">+</button>--}}
+{{--        <div class="col-md-12 mb-2 list-of-foods action-for-meals foods-type-0 text-left"></div>--}}
+{{--    </div>--}}
+{{--    @foreach($foodTypes as $foodType)--}}
+{{--        <div class="form-group col-md-12 one-food-type">--}}
+{{--            <h5>{{$foodType->name}}</h5>--}}
+{{--            <button type="button" class="add-new-food btn btn-primary" data-food-type="{{$foodType->id}}">+</button>--}}
+{{--            <div class="col-md-12 mb-2 list-of-foods action-for-meals foods-type-{{$foodType->id}} text-left"></div>--}}
+{{--        </div>--}}
+{{--    @endforeach--}}
+
+{{--    <select class="select-foods hidden">--}}
+{{--        <option value="">@lang('admin.choose')</option>--}}
+{{--        @foreach($foods as $food)--}}
+{{--            <option value="{{$food->id}}">{{$food->name}}</option>--}}
+{{--        @endforeach--}}
+
+{{--    </select>--}}
+
+{{--</div>--}}
 <h4 class="form-section"><i class="fa fa-clipboard"></i> مدة التوصيل </h4>
 <div class="row">
     @if(isset($subscription) && !empty($subscription->subscriptionDelivery))

@@ -20,6 +20,7 @@ use \App\Http\Controllers\Admin\Setting\ClientReviewController;
 use \App\Http\Controllers\Admin\Food\ExtraController;
 use \App\Http\Controllers\Admin\Subscription\SubscriptionController;
 use \App\Http\Controllers\Admin\Subscription\TypeController;
+use \App\Http\Controllers\Admin\Subscription\SubscriptionFoodController;
 use \App\Http\Controllers\Admin\Food\FoodTypeController;
 use \App\Http\Controllers\Admin\Food\WeekFoodController;
 use \App\Http\Controllers\Admin\Product\ProductCategoryController;
@@ -46,6 +47,9 @@ Route::group(['middleware' => ['adminAuth']], function() {
     Route::resource('subscriptions', SubscriptionController::class);
     Route::post('subscriptions/bulk-delete', [SubscriptionController::class, 'bulkDelete'])->name('subscriptions.bulk-delete');
 
+    Route::resource('subscriptionFoods', SubscriptionFoodController::class);
+    Route::get('getSubscriptionDelivery/{subscription_id}', [SubscriptionFoodController::class ,'getSubscriptionDelivery'])->name('getSubscriptionDelivery');
+    Route::get('getSubscriptionFoods/{subscription_delivery_id}', [SubscriptionFoodController::class ,'getSubscriptionFoods'])->name('getSubscriptionFoods');
 
     Route::resource('branches', BranchController::class);
     Route::post('branches/bulk-delete', [BranchController::class, 'bulkDelete'])->name('branches.bulk-delete');

@@ -2,8 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="601a7e32-5d21-4c74-955e-5f513cb79eb3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/DataTables/SubscriptionFoodDataTable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/subscriptionfoods/days.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Subscription/SubscriptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Subscription/SubscriptionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/web/SubscriptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/web/SubscriptionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/SubscriptionFood.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SubscriptionFood.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/menue.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/menue.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/subscriptions/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/subscriptions/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/subscriptions/subscriptionOrderFood.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/subscriptions/subscriptionOrderFood.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/web/subscriptions/subscriptions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/subscriptions/subscriptions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,9 +186,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/DataTables" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\hend\Desktop\diefit_develop\app\DataTables" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -250,7 +265,11 @@
       <workItem from="1674485367977" duration="599000" />
       <workItem from="1674555693922" duration="2753000" />
       <workItem from="1674596947150" duration="2868000" />
-      <workItem from="1674631604783" duration="1256000" />
+      <workItem from="1674631604783" duration="2068000" />
+      <workItem from="1675853680378" duration="2500000" />
+      <workItem from="1675930632937" duration="1262000" />
+      <workItem from="1676188090266" duration="1201000" />
+      <workItem from="1676289513580" duration="22740000" />
     </task>
     <servers />
   </component>

@@ -100,14 +100,14 @@
                                             <input type="hidden" name="date" value="{{$value[0]}}">
                                         </div>
 
-                                        @if(count($food_types) != 0)
+{{--                                        @if(count($food_types) != 0)--}}
 
-                                        @foreach($food_types as $key=>$food_type)
+                                        @foreach($food_types as $food_type)
 
 
                                             <div>
 {{--                                                <input type="hidden" name="day[{{$key1}}][food_type_id][]" value="{{$key}}">--}}
-                                                @foreach($array[$food_type->id] as $food)
+                                                @foreach($array[$key + 1 ][$food_type->id] as $food)
 
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="radio" value="{{$food->id}}"  name="food_day[{{$value[0]}}{{'/'}}{{$value[1]}}][{{$food_type->id}}][food_id][]" id="flexCheckDefault">
@@ -121,28 +121,28 @@
 
                                             </div>
                                         @endforeach
-                                        @else
+{{--                                        @else--}}
 
-                                            @foreach($array[0] as $key=>$food)
+{{--                                            @foreach($array[0] as $key=>$food)--}}
 
 
-                                                <div>
-                                                    {{--                                                <input type="hidden" name="day[{{$key1}}][food_type_id][]" value="{{$key}}">--}}
+{{--                                                <div>--}}
+{{--                                                    --}}{{--                                                <input type="hidden" name="day[{{$key1}}][food_type_id][]" value="{{$key}}">--}}
 {{--                                                    @foreach($array[$food_type->id] as $food)--}}
 
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" value="{{$food->id}}"  name="food_day[{{$value[0]}}{{'/'}}{{$value[1]}}][food_id][]" id="flexCheckDefault">
-                                                            <label class="form-check-label" for="flexCheckDefault">
+{{--                                                        <div class="form-check">--}}
+{{--                                                            <input class="form-check-input" type="radio" value="{{$food->id}}"  name="food_day[{{$value[0]}}{{'/'}}{{$value[1]}}][food_id][]" id="flexCheckDefault">--}}
+{{--                                                            <label class="form-check-label" for="flexCheckDefault">--}}
 
 
-                                                                <a target="_blank" href="{{url('restaurant/foodDetails/'.$food->id)}}">{{$food->name}}<img src="{{$food->image}}"></a>
-                                                            </label>
-                                                        </div>
+{{--                                                                <a target="_blank" href="{{url('restaurant/foodDetails/'.$food->id)}}">{{$food->name}}<img src="{{$food->image}}"></a>--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
 {{--                                                    @endforeach--}}
 
-                                                </div>
-                                            @endforeach
-                                        @endif
+{{--                                                </div>--}}
+{{--                                            @endforeach--}}
+{{--                                        @endif--}}
 
 
                                     </div>

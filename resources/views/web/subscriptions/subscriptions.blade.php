@@ -44,34 +44,25 @@
 
 
 
-                                @php
-                                    $ids = array_unique(\App\Models\SubscriptionFood::where('subscription_id',$subscription->id)->where('food_type_id','!=',0)->pluck('food_type_id')->toArray());
-                                    $foodTypes = \App\Models\FoodType::whereIn('id',$ids)->get();
-                                @endphp
-                                @if(!empty($foodTypes))
-                                    <div class="d-package mb-3">
-                                        <ul class="change-package">
+{{--                                @php--}}
+{{--                                    $ids = array_unique(\App\Models\SubscriptionFood::where('subscription_id',$subscription->id)->where('food_type_id','!=',0)->pluck('food_type_id')->toArray());--}}
+{{--                                    $foodTypes = \App\Models\FoodType::whereIn('id',$ids)->get();--}}
+{{--                                @endphp--}}
+{{--                                @if(!empty($foodTypes))--}}
+{{--                                    <div class="d-package mb-3">--}}
+{{--                                        <ul class="change-package">--}}
 
-                                            @foreach($foodTypes as $foodType)
-                                                <li><span class="on"><i class="fa-solid fa-check"></i></span> {{$foodType->name}}</li>
-                                            @endforeach
-                                        </ul>
+{{--                                            @foreach($foodTypes as $foodType)--}}
+{{--                                                <li><span class="on"><i class="fa-solid fa-check"></i></span> {{$foodType->name}}</li>--}}
+{{--                                            @endforeach--}}
+{{--                                        </ul>--}}
 
-                                    </div>
-                                @endif
+{{--                                    </div>--}}
+{{--                                @endif--}}
 
                                 <div class="one-pack-itme">
                                     <input type="hidden" name="subscription_id" value="{{$subscription->id}}">
-                                    <div class="mb-3">
-                                        <label class="form-label" style="font-weight: 800">  عدد الوجبات  </label>
-                                        <select name="meals" class="form-select">
-                                            <option value="">--   عدد الوجبات   --</option>
-                                            <option value="1">وجبه</option>
-                                            <option value="2">وجبتين</option>
-                                            <option value="3">تلات وجبات </option>
 
-                                        </select>
-                                    </div>
                                     <div class="mb-3">
                                         <label class="form-label" style="font-weight: 800"> @lang('web.period') </label>
                                         <select name="subscription_delivery_id" class="form-select select-period">
@@ -82,7 +73,7 @@
                                         </select>
                                     </div>
 
-                                    @if($subscription->has_calories == 1)
+                                    @if($subscription->has_calories == 1  && !empty($subscription->calories))
                                         <div class="mb-3">
                                             <label class="form-label" style="font-weight: 800"> السعرات الحراريه </label>
                                             <select name="calories" class="form-select select-calorie">
@@ -92,7 +83,27 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    @else
+                                    @elseif(!empty($subscription->grams))
+                                        <div class="mb-3">
+                                            <label class="form-label" style="font-weight: 800">  عدد الوجبات  </label>
+                                            <select name="meals" class="form-select">
+                                                <option value="">--   عدد الوجبات   --</option>
+                                                <option value="1">وجبه</option>
+                                                <option value="2">وجبتين</option>
+                                                <option value="3">تلات وجبات </option>
+
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" style="font-weight: 800">  عدد السناك  </label>
+                                            <select name="snacks" class="form-select">
+                                                <option value="">--   عدد السناك   --</option>
+                                                <option value="0">بدون</option>
+                                                <option value="1">1</option>
+                                                <option value="2"> 2 </option>
+
+                                            </select>
+                                        </div>
                                         <div class="mb-3">
                                             <label class="form-label" style="font-weight: 800">  عدد الجرامات  </label>
                                             <select name="grams" class="form-select select-gram">
@@ -103,14 +114,14 @@
                                             </select>
                                         </div>
 
-                                        <div class="mb-3">
-                                            <label class="form-label" style="font-weight: 800">   السناكس  </label>
-                                            <br>
-                                            @foreach($subscription->subscriptionSnack as  $subscriptionSnack)
-                                                <input type="checkbox" id="" name="snacks[]" value="{{$subscriptionSnack->id}}">
-                                                <label for=""> {{$subscriptionSnack->food->name}}</label><br>
+{{--                                        <div class="mb-3">--}}
+{{--                                            <label class="form-label" style="font-weight: 800">   السناكس  </label>--}}
+{{--                                            <br>--}}
+{{--                                            @foreach($subscription->subscriptionSnack as  $subscriptionSnack)--}}
+{{--                                                <input type="checkbox" id="" name="snacks[]" value="{{$subscriptionSnack->id}}">--}}
+{{--                                                <label for=""> {{$subscriptionSnack->food->name}}</label><br>--}}
 
-                                            @endforeach
+{{--                                            @endforeach--}}
 
 
 {{--                                            <select name="snacks[]" class="form-select select-gram" multiple>--}}
@@ -120,9 +131,10 @@
 {{--                                                    <option value="{{$subscriptionSnack->price}}">{{$subscriptionSnack->food->name}}</option>--}}
 {{--                                                @endforeach--}}
 {{--                                            </select>--}}
-                                        </div>
+{{--                                        </div>--}}
 
                                     @endif
+
                                     <div class="mb-3">
                                         <div class="form-check form-check-inline">
                                             <input type="radio" class="form-check-input select-delivery" name="delivery" value="1" id="delivery1"><label class="form-check-label" for="delivery1">توصيل</label>

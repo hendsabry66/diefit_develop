@@ -78,6 +78,8 @@
                     </li>
                     <li class="{{ (request()->segment(2) == 'types') ? 'active' : '' }}"><a class="menu-item" href="{{url('admin/types')}}" data-i18n="nav.dash.project">@lang('admin.types')</a>
                     </li>
+                    <li class="{{ (request()->segment(2) == 'subscriptionFoods') ? 'active' : '' }}"><a class="menu-item" href="{{url('admin/subscriptionFoods')}}" data-i18n="nav.dash.project">@lang('admin.subscriptionFoods')</a>
+                    </li>
 {{--                    <li class="{{ (request()->segment(2) == 'teamMembers') ? 'active' : '' }}"><a class="menu-item" href="{{url('admin/teamMembers')}}" data-i18n="nav.dash.project">@lang('admin.teamMembers')</a>--}}
 {{--                    </li>--}}
 {{--                    <li class="{{ (request()->segment(2) == 'clientReviews') ? 'active' : '' }}"><a class="menu-item" href="{{url('admin/clientReviews')}}" data-i18n="nav.dash.project">@lang('admin.clientReviews')</a>--}}

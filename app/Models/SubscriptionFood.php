@@ -10,9 +10,10 @@ class SubscriptionFood extends Model
     use HasFactory;
 
     protected $fillable = [
-        'subscription_id',
+        'subscription_food_type_id',
+        'food_type_id',
         'food_id',
-        'food_type_id'
+        'day'
     ];
 
     public function subscription()

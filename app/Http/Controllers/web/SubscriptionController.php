@@ -7,6 +7,7 @@ use App\Models\BankAccounts;
 use App\Models\FoodType;
 use App\Models\SubscriptionOrder;
 use App\Models\SubscriptionOrderFood;
+use App\Models\SubscriptionFoodType;
 use App\Models\SubscriptionFood;
 use App\Models\SubscriptionPrice;
 use App\Models\WeekFood;
@@ -96,19 +97,33 @@ class SubscriptionController extends Controller
 
 
         // ****************** //
-        $food_type_ids = array_unique($subscription->foodType()->pluck('food_type_id')->toArray());
+        $subscription_food_type_id = SubscriptionFoodType::where('subscription_id', $subscription->id)->where('subscription_delivery_id', $subscriptionOrder->subscription_delivery_id)->first()->id;
+
+        $food_type_ids = array_unique(SubscriptionFood::where('subscription_food_type_id', $subscription_food_type_id)->pluck('food_type_id')->toArray());
 
         $food_types = FoodType::whereIn('id', $food_type_ids)->get();
+
         $array = [];
         if(!empty($food_type_ids)){
-            foreach ($food_types as $food_type) {
-                $food_ids =  SubscriptionFood::where('subscription_id', $subscription->id)->where('food_type_id', $food_type->id)->pluck('food_id')->toArray();
-                $array[$food_type->id] = Food::whereIn('id', $food_ids)->get();
+            foreach($dateAndDay as $key=>$day){
 
+                foreach ($food_types as $food_type) {
+                    $food_ids =  SubscriptionFood::where('subscription_food_type_id', $subscription_food_type_id)->where('food_type_id', $food_type->id)->where('day',$key + 1)->pluck('food_id')->toArray();
+
+                    $array[$key + 1][$food_type->id] = Food::whereIn('id', $food_ids)->get();
+
+                }
             }
 
+//            foreach ($food_types as $food_type) {
+//                $food_ids =  SubscriptionFood::where('subscription_food_type_id', $subscription_food_type_id)->where('food_type_id', $food_type->id)->pluck('food_id')->toArray();
+//
+//                $array[$food_type->id] = Food::whereIn('id', $food_ids)->get();
+//
+//            }
+
         }else{
-            $food_ids =  SubscriptionFood::where('subscription_id', $subscription->id)->where('food_type_id', 0)->pluck('food_id')->toArray();
+            $food_ids =  SubscriptionFood::where('subscription_food_type_id', $subscription_food_type_id)->where('food_type_id', 0)->pluck('food_id')->toArray();
             $array[] = Food::whereIn('id', $food_ids)->get();
 
         }
