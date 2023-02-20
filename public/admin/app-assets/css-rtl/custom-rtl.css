@@ -130,3 +130,39 @@ pre[class*='language-']
 {
     float: right !important;
 }
+
+.subscriptionfoods .tab-content {
+    margin-top: 20px;
+}
+
+.subscriptionfoods .nav-tabs .nav-link {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+.subscriptionfoods .nav-tabs {
+    border: 0;
+    gap: 10px;
+    justify-content: center;
+}
+
+.subscriptionfoods .nav-tabs .nav-link {
+    background-color: transparent;
+    padding: 7px 20px !important;
+    border-radius: 50px !important;
+    color: #111;
+    border: 1px solid #eee;
+}
+
+.subscriptionfoods .nav-tabs .nav-link.active ,
+.subscriptionfoods .nav-tabs .nav-link:hover{
+    background-color: #7aa03f !important;
+    color: #FFF;
+    border-color: #7aa03f;
+}
+
+.selected {
+    background: #cfcfcf !important;
+}

@@ -217,21 +217,21 @@
 </div>
 
 <script>
-    var dummy = `
-    <div class="row align-items-end" id="em1">
-            <div class="form-group col-md-4 mb-2">
-                <label for="projectinput3">@lang('admin.foodTypes')</label>
-                <select class="select-ajax form-control" name="food_types[getNextIndex][]" multiple>
-                    <option value="">@lang('admin.choose')</option>
+    {{--var dummy = `--}}
+    {{--<div class="row align-items-end" id="em1">--}}
+    {{--        <div class="form-group col-md-4 mb-2">--}}
+    {{--            <label for="projectinput3">@lang('admin.foodTypes')</label>--}}
+    {{--            <select class="select-ajax form-control" name="food_types[getNextIndex][]" multiple>--}}
+    {{--                <option value="">@lang('admin.choose')</option>--}}
 
-                    @foreach($foodTypes as $foodType)
+{{--                    @foreach($foodTypes as $foodType)--}}
 
-    <option value="{{$foodType->id}}" @if(isset($subscription) && in_array($foodType->id ,
-                        $subscription->foodTypes()->pluck('food_type_id')->toArray()) )) selected
-                        @endif>{{$foodType->getTranslations('name')['ar']}}</option>
-                    @endforeach
-    </select>
-</div>
+{{--    <option value="{{$foodType->id}}" @if(isset($subscription) && in_array($foodType->id ,--}}
+{{--                        $subscription->foodTypes()->pluck('food_type_id')->toArray()) )) selected--}}
+{{--                        @endif>{{$foodType->getTranslations('name')['ar']}}</option>--}}
+{{--                    @endforeach--}}
+//     </select>
+// </div>
 
 <div class="form-group col-md-4 mb-2">
     <label for="projectinput4">@lang('admin.price')</label>

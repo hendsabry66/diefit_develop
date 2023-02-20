@@ -194,37 +194,19 @@ class SubscriptionController extends AppBaseController
     {
 
         $subscription = $this->subscriptionRepository->find($id);
-        $foods = $this->foodRepository->all();
         $types = $this->typeRepository->all();
         $foodTypes = $this->foodTypeRepository->all();
-        $subscription_foods = [];
-        foreach ($subscription->subscriptionFoods->pluck('food_id','id')->toArray() as $key=>$food) {
+        $foods = $this->foodRepository->all();
 
-            $subscription_foods[$key]['id'] = Food::find($food)->id;
-            $subscription_foods[$key]['name'] = Food::find($food)->name;
-            $subscription_foods[$key]['ingrediants'] = SubsrcriptionFoodIngredient::where('subscription_food_id',$key)->select('ingredient','qty')->get()->toArray();
-        }
 
         if (empty($subscription)) {
             $messages = ['success' => "Subscription not found", 'redirect' => route('subscriptions.index')];
             return response()->json(['messages' => $messages]);
 
         }
-//        $foodTypesSelected =[];
-//        foreach ($subscription->subscriptionPrices as $item) {
-//            foreach (json_decode($item->food_type) as $v) {
-//                array_push($foodTypesSelected,$v) ;
-//            }
-//
-//
-//        }
-//
-//
-//        $types = $this->typeRepository->all();
-//
-//        $foodTypes = $this->foodTypeRepository->all();
 
-        return view('admin.subscriptions.edit', compact('subscription' , 'foods', 'types' , 'foodTypes','subscription_foods'));
+
+        return view('admin.subscriptions.edit', compact('subscription' , 'foods', 'types' , 'foodTypes'));
     }
 
     /**

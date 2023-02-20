@@ -97,7 +97,8 @@ class SubscriptionController extends Controller
 
 
         // ****************** //
-        $subscription_food_type_id = SubscriptionFoodType::where('subscription_id', $subscription->id)->where('subscription_delivery_id', $subscriptionOrder->subscription_delivery_id)->first()->id;
+
+        $subscription_food_type_id = (SubscriptionFoodType::where('subscription_id', $subscription->id)->where('subscription_delivery_id', $subscriptionOrder->subscription_delivery_id)->first()) ? SubscriptionFoodType::where('subscription_id', $subscription->id)->where('subscription_delivery_id', $subscriptionOrder->subscription_delivery_id)->first()->id : null;
 
         $food_type_ids = array_unique(SubscriptionFood::where('subscription_food_type_id', $subscription_food_type_id)->pluck('food_type_id')->toArray());
 
