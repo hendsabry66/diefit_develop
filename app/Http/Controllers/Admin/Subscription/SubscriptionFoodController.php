@@ -113,39 +113,15 @@ class SubscriptionFoodController extends Controller
      */
     public function edit($id)
     {
+        $subscriptions = \App\Models\Subscription::get();
+        $subscriptionFoodType = SubscriptionFoodType::find($id);
+        $subscription_delivery = SubscriptionDelivery::where('subscription_id', $subscriptionFoodType->subscription_id)->get();
+        $selected_subscription_delivery = SubscriptionDelivery::where('id', $subscriptionFoodType->subscription_delivery_id)->first();
+        $foodTypes = \App\Models\FoodType::get();
+        $foods = \App\Models\Food::get();
+        $subscription_foods = SubscriptionFood::where('subscription_food_type_id', $id)->get();
 
-        $subscription = $this->subscriptionRepository->find($id);
-        $foods = $this->foodRepository->all();
-        $types = $this->typeRepository->all();
-        $foodTypes = $this->foodTypeRepository->all();
-        $subscription_foods = [];
-        foreach ($subscription->subscriptionFoods->pluck('food_id','id')->toArray() as $key=>$food) {
-
-            $subscription_foods[$key]['id'] = Food::find($food)->id;
-            $subscription_foods[$key]['name'] = Food::find($food)->name;
-            $subscription_foods[$key]['ingrediants'] = SubsrcriptionFoodIngredient::where('subscription_food_id',$key)->select('ingredient','qty')->get()->toArray();
-        }
-
-        if (empty($subscription)) {
-            $messages = ['success' => "Subscription not found", 'redirect' => route('subscriptions.index')];
-            return response()->json(['messages' => $messages]);
-
-        }
-//        $foodTypesSelected =[];
-//        foreach ($subscription->subscriptionPrices as $item) {
-//            foreach (json_decode($item->food_type) as $v) {
-//                array_push($foodTypesSelected,$v) ;
-//            }
-//
-//
-//        }
-//
-//
-//        $types = $this->typeRepository->all();
-//
-//        $foodTypes = $this->foodTypeRepository->all();
-
-        return view('admin.subscriptions.edit', compact('subscription' , 'foods', 'types' , 'foodTypes','subscription_foods'));
+        return view('admin.subscriptionfoods.edit', compact('subscriptionFoodType', 'subscriptions','subscription_delivery','selected_subscription_delivery','foodTypes','foods','subscription_foods'));
     }
 
     /**
@@ -156,55 +132,34 @@ class SubscriptionFoodController extends Controller
      *
      * @return Response
      */
-    public function update($id, UpdateSubscriptionRequest $request)
+    public function update($id, Request $request)
     {
-        $subscription = $this->subscriptionRepository->find($id);
 
-        if (empty($subscription)) {
-            $messages = ['success' => "Subscription not found", 'redirect' => route('subscriptions.index')];
-            return response()->json(['messages' => $messages]);
+        $subscription_food_type =SubscriptionFoodType::find($id);
+        $subscription_food_type->subscription_delivery_id =$request->subscription_delivery_id;
+        $subscription_food_type->subscription_id =$request->subscription_id;
+        $subscription_food_type->save();
 
-        }
+        SubscriptionFood::where('subscription_food_type_id', $id)->delete();
+
+        foreach ($request->foods as $key=>$food){
+            //$day == $key
+            foreach ($food as $foodType=>$value){
 
 
-        $input = $request->all();
-
-        $subscription = $this->subscriptionRepository->updateSubscription($input, $id);
-
-        if(!empty($input['foods'])){
-            foreach(SubscriptionFood::where('subscription_id',$id)->get() as $item){
-
-                SubsrcriptionFoodIngredient::where('subscription_food_id',$item->id)->delete();
-                $item->delete();
-            }
-            foreach ($input['foods'] as $food) {
-                $subscription_food = SubscriptionFood::create([
-                    'subscription_id' => $subscription->id,
-                    'food_id' => $food,
-                ]);
-                SubsrcriptionFoodIngredient::where('subscription_food_id',$subscription_food->id)->delete();
-                foreach ($input['foodsitems'][$food]['ingrediant'] as $key=>$item) {
-
-                    SubsrcriptionFoodIngredient::create([
-                        'subscription_food_id' => $subscription_food->id,
-                        'ingredient' => $item,
-                        'qty' => $input['foodsitems'][$food]['quantity'][$key],
+                foreach ($value as $foodId){
+                    $subscription_food = SubscriptionFood::create([
+                        'food_id'=>$foodId,
+                        'subscription_food_type_id'=>$subscription_food_type->id,
+                        'food_type_id'=>$foodType,
+                        'day'=>$key,
                     ]);
+
                 }
             }
         }
-        if (!empty($input['number_of_delivery_days'])) {
-            $subscription->subscriptionDelivery()->delete();
-            foreach ($request->number_of_delivery_days  as $key => $value) {
-                SubscriptionDelivery::create([
-                    'subscription_id' => $subscription->id,
-                    'number_of_delivery_days' => $value,
-                    'period' => $request->period[$key],
-                ]);
 
-            }
-        }
-        $messages = ['success' => "Successfully updated", 'redirect' => route('subscriptions.index')];
+        $messages = ['success' => "Successfully updated", 'redirect' => route('subscriptionFoods.index')];
         return response()->json(['messages' => $messages]);
 
     }
@@ -220,17 +175,13 @@ class SubscriptionFoodController extends Controller
      */
     public function destroy($id)
     {
-        $subscription = $this->subscriptionRepository->find($id);
+        $subscription_food_type =SubscriptionFoodType::find($id);
 
-        if (empty($subscription)) {
-            $messages = ['success' => "Subscription not found", 'redirect' => route('subscriptions.index')];
-            return response()->json(['messages' => $messages]);
+        SubscriptionFood::where('subscription_food_type_id', $id)->delete();
 
-        }
+        $subscription_food_type->delete();
 
-        $this->subscriptionRepository->delete($id);
-
-        $messages = ['success' => "Successfully deletd", 'redirect' => route('subscriptions.index')];
+        $messages = ['success' => "Successfully deletd", 'redirect' => route('subscriptionFoods.index')];
         return response()->json(['messages' => $messages]);
     }
 

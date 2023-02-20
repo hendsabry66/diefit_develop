@@ -35,3 +35,10 @@ function sendSMS($message,$mobileNumber)
     echo nl2br($ret);
 }
 
+//get subscription_foods
+function SubscriptionFoods($subscription_food_type_id, $day, $food_type_id){
+  return   \App\Models\SubscriptionFood::where('subscription_food_type_id', $subscription_food_type_id)->where('day',$day)->where('food_type_id',$food_type_id)
+        ->pluck("food_id")->toArray();
+}
+
+

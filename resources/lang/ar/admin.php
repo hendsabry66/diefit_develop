@@ -322,6 +322,10 @@ return [
     'number_of_delivery_days'=>'عدد ايام التوصيل',
     'subscriptionFoods'=>'وجبات الاشتراك',
     'addNewSubscriptionFoods'=>'اضافة وجبة اشتراك جديدة',
+    'addSubscriptionFoods'=>'اضافة وجبة اشتراك',
+    'periods'=>'المدة',
+    'editSubscriptionfoods'=>'تعديل وجبة اشتراك',
+    'select'=>'اختر',
 
 
 

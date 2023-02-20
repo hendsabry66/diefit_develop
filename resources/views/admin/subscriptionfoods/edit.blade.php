@@ -25,13 +25,13 @@
                     <div class="card-content collpase show">
                         <div class="card-body">
 
-                            <form class="form form-horizontal ajaxForm" action="{{route('subscriptions.update', $subscription->id)}}" method="post" enctype="multipart/form-data">
+                            <form class="form form-horizontal ajaxForm" action="{{route('subscriptionFoods.update', $subscriptionFoodType->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 {{ method_field('PUT') }}
                                 <div class="form-body">
-                                    <h4 class="form-section"><i class="ft-user"></i>  @lang('admin.editSubscription') </h4>
+                                    <h4 class="form-section"><i class="ft-user"></i>  @lang('admin.editSubscriptionfoods') </h4>
 
-                                    @include('admin.subscriptions.form')
+                                    @include('admin.subscriptionfoods.edit_form')
 
                                 </div>
                                 <div class="form-actions ">
@@ -52,4 +52,44 @@
 
 
     </section>
+@endsection
+@section('js')
+    <script>
+        $(document).ready(function () {
+            $('select[name="subscription_id"]').on('change', function () {
+                var subscription_id = $(this).val();
+                if (subscription_id) {
+                    $.ajax({
+                        url: "{{ url('/admin/getSubscriptionDelivery/') }}/" + subscription_id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function (data) {
+                            $('select[name="subscription_delivery_id"]').empty();
+                            $('select[name="subscription_delivery_id"]').append('<option value=""> اختر</option>');
+                            $.each(data, function (key, value) {
+                                $('select[name="subscription_delivery_id"]').append('<option value="' + key + '">' + value + '</option>');
+                            });
+                        },
+                    });
+                } else {
+                    $('select[name="subscription_delivery_id"]').empty();
+                }
+            });
+
+            $('select[name="subscription_delivery_id"]').on('change', function () {
+                var subscription_delivery_id = $(this).val();
+
+                $.ajax({
+                    url: "{{ url('/admin/getSubscriptionFoods/') }}/" + subscription_delivery_id,
+                    type: "GET",
+                    dataType: "html",
+                    success: function (data) {
+                        $("#block").html(data);
+                    },
+                });
+
+            });
+        });
+
+    </script>
 @endsection
