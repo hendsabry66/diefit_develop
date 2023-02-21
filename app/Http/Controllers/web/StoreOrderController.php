@@ -60,8 +60,8 @@ $price = 0;
                 'CustomerEmail' => auth()->user()->email,
                 'InvoiceValue' => $price,
                 "InvoiceItems"=> $invoiceItems,
-                'CallBackUrl' =>'https://www.google.com/', // 'https://dev15.toplinedev.com/diefit/public/success?order_id='.$order->id,
-                'ErrorUrl' =>'https://www.google.com/', //https://dev15.toplinedev.com/diefit/public/error?order_id='.$order->id,
+                'CallBackUrl' =>'https://dev15.toplinedev.com/diefit_develop/public/success?order_id='.$order->id,
+                'ErrorUrl' =>'https://dev15.toplinedev.com/diefit_develop/public/error?order_id='.$order->id,
 
             ];
 
@@ -89,7 +89,7 @@ $price = 0;
 
             if(isset($response['IsSuccess']) && $response['IsSuccess'] == true) {
                     //delete cart
-                //$this->cartRepository->deleteCart();
+                $this->cartRepository->deleteCart();
                 return redirect($response['Data']['InvoiceURL']);
 
             }else{
