@@ -113,7 +113,8 @@ Route::group(['middleware' => ['adminAuth']], function() {
 
     Route::resource('settings', SettingController::class);
     Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
-    Route::post('settings/{setting_group}', [SettingController::class, 'update'])->name('settings.update');
+    Route::post('settings/{setting_group}', [SettingController::class, 'update']);
+    //->name('settings.update');
 
 
     Route::resource('users', UserController::class);
