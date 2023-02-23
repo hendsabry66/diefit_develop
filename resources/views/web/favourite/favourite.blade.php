@@ -85,7 +85,7 @@
                             </div>
                         </div>
                         <!-- End Model -->
-                                    <a href="{{ url('store/productDetails/' . $product->id) }}">
+                                    <a href="{{ LaravelLocalization::localizeUrl('productDetails/' . $product->id) }}">
                                         <figure>
                                             @if ($product->image)
                                                 <img src="{{ $product->image }}" alt="">
@@ -142,7 +142,7 @@
             }
         });
       //product
-      
+
        var product_id;
         var modalConfirm_product = function (callback) {
             $(".btn-confirm_product").on("click", function () {
