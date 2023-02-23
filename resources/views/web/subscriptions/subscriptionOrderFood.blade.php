@@ -137,6 +137,7 @@
                                                         <input class="form-check-input" type="radio" value="{{$food->id}}" name="food_day[{{$value[0]}}{{'/'}}{{$value[1]}}][{{$food_type->id}}][food_id][]" id="flexCheckDefault">
                                                         <label class="form-check-label" for="flexCheckDefault">
                                                             <a class="link-box-desc" href="" data-id="food-{{$food->id}}">{{$food->name}}</a>
+                                                            <br>
                                                             @foreach($food->extras as $extra)
                                                                 <span  data-id="extra-{{$extra->id}}">{{$extra->name}}</span> -
                                                             @endforeach

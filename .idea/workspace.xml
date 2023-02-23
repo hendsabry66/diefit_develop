@@ -3,13 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="601a7e32-5d21-4c74-955e-5f513cb79eb3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/SubscriptionFoodDataTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/SubscriptionFoodDataTable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CreateFoodRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CreateFoodRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Extra.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Extra.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Food.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Food.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/SubscriptionFoodType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SubscriptionFoodType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/extras/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/extras/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/foods/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/foods/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/web/subscriptions/subscriptionOrderFood.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/subscriptions/subscriptionOrderFood.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -268,7 +261,7 @@
       <workItem from="1676188090266" duration="1201000" />
       <workItem from="1676289513580" duration="22793000" />
       <workItem from="1676881376210" duration="15041000" />
-      <workItem from="1677133090196" duration="1879000" />
+      <workItem from="1677133090196" duration="2539000" />
     </task>
     <servers />
   </component>
