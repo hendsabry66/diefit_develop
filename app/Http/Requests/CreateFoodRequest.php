@@ -28,7 +28,7 @@ class CreateFoodRequest extends FormRequest
             'name_ar' => 'required|unique:foods,name',
             'name_en' => 'required|unique:foods,name',
             'price' => 'required|numeric',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+          //  'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'ingredients_ar' => 'required',
             'ingredients_en' => 'required',
             'details_ar' => 'required|min:10|max:1000',

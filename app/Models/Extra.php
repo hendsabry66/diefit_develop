@@ -31,7 +31,13 @@ class Extra extends Model
         'fat_percentage',
         'protein_percentage',
         'carbohydrate_percentage',
-        'qty'
+        'qty',
+        'saturated_fat',
+        'trans_fats',
+        'cholestrol',
+        'sodium',
+        'fiber',
+        'sugars',
     ];
 
     /**

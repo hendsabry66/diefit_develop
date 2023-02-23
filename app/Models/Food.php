@@ -34,6 +34,13 @@ class Food extends Model
         'protein_percentage',
         'carbohydrate_percentage',
         'status',
+        'saturated_fat',
+        'trans_fats',
+        'cholestrol',
+        'sodium',
+        'fiber',
+        'sugars',
+
 
     ];
 

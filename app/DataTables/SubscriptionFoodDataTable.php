@@ -39,9 +39,9 @@ class SubscriptionFoodDataTable extends DataTable
 //                return $q->has_calories ? 'نعم' : 'لا';
 //            })
 //
-//            ->editColumn('has_specialist', function ($q) {
-//                return $q->has_specialist ? 'نعم' : 'لا';
-//            })
+            ->editColumn('name', function ($q) {
+                return $q->subscription->getTranslations('name')['ar'] . ' - ' . $q->subscriptionDelivery->period;
+            })
 
             ->rawColumns(['action','status'])
             ->addColumn('actions', 'admin.subscriptionfoods.datatables.actions');
@@ -88,7 +88,7 @@ class SubscriptionFoodDataTable extends DataTable
         return [
             ['name' => 'check', 'data' => 'check', 'title' => '<label class="mt-checkbox mt-checkbox-single mt-checkbox-outline"><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" id="check_all"/><span></span></label> ', 'exportable' => false, 'printable' => false, 'orderable' => false, 'searchable' => false],
             ['name' => 'id', 'data' => 'id', 'title' => 'الرقم التسلسلى'],
-//            ['name' => 'name', 'data' => 'name', 'title' => 'الاسم'],
+            ['name' => 'name', 'data' => 'name', 'title' => 'الاسم'],
 //            ['name' => 'price', 'data' => 'price', 'title' => 'السعر'],
 //            ['name' => 'has_specialist', 'data' => 'has_specialist', 'title' => 'هل يوجد مختص'],
 //            ['name' => 'has_calories', 'data' => 'has_calories', 'title' => 'هل يوجد سعرات حراريه '],

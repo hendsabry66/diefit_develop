@@ -12,4 +12,14 @@ class SubscriptionFoodType extends Model
         'subscription_delivery_id',
         'subscription_id'
     ];
+
+    public function subscription()
+    {
+        return $this->belongsTo(Subscription::class);
+    }
+
+    public function subscriptionDelivery()
+    {
+        return $this->belongsTo(SubscriptionDelivery::class);
+    }
 }
