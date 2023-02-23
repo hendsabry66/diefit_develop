@@ -10,6 +10,7 @@
       <change beforePath="$PROJECT_DIR$/app/Models/SubscriptionFoodType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SubscriptionFoodType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/extras/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/extras/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/foods/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/foods/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/subscriptions/subscriptionOrderFood.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/subscriptions/subscriptionOrderFood.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +268,7 @@
       <workItem from="1676188090266" duration="1201000" />
       <workItem from="1676289513580" duration="22793000" />
       <workItem from="1676881376210" duration="15041000" />
-      <workItem from="1677133090196" duration="1502000" />
+      <workItem from="1677133090196" duration="1879000" />
     </task>
     <servers />
   </component>

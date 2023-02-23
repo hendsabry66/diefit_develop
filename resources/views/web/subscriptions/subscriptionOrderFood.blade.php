@@ -138,7 +138,7 @@
                                                         <label class="form-check-label" for="flexCheckDefault">
                                                             <a class="link-box-desc" href="" data-id="food-{{$food->id}}">{{$food->name}}</a>
                                                             @foreach($food->extras as $extra)
-                                                                <p  data-id="extra-{{$extra->id}}">{{$extra->name}}</p>
+                                                                <span  data-id="extra-{{$extra->id}}">{{$extra->name}}</span> -
                                                             @endforeach
 
                                                             <div class="box-desc" id="food-{{$food->id}}">
