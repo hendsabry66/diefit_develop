@@ -57,7 +57,7 @@ class SubscriptionOrdersDataTable extends DataTable
             return $q->where('status_id', 6)->where('payment','bank_transfer');
         });
         $query->with('user')->with('status')->With('subscriptionPrice')->select('subscription_orders.*');
-        return $query;
+        return $query->orderBy('id', 'desc');
 
 
 

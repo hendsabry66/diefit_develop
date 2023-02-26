@@ -124,7 +124,7 @@ return [
     'Go to calculator'=>'الذهاب للحاسبة',
     'Determine meal-specific factors'=>'تحديد عوامل الوجبة المحددة',
     'order invoice'=>'فاتورة الطلب',
-    'Description_and_title_tag'=>'وصف وعناوين العلامات',
+    'Description_and_title_tag'=>'  وصف العنوان',
     'street'=>'الشارع',
     'house'=>'المنزل',
     'appartment'=>'الشقة',

@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="601a7e32-5d21-4c74-955e-5f513cb79eb3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/web/stores/error.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/web/stores/success.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/web/StoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/web/StoreController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/stores/store.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/stores/store.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/DataTables/RestaurantOrdersDataTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/RestaurantOrdersDataTable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/DataTables/StoreOrdersDataTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/StoreOrdersDataTable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/DataTables/SubscriptionOrdersDataTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/SubscriptionOrdersDataTable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/web/StoreOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/web/StoreOrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/restaurants/orders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/restaurants/orders.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/stores/orders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/stores/orders.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -264,7 +271,7 @@
       <workItem from="1676289513580" duration="22793000" />
       <workItem from="1676881376210" duration="15041000" />
       <workItem from="1677133090196" duration="5119000" />
-      <workItem from="1677393356616" duration="4565000" />
+      <workItem from="1677393356616" duration="10449000" />
     </task>
     <servers />
   </component>

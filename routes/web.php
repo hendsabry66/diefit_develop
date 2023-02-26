@@ -116,6 +116,8 @@ Route::group([
             Route::get('/compelete/orders', [StoreOrderController::class, 'compelete_orders']);
             Route::get('/deleteOrder/{order_id}', [StoreOrderController::class, 'deleteOrder']);
             Route::get('/orderDetails/{id}', [StoreOrderController::class, 'orderDetails']);
+            Route::get('/success', [StoreOrderController::class, 'successPayment']);
+            Route::get('/error', [StoreOrderController::class, 'errorPayment']);
         });
         /**
          * Route for subscription

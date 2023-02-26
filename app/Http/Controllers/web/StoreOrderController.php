@@ -8,6 +8,7 @@ use App\Repositories\AddressRepository;
 use App\Repositories\CartRepository;
 use App\Repositories\OrderItemRepository;
 use App\Repositories\OrderRepository;
+use App\Models\Order;
 
 class StoreOrderController extends Controller
 {
@@ -35,7 +36,11 @@ class StoreOrderController extends Controller
         //store address
         $address = $this->addressRepository->createAddress($request->all());
         //store order
-        $total_price = $carts->sum('price') + 10 + 10;
+        $total = 0 ;
+        foreach($carts as $cart){
+            $total += $cart->price * $cart->quantity ;
+        }
+        $total_price = $total + (15* ($total+ 0)  / 100) + 0;
         $order = $this->orderRepository->createOrder($request,$address->id,$carts->sum('price'),$total_price);
         //store order details
         foreach($carts as $cart){
@@ -70,8 +75,9 @@ $price = 0;
                 'CustomerEmail' => auth()->user()->email,
                 'InvoiceValue' => $price,
                 "InvoiceItems"=> $invoiceItems,
-                'CallBackUrl' =>'https://dev15.toplinedev.com/diefit_develop/public/success?order_id='.$order->id,
-                'ErrorUrl' =>'https://dev15.toplinedev.com/diefit_develop/public/error?order_id='.$order->id,
+                'Tax' => $price + 0 + (15* ($price+ 0)  / 100),
+                'CallBackUrl' =>'https://dev15.toplinedev.com/diefit_develop/public/store/success?order_id='.$order->id,
+                'ErrorUrl' =>'https://dev15.toplinedev.com/diefit_develop/public/store/error?order_id='.$order->id,
 
             ];
 
@@ -108,6 +114,68 @@ $price = 0;
 
         return redirect('store/orders');
     }
+    //success
+
+    public function successPayment(Request $request) {
+
+        $json = [
+            'KeyType' => 'PaymentId',
+            'Key' => $request->paymentId,
+        ];
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api-sa.myfatoorah.com/v2/GetPaymentStatus",
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => json_encode($json),
+            CURLOPT_HTTPHEADER => array("Authorization:Bearer xjfV1TFjmUr2vGoaP5J1ja0JpqvaR3t9bZJzAj9aMzfFgzj4IWQlkgaV13fbcWrrctGZge4RxCZuc8Dkp3_rZfDULww7IE3DvUH4kXdaGFThKn7cT-kTmuXre_XhgqMCt6iMMTiC5Kr1kuRXEK52xYgjCQshbAEll1k2AQT5RgZkSKHaqnKB2cHlDZvWFv8CAhvWVlxCW47R8RhjLb8S7LcshljQ3sWc5kyprdV5IiP-Gc3t3fBvnase03p2ekiNHePRiUBb3ckqnPZSSp5hTAgVMMnPNwcjGF-plmmsp_3XDfbm5cCWlOE3tn4Pj_oXAP5Ytqmk8iHPcM2vHblkYy0qQ-hTdogEILUI-7HZmcTEFi7wM_QES9oAUo8eLvGzHRRwV8cNl-HT3noEsZ3-JNDaYFahIjSiIjvwrVztWaUnpjZjcFOY_0S9ZFuinKB0o7t-Myh3d-O4OPZ7vI7STBta6sbVCnbP_GF28vl_OA2MQqXTt-uIaoHo2KYWfHzhj25fEB6yOuNq86ECNFoRxQilIcS00XdpnfI0RqSj_ESV1xt64cFCZvkRSbdGX_cK16yqYEn6CtY8N2tAhCRWzmM9jTdvKnw0x3mi73I7VJO-9RGYTC9SXSJEWsPvDHxteiYnOC486LgJEgOCSXoYhXJurDnk_x73X-jFw241DD-YxCbI-1DT2OuINjrhF1sD77nscry-TlOrQKwf4WASz13J-oP5ay4cSwusC0-mCcVr1d74","Content-Type: application/json"),
+
+
+        ));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $response  = json_decode(curl_exec($curl),true);
+        $err = curl_error($curl);
+        curl_close($curl);
+
+        if($response['IsSuccess'] == true) {
+
+                $order = Order::where('id', $request->order_id)->firstOrFail();
+                $order->payment_status ='paid';
+                $order->save();
+
+
+
+        } else {
+            return  'https://dev15.toplinedev.com/diefit_develop/public/store/error?order_id='.$request->order_id;
+
+        }
+
+        return view('web.stores.success');
+    }
+
+    //error
+    public function errorPayment(Request $request) {
+        $json = [
+            'KeyType' => 'PaymentId',
+            'Key' => $request->paymentId,
+        ];
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api-sa.myfatoorah.com/v2/GetPaymentStatus",
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => json_encode($json),
+            CURLOPT_HTTPHEADER =>array("Authorization:Bearer xjfV1TFjmUr2vGoaP5J1ja0JpqvaR3t9bZJzAj9aMzfFgzj4IWQlkgaV13fbcWrrctGZge4RxCZuc8Dkp3_rZfDULww7IE3DvUH4kXdaGFThKn7cT-kTmuXre_XhgqMCt6iMMTiC5Kr1kuRXEK52xYgjCQshbAEll1k2AQT5RgZkSKHaqnKB2cHlDZvWFv8CAhvWVlxCW47R8RhjLb8S7LcshljQ3sWc5kyprdV5IiP-Gc3t3fBvnase03p2ekiNHePRiUBb3ckqnPZSSp5hTAgVMMnPNwcjGF-plmmsp_3XDfbm5cCWlOE3tn4Pj_oXAP5Ytqmk8iHPcM2vHblkYy0qQ-hTdogEILUI-7HZmcTEFi7wM_QES9oAUo8eLvGzHRRwV8cNl-HT3noEsZ3-JNDaYFahIjSiIjvwrVztWaUnpjZjcFOY_0S9ZFuinKB0o7t-Myh3d-O4OPZ7vI7STBta6sbVCnbP_GF28vl_OA2MQqXTt-uIaoHo2KYWfHzhj25fEB6yOuNq86ECNFoRxQilIcS00XdpnfI0RqSj_ESV1xt64cFCZvkRSbdGX_cK16yqYEn6CtY8N2tAhCRWzmM9jTdvKnw0x3mi73I7VJO-9RGYTC9SXSJEWsPvDHxteiYnOC486LgJEgOCSXoYhXJurDnk_x73X-jFw241DD-YxCbI-1DT2OuINjrhF1sD77nscry-TlOrQKwf4WASz13J-oP5ay4cSwusC0-mCcVr1d74","Content-Type: application/json"),
+
+
+
+        ));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $response  = json_decode(curl_exec($curl),true);
+        $err = curl_error($curl);
+        curl_close($curl);
+
+        return view('web.stores.error');
+    }
+
 
     public function orders(){
         $orders = $this->orderRepository->getOrders();

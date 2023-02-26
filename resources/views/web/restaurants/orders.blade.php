@@ -31,7 +31,8 @@
                                         <li>طريقة الدفع المحددة: <strong>{{$order->payment}}</strong></li>
                                         <li>
                                             العنوان المحدد في الطلب: <strong>
-                                                {{($order->address->city) ? $order->address->city->name : ''}} , {{$order->address->address}},
+
+                                                {{($order->address) ? $order->address->city->name : ''}} , {{$order->address->address}},
                                                 {{$order->address->street}} , {{$order->address->house}} ,
                                                 {{$order->address->apartment}}
                                             </strong>
@@ -42,7 +43,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="{{url('restaurant/deleteOrder/'.$order->id)}}"><i class="fa-solid fa-xmark"></i></a>
+{{--                    <a href="{{url('restaurant/deleteOrder/'.$order->id)}}"><i class="fa-solid fa-xmark"></i></a>--}}
                 </div>
             @endforeach
 

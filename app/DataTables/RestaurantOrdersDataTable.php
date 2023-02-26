@@ -56,7 +56,7 @@ class RestaurantOrdersDataTable extends DataTable
             return $q->where('status_id', 6)->where('payment','bank_transfer');
         });
         $query->with('user')->with('address')->with('status')->select('restaurant_orders.*');
-        return $query;
+        return $query->orderBy('id', 'desc');
 
 
     }
