@@ -1,6 +1,5 @@
 @extends('web.layouts.master')
 @section('content')
-
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -62,11 +61,17 @@
                 <div class="head">
                     <h2>@lang('web.order invoice')</h2>
                 </div>
+                    @php $total = 0 ;
+                         foreach($carts as $cart){
+                      $total += $cart->price * $cart->quantity ;
+                      }
+
+                    @endphp
                 <ul>
                     <li>
                         <div class="d-flex justify-content-between">
                             <span>@lang('web.total_base_price') </span>
-                            <span>{{$carts->sum('price') }}</span>
+                            <span>{{$total }}</span>
                         </div>
                     </li>
                     <li>
@@ -78,19 +83,14 @@
                     <li>
                         <div class="d-flex justify-content-between">
                             <span>@lang('web.tax') </span>
-                            <span>10 </span>
+                            <span>{{(15* ($total+ 10) ) / 100}} </span>
                         </div>
                     </li>
                     <li>
                         <div class="d-flex justify-content-between">
                             <span>@lang('web.total_price')</span>
-                           @php $total = 0 ; 
-                         foreach($carts as $cart){
-                      $total += $cart->price * $cart->quantity ;
-                      }
-                      
-                      @endphp
-                            <span><strong>{{$total  + 10 +10}}</strong></span>
+
+                            <span><strong>{{$total+ 10  + ((15* ($total+ 10) ) / 100)}}</strong></span>
                         </div>
                     </li>
                 </ul>
@@ -106,8 +106,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="mb-3"><strong>@lang('web.city')</strong></label>
-                            <select class="form-select" aria-label="Default select example" name="city_id">
-                                <option selected>@lang('web.choose')</option>
+                            <select class="form-select" aria-label="Default select example" name="city_id" required>
+                                <option>@lang('web.choose')</option>
                                 @foreach($cities as $city)
                                     <option value="{{$city->id}}">{{$city->name}}</option>
                                     @endforeach
@@ -115,19 +115,19 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="mb-3"><strong>@lang('web.Description_and_title_tag') </strong></label>
-                            <input class="form-control" type="text" name="address" id="" placeholder="@lang('web.address')">
+                            <input class="form-control" type="text" name="address" id="" placeholder="@lang('web.address')" required>
                         </div>
                         <div class="mb-3">
                             <label for="" class="mb-3"><strong>@lang('web.street') </strong></label>
-                            <input class="form-control" type="text" name="street" id="" placeholder="@lang('web.street')">
+                            <input class="form-control" type="text" name="street" id="" placeholder="@lang('web.street')" required>
                         </div>
                         <div class="mb-3">
                             <label for="" class="mb-3"><strong>@lang('web.house') </strong></label>
-                            <input class="form-control" type="text" name="house" id="" placeholder="@lang('web.house')">
+                            <input class="form-control" type="text" name="house" id="" placeholder="@lang('web.house')" required>
                         </div>
                         <div class="mb-3">
                             <label for="" class="mb-3"><strong>@lang('web.apartment') </strong></label>
-                            <input class="form-control" type="text" name="apartment" id="" placeholder="@lang('web.apartment')">
+                            <input class="form-control" type="text" name="apartment" id="" placeholder="@lang('web.apartment')" required>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -136,11 +136,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="mb-3"><strong>@lang('web.day') </strong></label>
-                            <input class="form-control" type="date" name="date" id="" placeholder="">
+                            <input class="form-control" type="date" name="date" id="" placeholder="" min="{{Carbon\Carbon::now()->format('Y-m-d')}}" required>
                         </div>
                         <div class="mb-3">
                             <label for="" class="mb-3"><strong>@lang('web.hour') </strong></label>
-                            <input class="form-control" type="time" name="time" id="" placeholder="00:00">
+                            <input class="form-control" type="time" name="time" id="" placeholder="00:00" required>
                         </div>
                         <hr>
                         <div class="head">
@@ -149,7 +149,7 @@
                         @foreach(json_decode(settings()['store_payment']) as $payment_method)
 
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="payment" value="visa" id="flexRadioDefault1">
+                                <input class="form-check-input" type="radio" name="payment" value="visa" id="flexRadioDefault1" required>
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     {{$payment_method}}
                                 </label>

@@ -81,10 +81,10 @@
                             </div>
                             <div class="number mb-4">
                                 <span>@lang('web.quantity'): </span>
-                                <div class="d-flex align-items-center">
+                                <div class="d-flex align-items-center quantity">
                                     <button class="plus"><i class="fa-solid fa-plus"></i></button>
-                                    <input type="number" name="quantity" id="" value="01">
-                                    <button class="min"><i class="fa-solid fa-minus"></i></button>
+                                    <input type="number"  id="" name="quantity" class="qty " step="1" value="1" min="1" max="">
+                                    <button class="min minus"><i class="fa-solid fa-minus"></i></button>
                                 </div>
                             </div>
                             <div class="price mb-4">
@@ -182,6 +182,31 @@
 
                     }
                 });
+            });
+              });
+        jQuery(document).ready(function ($) {
+            $(document).on('click', 'button.plus, button.minus', function (e) {
+
+                var qty = $(this).parent('.quantity').find('.qty');
+                var val = parseFloat(qty.val());
+                var max = parseFloat(qty.attr('max'));
+                var min = parseFloat(qty.attr('min'));
+                var step = parseFloat(qty.attr('step'));
+
+                if ($(this).is('.plus')) {
+                    if (max && (max <= val)) {
+                        qty.val(max).change();
+                    } else {
+                        qty.val(val + step).change();
+                    }
+                } else {
+                    if (min && (min >= val)) {
+                        qty.val(min).change();
+                    } else if (val > 1) {
+                        qty.val(val - step).change();
+                    }
+                }
+                return false;
             });
         });
     </script>

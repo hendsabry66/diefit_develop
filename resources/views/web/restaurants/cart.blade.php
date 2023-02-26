@@ -16,7 +16,7 @@
                         <div class="item mb-4">
                             <div class="d-md-flex">
                                 <figure>
-                                    <img src="{{ $cart->food->image }}" alt="">
+                                    <img src="{{ ($cart->food) ? $cart->food->image : null }}" alt="">
                                 </figure>
                                 <div class="caption">
                                     <h2>{{ $cart->food->name }} </h2>
@@ -33,7 +33,7 @@
                                             </div>
                                           <input type="hidden" name="total_price" value="{{ $cart->price * $cart->quantity }}" class="total-item-price" />
                                         </li>
-                                      <li>السعر: <strong><span class="total-price-format">{{ $cart->price * $cart->quantity }}</span> ر.س</strong>                                      	
+                                      <li>السعر: <strong><span class="total-price-format">{{ $cart->price * $cart->quantity }}</span> ر.س</strong>
                                       </li>
                                     </ul>
                                 </div>
@@ -66,15 +66,15 @@
 
                 <div class="total">
                     <div class="d-flex justify-content-between align-items-center">
-                      @php $total = 0 ; 
+                      @php $total = 0 ;
                          foreach($carts as $cart){
                       $total += $cart->price * $cart->quantity ;
                       }
-                      
+
                       @endphp
-                   
-                      
-                      
+
+
+
                       <span>@lang('web.total') : <strong><span class="total-cart-price-formats">{{ $total }}</span> ريال</strong></span>
                       	<input type="hidden" name="total_cart" value="{{ $total }}" class="total-cart-price" />
                         <a href="{{ url('restaurant/checkOut') }}" class="btn btn-success"> @lang('web.confirmation_of_purchase')</a>

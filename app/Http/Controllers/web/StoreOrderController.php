@@ -20,6 +20,16 @@ class StoreOrderController extends Controller
         $this->orderRepository = $orderRepository;
     }
     public function saveOrder(Request $request){
+        $request->validate([
+            'city_id' => 'required',
+            'address' => 'required',
+            'street' => 'required',
+            'house' => 'required',
+            'apartment' => 'required',
+            'date' => 'required',
+            'time' => 'required',
+            'payment' => 'required',
+        ]);
 
         $carts = $this->cartRepository->getCart();
         //store address

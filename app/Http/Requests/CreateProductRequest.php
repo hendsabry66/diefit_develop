@@ -29,8 +29,8 @@ class CreateProductRequest extends FormRequest
             'name_en' => 'required|unique:foods,name',
             'price' => 'required|numeric',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'details_ar' => 'required|min:10|max:1000',
-            'details_en' => 'required|min:10|max:1000',
+            'details_ar' => 'required|min:10',
+            'details_en' => 'required|min:10',
             'qty' => 'required|numeric',
             'product_category_id' => 'required',
 
