@@ -51,58 +51,67 @@
                     <h2>المنتجات الأكثر مبيعاً</h2>
                 </div>
                 <div class="row">
+                    @foreach($products as $product)
                     <div class="col-md-4 col-6">
                         <div class="item card-sile">
                             <a href="">
-                                <figure><img src="{{asset('web')}}/assets/images/i01.png" alt=""></figure>
-                                <h3>عنوان القسم</h3>
+                                <figure>
+                                @if($product->image)
+                                    <img src="{{$product->image}}" alt="">
+                                @else
+                                    <img src="{{asset('web/assets/images/c01.png')}}" alt="">
+                                @endif
+{{--                               <img src="{{asset('web')}}/assets/images/i01.png" alt="">--}}
+                                </figure>
+                                <h3> {{$product->name}}</h3>
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-4 col-6">
-                        <div class="item card-sile">
-                            <a href="">
-                                <figure><img src="{{asset('web')}}/assets/images/i02.png" alt=""></figure>
-                                <h3>عنوان القسم</h3>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-6">
-                        <div class="item card-sile">
-                            <a href="">
-                                <figure><img src="{{asset('web')}}/assets/images/i03.png" alt=""></figure>
-                                <h3>عنوان القسم</h3>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-6">
-                        <div class="item card-sile">
-                            <a href="">
-                                <figure><img src="{{asset('web')}}/assets/images/i04.png" alt=""></figure>
-                                <h3>عنوان القسم</h3>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-6">
-                        <div class="item card-sile">
-                            <a href="">
-                                <figure><img src="{{asset('web')}}/assets/images/i05.png" alt=""></figure>
-                                <h3>عنوان القسم</h3>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-6">
-                        <div class="item card-sile">
-                            <a href="">
-                                <figure><img src="{{asset('web')}}/assets/images/i06.png" alt=""></figure>
-                                <h3>عنوان القسم</h3>
-                            </a>
-                        </div>
-                    </div>
+                    @endforeach
+{{--                    <div class="col-md-4 col-6">--}}
+{{--                        <div class="item card-sile">--}}
+{{--                            <a href="">--}}
+{{--                                <figure><img src="{{asset('web')}}/assets/images/i02.png" alt=""></figure>--}}
+{{--                                <h3>عنوان القسم</h3>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-4 col-6">--}}
+{{--                        <div class="item card-sile">--}}
+{{--                            <a href="">--}}
+{{--                                <figure><img src="{{asset('web')}}/assets/images/i03.png" alt=""></figure>--}}
+{{--                                <h3>عنوان القسم</h3>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-4 col-6">--}}
+{{--                        <div class="item card-sile">--}}
+{{--                            <a href="">--}}
+{{--                                <figure><img src="{{asset('web')}}/assets/images/i04.png" alt=""></figure>--}}
+{{--                                <h3>عنوان القسم</h3>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-4 col-6">--}}
+{{--                        <div class="item card-sile">--}}
+{{--                            <a href="">--}}
+{{--                                <figure><img src="{{asset('web')}}/assets/images/i05.png" alt=""></figure>--}}
+{{--                                <h3>عنوان القسم</h3>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-4 col-6">--}}
+{{--                        <div class="item card-sile">--}}
+{{--                            <a href="">--}}
+{{--                                <figure><img src="{{asset('web')}}/assets/images/i06.png" alt=""></figure>--}}
+{{--                                <h3>عنوان القسم</h3>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
-                <div class="text-center mt-5">
-                    <a href="" class="btn btn-warning">المزيد</a>
-                </div>
+{{--                <div class="text-center mt-5">--}}
+{{--                    <a href="" class="btn btn-warning">المزيد</a>--}}
+{{--                </div>--}}
             </div>
         </div>
 

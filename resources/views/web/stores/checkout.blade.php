@@ -77,20 +77,20 @@
                     <li>
                         <div class="d-flex justify-content-between">
                             <span> @lang('web.delivery_price') </span>
-                            <span> 10</span>
+                            <span> 0</span>
                         </div>
                     </li>
                     <li>
                         <div class="d-flex justify-content-between">
                             <span>@lang('web.tax') </span>
-                            <span>{{(15* ($total+ 10) ) / 100}} </span>
+                            <span>{{(15* ($total+ 0) ) / 100}} </span>
                         </div>
                     </li>
                     <li>
                         <div class="d-flex justify-content-between">
                             <span>@lang('web.total_price')</span>
 
-                            <span><strong>{{$total+ 10  + ((15* ($total+ 10) ) / 100)}}</strong></span>
+                            <span><strong>{{$total+ 0  + ((15* ($total+ 0) ) / 100)}}</strong></span>
                         </div>
                     </li>
                 </ul>

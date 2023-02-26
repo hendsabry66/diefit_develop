@@ -3,11 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="601a7e32-5d21-4c74-955e-5f513cb79eb3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/web/StoreOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/web/StoreOrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CreateProductRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CreateProductRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/restaurants/cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/restaurants/cart.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/stores/checkout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/stores/checkout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/web/stores/product_details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/stores/product_details.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/web/StoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/web/StoreController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/web/stores/store.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/web/stores/store.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,7 +264,7 @@
       <workItem from="1676289513580" duration="22793000" />
       <workItem from="1676881376210" duration="15041000" />
       <workItem from="1677133090196" duration="5119000" />
-      <workItem from="1677393356616" duration="3268000" />
+      <workItem from="1677393356616" duration="4565000" />
     </task>
     <servers />
   </component>
@@ -284,6 +282,11 @@
             <option name="methodName" value="\types" />
           </properties>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/web/stores/store.blade.php</url>
+          <line>54</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

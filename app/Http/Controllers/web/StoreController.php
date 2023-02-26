@@ -26,9 +26,10 @@ class StoreController extends Controller
 
     public function store()
     {
+        $products = \App\Models\Product::withCount('orders')->orderByDesc('orders_count')->take(10)->get();
         $productCategories = $this->productCategoryRepository->all();
 
-        return view('web.stores.store', compact('productCategories'));
+        return view('web.stores.store', compact('productCategories','products'));
     }
 
     public function storeProducts($id)
