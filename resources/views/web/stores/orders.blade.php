@@ -36,7 +36,7 @@
                                             {{$order->address->apartment}}
                                         </strong>
                                     </li>
-                                    <li>مجمل الفاتورة: <strong>{{$order->total_price}}  </strong></li>
+                                    <li>مجمل الفاتورة: <strong>{{$order->total_price}}  @lang('web.rial') </strong></li>
                                 </ul>
                             </div>
                         </div>

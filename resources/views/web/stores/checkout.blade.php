@@ -29,7 +29,7 @@
                                     <h2>{{$cart->product->name}}</h2>
                                     <ul>
                                         <li>@lang('web.quantity') : <strong> {{$cart->quantity}}</strong></li>
-                                        <li>@lang('web.price'): <strong>{{$cart->price}}</strong></li>
+                                        <li>@lang('web.price'): <strong>{{$cart->price}} @lang('web.rial')</strong></li>
                                     </ul>
                                 </div>
                             </div>
@@ -71,26 +71,26 @@
                     <li>
                         <div class="d-flex justify-content-between">
                             <span>@lang('web.total_base_price') </span>
-                            <span>{{$total }}</span>
+                            <span>{{$total }} @lang('web.rial')</span>
                         </div>
                     </li>
                     <li>
                         <div class="d-flex justify-content-between">
                             <span> @lang('web.delivery_price') </span>
-                            <span> 0</span>
+                            <span> 0 @lang('web.rial')</span>
                         </div>
                     </li>
                     <li>
                         <div class="d-flex justify-content-between">
                             <span>@lang('web.tax') </span>
-                            <span>{{(15* ($total+ 0) ) / 100}} </span>
+                            <span>{{(15* ($total+ 0) ) / 100}} @lang('web.rial') </span>
                         </div>
                     </li>
                     <li>
                         <div class="d-flex justify-content-between">
                             <span>@lang('web.total_price')</span>
 
-                            <span><strong>{{$total+ 0  + ((15* ($total+ 0) ) / 100)}}</strong></span>
+                            <span><strong>{{$total+ 0  + ((15* ($total+ 0) ) / 100)}}  @lang('web.rial')</strong></span>
                         </div>
                     </li>
                 </ul>

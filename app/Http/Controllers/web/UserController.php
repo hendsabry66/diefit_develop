@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
 
+
     public function register()
     {
         $cities = \App\Models\City::all();
@@ -36,9 +37,9 @@ class UserController extends Controller
       	$code = rand(1000,9999);
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
-        $input['code'] = 1111;
+        $input['code'] = $code;
         $user = User::create($input);
-      	//sendSMS($code,$user->phone);
+      	sendSMS($code,$user->phone);
         return redirect('/code/' . $user->id);
     }
 
@@ -169,10 +170,10 @@ class UserController extends Controller
 
          $user = User::where('phone', $request->phone)->first();
         if($user) {
-          //$code = rand(1000,9999);
-            $user->code = 1111;
+          $code = rand(1000,9999);
+            $user->code = $code;
             $user->save();
-          	//sendSMS($code,$user->phone);
+          	sendSMS($code,$user->phone);
             return redirect('/code/' . $user->id.'/reset');
         }
         return back()->with('error', __('web.Wrong phone'));

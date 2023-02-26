@@ -114,7 +114,7 @@ Route::group([
             Route::post('/save/order', [StoreOrderController::class, 'saveOrder']);
             Route::get('/orders', [StoreOrderController::class, 'orders']);
             Route::get('/compelete/orders', [StoreOrderController::class, 'compelete_orders']);
-            Route::get('/deleteOrder/{order_id}', [StoreOrderController::class, 'deleteOrder']);
+//            Route::get('/deleteOrder/{order_id}', [StoreOrderController::class, 'deleteOrder']);
             Route::get('/orderDetails/{id}', [StoreOrderController::class, 'orderDetails']);
             Route::get('/success', [StoreOrderController::class, 'successPayment']);
             Route::get('/error', [StoreOrderController::class, 'errorPayment']);
@@ -147,7 +147,7 @@ Route::group([
             Route::post('/save/order', [RestaurantOrderController::class, 'saveOrder']);
             Route::get('/orders', [RestaurantOrderController::class, 'orders']);
             Route::get('/compelete/orders', [RestaurantOrderController::class, 'compelete_orders']);
-            Route::get('/deleteOrder/{order_id}', [RestaurantOrderController::class, 'deleteOrder']);
+//            Route::get('/deleteOrder/{order_id}', [RestaurantOrderController::class, 'deleteOrder']);
             Route::get('/orderDetails/{id}', [RestaurantOrderController::class, 'orderDetails']);
 
 

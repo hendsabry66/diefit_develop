@@ -24,7 +24,7 @@
                                 <h2>{{$cart->product->name}}</h2>
                                 <ul>
                                     <li>@lang('web.quantity') : <strong> {{$cart->quantity}}</strong></li>
-                                    <li>@lang('web.price'): <strong>{{$cart->price}}</strong></li>
+                                    <li>@lang('web.price'): <strong>{{$cart->price}} @lang('web.rial')</strong></li>
                                 </ul>
                             </div>
                         </div>
@@ -52,13 +52,13 @@
 
                 <div class="total">
                 <div class="d-flex justify-content-between align-items-center">
-                    @php $total = 0 ; 
+                    @php $total = 0 ;
                          foreach($carts as $cart){
                       $total += $cart->price * $cart->quantity ;
                       }
-                      
+
                       @endphp
-                    <span>@lang('web.total') : <strong>{{$total }} </strong></span>
+                    <span>@lang('web.total') : <strong>{{$total }} @lang('web.rial')</strong></span>
                     <a href="{{url('store/checkOut')}}" class="btn btn-success">@lang('web.confirmation_of_purchase')</a>
                 </div>
             </div>

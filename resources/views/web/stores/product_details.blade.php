@@ -89,7 +89,7 @@
                             </div>
                             <div class="price mb-4">
                                 <span>@lang('web.price'): </span>
-                                <strong>{{$product->price}} </strong>
+                                <strong>{{$product->price}} @lang('web.rial') </strong>
                             </div>
                             <div class="d-block d-md-flex">
 
