@@ -326,7 +326,7 @@ return [
     'periods'=>'المدة',
     'editSubscriptionfoods'=>'تعديل وجبة اشتراك',
     'select'=>'اختر',
-
+    'order_date'=>'تاريخ الطلب',
 
 
 

@@ -69,4 +69,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(SubscriptionOrder::class);
     }
+
+    public function getImageAttribute($value)
+    {
+        if (!empty($value)) {
+            return \Request::root() . '/uploads/user/' . $value;
+        }
+    }
 }

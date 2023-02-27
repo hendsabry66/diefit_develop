@@ -73,6 +73,9 @@ Route::group([
         Route::get('profile', [UserController::class, 'profile']);
         Route::get('additionalData', [UserController::class, 'additionalData']);
         Route::post('updateAdditionalData', [UserController::class, 'updateAdditionalData']);
+        Route::get('editProfile', [UserController::class, 'editProfile']);
+        Route::post('updateProfile', [UserController::class, 'updateProfile']);
+
 
         /**
          * Route for article

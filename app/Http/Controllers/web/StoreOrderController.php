@@ -41,7 +41,7 @@ class StoreOrderController extends Controller
             $total += $cart->price * $cart->quantity ;
         }
         $total_price = $total + (15* ($total+ 0)  / 100) + 0;
-        $order = $this->orderRepository->createOrder($request,$address->id,$carts->sum('price'),$total_price);
+        $order = $this->orderRepository->createOrder($request,$address->id,$carts->sum('price'),$total_price,$total);
         //store order details
         foreach($carts as $cart){
             $this->orderItemRepository->createOrderItem($order->id,$cart->product_id,$cart->quantity,$cart->price,$cart->specification);

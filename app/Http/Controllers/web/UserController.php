@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use Hash;
 use Session;
 use App\Models\User;
+use App\Models\City;
+use Image;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -206,6 +208,31 @@ class UserController extends Controller
 
 
         return redirect('/login')->with('success', __('web.Your password changed'));
+    }
+
+    public function editProfile()
+    {
+        $user = Auth::user();
+        $cities = City::all();
+        return view('web.users.edit_profile', compact('user', 'cities'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = Auth::user();
+        $image = $request->file('image');
+        $data = $request->all();
+        if(!empty($image)){
+            // for save original image
+
+            $img = Image::make($image);
+            $imgPath = 'uploads/user/';
+            $imgName =time().$image->getClientOriginalName();
+            $img =  $img->save($imgPath.$imgName);
+            $data['image']=$imgName;
+        }
+        $user->update($data);
+        return redirect()->back()->with('success', __('web.Data updated successfully'));
     }
 
 }

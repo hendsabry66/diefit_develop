@@ -18,10 +18,10 @@
                     <div class="item mb-4">
                         <div class="d-md-flex">
                             <figure>
-                                <img src="{{$cart->product->image}}" alt="">
+                               <a href="{{LaravelLocalization::localizeUrl('productDetails/'.$cart->product->id)}}"> <img src="{{$cart->product->image}}" alt=""></a>
                             </figure>
                             <div class="caption">
-                                <h2>{{$cart->product->name}}</h2>
+                                <h2><a href="{{LaravelLocalization::localizeUrl('productDetails/'.$cart->product->id)}}"> {{$cart->product->name}} </a></h2>
                                 <ul>
                                     <li>@lang('web.quantity') : <strong> {{$cart->quantity}}</strong></li>
                                     <li>@lang('web.price'): <strong>{{$cart->price}} @lang('web.rial')</strong></li>

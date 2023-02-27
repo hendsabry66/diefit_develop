@@ -41,7 +41,7 @@ class OrderRepository extends BaseRepository
     /**
      * create order
      */
-    public function createOrder($input,$address_id,$price,$total_price)
+    public function createOrder($input,$address_id,$price,$total_price,$total)
     {
         $data = [
             'user_id' => auth()->user()->id,
@@ -49,8 +49,8 @@ class OrderRepository extends BaseRepository
             'status_id' => '1',
             'total_price' => $total_price,
             'price' => $price,
-            'delivery' => 10,
-            'tax' => 10,
+            'delivery' => 0,
+            'tax' => (15* ($total+ 0)  / 100),
             'delivery_date' => $input['date'],
             'delivery_time' => $input['time'],
             'payment' => $input['payment'],

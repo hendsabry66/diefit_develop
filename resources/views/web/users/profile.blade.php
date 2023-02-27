@@ -23,6 +23,8 @@
                             </div>
                         </div>
                         <a href="{{url('additionalData')}}" class="btn btn-success"> @lang('web.extra_data')</a>
+                            <br>
+                        <a href="{{url('editProfile')}}" class="btn btn-success"> @lang('web.editProfile')</a>
                     </header>
                 </div>
             </div>
