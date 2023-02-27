@@ -1,4 +1,8 @@
 @extends('web.layouts.master')
+@section('title')
+|
+    @lang('web.subscriptionOrderFood')
+@endsection
 @section('content')
 
     <style>

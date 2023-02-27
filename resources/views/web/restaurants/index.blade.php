@@ -1,5 +1,8 @@
 @extends('web.layouts.master')
-
+@section('title')
+    |
+    @lang('web.home')
+@endsection
 @section('content')
     <div class="intro" style="background-image: url({{asset('/web/assets/images/restaurant_product.jpg')}});">
         <div class="container">

@@ -15,13 +15,16 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{asset('web/assets/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('web/assets/css/style.css')}}">
-    
+
     @if(App::getLocale() == 'en')
     <link rel="stylesheet" href="{{asset('web/assets/css/style.ltr.css')}}">
     @endif
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.34/sweetalert2.min.css">
 
-    <title>Diet Fit</title>
+    <title>
+        {{settings()['site_name']}}
+        @yield('title')
+    </title>
 </head>
 
 <body id="body_site">

@@ -68,6 +68,10 @@ Route::group([
     Route::get('contact', [HomeController::class, 'contact']);
     Route::post('contact', [HomeController::class, 'post_contact']);
 
+    //store
+
+    Route::get('productDetails/{product_id}', [StoreController::class, 'productDetails']);
+
     Route::group(['middleware'=>'auth'],function(){
 
         Route::get('profile', [UserController::class, 'profile']);
@@ -103,7 +107,7 @@ Route::group([
          */
 
         Route::get('storeProducts/{product_category_id}', [StoreController::class, 'storeProducts']);
-        Route::get('productDetails/{product_id}', [StoreController::class, 'productDetails']);
+       // Route::get('productDetails/{product_id}', [StoreController::class, 'productDetails']);
 
         Route::group( ['prefix' => 'store'], function () {
             Route::get('/', [StoreController::class, 'store']);

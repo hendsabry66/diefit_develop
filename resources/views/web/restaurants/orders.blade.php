@@ -1,4 +1,8 @@
 @extends('web.layouts.master')
+@section('title')
+    |
+    @lang('web.orders')
+@endsection
 @section('content')
 
     <div class="notification store-order">

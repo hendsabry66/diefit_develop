@@ -1,4 +1,8 @@
 @extends('web.layouts.master')
+@section('title')
+    |
+    @lang('web.subscriptions')
+@endsection
 @section('content')
     <style>
         .form-control, .form-select {

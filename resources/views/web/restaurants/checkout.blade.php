@@ -1,4 +1,8 @@
 @extends('web.layouts.master')
+@section('title')
+    |
+    @lang('web.completeOrder')
+@endsection
 @section('content')
 
     <div class="container">
@@ -84,11 +88,11 @@
                     <li>
                         <div class="d-flex justify-content-between">
                             <span>@lang('web.total_price')</span>
-                           @php $total = 0 ; 
+                           @php $total = 0 ;
                          foreach($carts as $cart){
                       $total += $cart->price * $cart->quantity ;
                       }
-                      
+
                       @endphp
                             <span><strong>{{$total  + 10 +10}}</strong></span>
                         </div>

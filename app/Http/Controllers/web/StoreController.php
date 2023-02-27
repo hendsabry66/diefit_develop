@@ -41,7 +41,15 @@ class StoreController extends Controller
     public function productDetails($id)
     {
         $product = $this->productRepository->find($id);
-        $isFavorite = $product->favourites()->where('user_id', auth()->user()->id)->exists();
+        if(auth()->check())
+        {
+            $isFavorite = $product->favourites()->where('user_id', auth()->user()->id)->exists();
+        }
+        else
+        {
+            $isFavorite = false;
+        }
+        //$isFavorite = $product->favourites()->where('user_id', auth()->user()->id)->exists();
         $similarProducts = $this->productRepository->getSimilarProducts($product->productCategory->id);
         return view('web.stores.product_details', compact('product', 'similarProducts', 'isFavorite'));
     }

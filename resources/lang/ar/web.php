@@ -161,5 +161,7 @@ return [
     'rial'=>'ريال',
     'editProfile'=>'تعديل البيانات الشخصية',
     'Data updated successfully'=>'تم تحديث البيانات بنجاح',
+'subscriptionOrderFood'=>'الوجبات المشترك بها',
+'forget password'=>'نسيت كلمة المرور',
     ];
 

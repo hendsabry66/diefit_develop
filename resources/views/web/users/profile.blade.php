@@ -1,5 +1,8 @@
 @extends('web.layouts.master')
-@section('title', 'Code')
+@section('title')
+    |
+    @lang('web.profile')
+@endsection
 @section('content')
 
     <div class="entry-content profile">

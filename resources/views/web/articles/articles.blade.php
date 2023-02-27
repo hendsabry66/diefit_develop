@@ -1,4 +1,8 @@
 @extends('web.layouts.master')
+@section('title')
+    |
+    @lang('web.articles')
+@endsection
 @section('content')
     <div class="intro article">
         <div class="container">

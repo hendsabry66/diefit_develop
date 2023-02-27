@@ -1,5 +1,8 @@
 @extends('web.layouts.master')
-@section('title', 'Article Categories')
+@section('title')
+    |
+    @lang('web.articles')
+@endsection
 @section('content')
 
     <div class="intro article">

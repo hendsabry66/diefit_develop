@@ -1,4 +1,5 @@
 @extends('web.layouts.master')
+@section('title', '|' .$user->name)
 @section('content')
 
     <div class="entry-content profile consulting_profile data-user">

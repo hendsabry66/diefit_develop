@@ -1,4 +1,8 @@
 @extends('web.layouts.master')
+@section('title')
+|
+    @lang('web.products')
+@endsection
 @section('content')
 
     <div class="container">

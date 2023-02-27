@@ -1,5 +1,9 @@
 @extends('web.layouts.master')
-@section('title', 'Code')
+@section('title')
+    |
+    @lang('web.subscriptions')
+@endsection
+
 @section('content')
 
     <div class="entry-content forms-user">

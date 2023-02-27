@@ -1,5 +1,8 @@
 @extends('web.layouts.master')
-@section('title', 'Code')
+@section('title')
+    |
+    @lang('web.forget password')
+@endsection
 @section('content')
 
     <div class="entry-content forms-user">

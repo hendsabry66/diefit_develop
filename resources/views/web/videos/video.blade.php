@@ -1,5 +1,5 @@
 @extends('web.layouts.master')
-@section('title', 'Videos')
+@section('title', ' | Videos')
 @section('content')
 
 

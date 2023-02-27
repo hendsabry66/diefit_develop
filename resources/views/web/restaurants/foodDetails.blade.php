@@ -1,4 +1,8 @@
 @extends('web.layouts.master')
+@section('title')
+    |
+    {{$food->name}}
+@endsection
 @section('content')
 
     <div class="container">

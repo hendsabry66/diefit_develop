@@ -1,4 +1,8 @@
 @extends('web.layouts.master')
+@section('title')
+    |
+    @lang('web.subscription_confirm')
+@endsection
 @section('content')
 
     <div class="container">

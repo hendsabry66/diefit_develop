@@ -1,4 +1,8 @@
 @extends('web.layouts.master')
+@section('title')
+|
+    @lang('web.store')
+@endsection
 @section('content')
     <div class="store-page">
         <div class="intro" >

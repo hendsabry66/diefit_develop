@@ -1,4 +1,8 @@
 @extends('web.layouts.master')
+@section('title')
+    |
+    {{$article->title}}
+@endsection
 @section('content')
 
     <div class="container">

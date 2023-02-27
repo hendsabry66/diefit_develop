@@ -1,5 +1,8 @@
 @extends('web.layouts.master')
-@section('title', 'Videos')
+@section('title')
+    |
+    @lang('web.home')
+@endsection
 @section('content')
 
     <div class="intro">

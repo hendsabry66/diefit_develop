@@ -1,4 +1,8 @@
 @extends('web.layouts.master')
+@section('title')
+    |
+    @lang('web.cart')
+@endsection
 @section('content')
     <div class="notification cart">
         <div class="container">
