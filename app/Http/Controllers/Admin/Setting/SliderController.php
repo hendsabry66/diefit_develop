@@ -72,11 +72,12 @@ class SliderController extends AppBaseController
         }
 
         $slider = $this->sliderRepository->create([
-            'text' =>[
-                'en' => $input['text_en'],
-                'ar' => $input['text_ar'],
-            ],
-            'link' => $input['link'],
+            'title' => ['en' => $input['title_en'], 'ar' => $input['title_ar']],
+            'btn_name' => ['en' => $input['btn_name_en'], 'ar' => $input['btn_name_ar']],
+            'description' => ['en' => $input['description_en'], 'ar' => $input['description_ar']],
+            'link_btn' => $input['link_btn'],
+            'background' => $input['background'],
+            'page_type' => $input['page_type'],
             'image' => (isset($input['image'])?$input['image']:null),
         ]);
 
@@ -152,11 +153,12 @@ class SliderController extends AppBaseController
             $input['image']= $imgName;
         }
         $slider = $this->sliderRepository->update([
-            'text' =>[
-                'en' => $input['text_en'],
-                'ar' => $input['text_ar'],
-            ],
-            'link' => $input['link'],
+            'title' => ['en' => $input['title_en'], 'ar' => $input['title_ar']],
+            'btn_name' => ['en' => $input['btn_name_en'], 'ar' => $input['btn_name_ar']],
+            'description' => ['en' => $input['description_en'], 'ar' => $input['description_ar']],
+            'link_btn' => $input['link_btn'],
+            'background' => $input['background'],
+            'page_type' => $input['page_type'],
             'image' => (isset($input['image'])?$input['image']:$slider->image),
         ], $id);
 

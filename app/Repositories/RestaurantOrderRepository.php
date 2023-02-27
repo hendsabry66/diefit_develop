@@ -65,14 +65,19 @@ class RestaurantOrderRepository extends BaseRepository
      */
     public function getOrders()
     {
-        $orders = RestaurantOrder::where('user_id', auth()->user()->id)->get();
+        $orders = RestaurantOrder::where('user_id', auth()->user()->id)
+            ->where('payment_status','paid')
+            ->get();
         return $orders;
     }
     /**
      * getCompeleteOrders
      */
     public function getCompeleteOrders(){
-        $orders = RestaurantOrder::where('user_id', auth()->user()->id)->where('status_id', 5)->get();
+        $orders = RestaurantOrder::where('user_id', auth()->user()->id)
+            ->where('payment_status','paid')
+            ->where('status_id', 5)
+            ->get();
         return $orders;
     }
 

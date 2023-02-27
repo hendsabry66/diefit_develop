@@ -28,12 +28,12 @@
                 @foreach($foodCategories as $category)
                     <div class="col-md-4 col-6">
                         <div class="item card-sile">
-                            <a href="{{url('restaurant/foods/'.$category->id)}}">
+                            <a href="{{LaravelLocalization::localizeUrl('restaurant/foods/'.$category->id)}}">
                                 <figure>
                                     @if(!empty($category->image))
                                         <img src="{{$category->image}}" alt="">
                                     @else
-                                        <img src="{{asset('web/assets/images/c01.png')}}" alt="">
+                                        <figure><img src="{{asset('web')}}/assets/images/i01.png" alt=""></figure>
                                     @endif
                                 </figure>
                                 <h3> {{$category->name}}</h3>

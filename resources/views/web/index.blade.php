@@ -100,33 +100,33 @@
         </div>
     </div>
 
-    <div class="subscriptions">
-        <div class="container">
-            <div class="head">
-                <h2>@lang('web.List of subscriptions')</h2>
-            </div>
-            <div class="swiper">
-                <div class="swiper-wrapper">
-                    @foreach($subscriptions as$subscriptions)
-                        <div class="swiper-slide">
-                            <div class="item">
-                                <a href="">
-                                    <figure><img src="{{asset('web')}}/assets/images/s01.png" alt=""></figure>
-                                </a>
-                                <div class="caption">
-                                    <a href="">
-                                        <h5>{{$subscriptions->name}}</h5>
-                                    </a>
-                                    <p class="mb-0">{!! $subscriptions->details !!}  </p>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </div>
+{{--    <div class="subscriptions">--}}
+{{--        <div class="container">--}}
+{{--            <div class="head">--}}
+{{--                <h2>@lang('web.List of subscriptions')</h2>--}}
+{{--            </div>--}}
+{{--            <div class="swiper">--}}
+{{--                <div class="swiper-wrapper">--}}
+{{--                    @foreach($subscriptions as$subscriptions)--}}
+{{--                        <div class="swiper-slide">--}}
+{{--                            <div class="item">--}}
+{{--                                <a href="">--}}
+{{--                                    <figure><img src="{{asset('web')}}/assets/images/s01.png" alt=""></figure>--}}
+{{--                                </a>--}}
+{{--                                <div class="caption">--}}
+{{--                                    <a href="">--}}
+{{--                                        <h5>{{$subscriptions->name}}</h5>--}}
+{{--                                    </a>--}}
+{{--                                    <p class="mb-0">{!! $subscriptions->details !!}  </p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    @endforeach--}}
+{{--                </div>--}}
+{{--                <div class="swiper-pagination"></div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     <div class="category bg-blue">
         <div class="container">
@@ -136,9 +136,11 @@
             <div class="row">
                 @foreach($food_categories as $food_category)
 
+
+
                     <div class="col-md-4 col-6">
                         <div class="item card-sile">
-                            <a href="">
+                            <a href="{{LaravelLocalization::localizeUrl('restaurant/foods/'.$food_category->id)}}">
                                 @if(!empty($food_category->image))
                                     <figure><img src="{{$food_category->image}}" alt=""></figure>
                                 @else
@@ -153,7 +155,7 @@
 
             </div>
             <div class="text-center mt-5">
-                <a href="" class="btn btn-warning">المزيد</a>
+                <a href="{{LaravelLocalization::localizeUrl('/restaurant')}}" class="btn btn-warning">المزيد</a>
             </div>
         </div>
     </div>
@@ -168,7 +170,7 @@
                 @foreach($articles as $article)
                     <div class="col-md-4 col-6">
                         <div class="item card-sile">
-                            <a href="">
+                            <a href="{{LaravelLocalization::localizeUrl('/article/'.$article->id)}}">
                                 <figure><img src="{{$article->image}}" alt=""></figure>
                                 <h3>{{$article->title}} </h3>
                             </a>

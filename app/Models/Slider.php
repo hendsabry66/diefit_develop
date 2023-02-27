@@ -19,13 +19,17 @@ class Slider extends Model
 
     public $table = 'sliders';
 
-    public $translatable = ['text'];
+    public $translatable = ['title', 'btn_name','description'];
 
 
     public $fillable = [
+        'title',
+        'btn_name',
+        'description',
         'image',
-        'text',
-        'link',
+        'link_btn',
+        'background',
+        'page_type',
     ];
 
     /**

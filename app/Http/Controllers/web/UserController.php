@@ -123,10 +123,10 @@ class UserController extends Controller
     public function profile()
     {
         $user = Auth::user();
-        $storeOrders = Order::where('user_id', $user->id)->count();
-        $storeOrdersCompleted = Order::where('user_id', $user->id)->where('status_id', 5)->count();
-        $restaurantOrders = RestaurantOrder::where('user_id', $user->id)->count();
-        $restaurantOrdersCompleted = RestaurantOrder::where('user_id', $user->id)->where('status_id', 5)->count();
+        $storeOrders = Order::where('user_id', $user->id) ->where('payment_status','paid')->count();
+        $storeOrdersCompleted = Order::where('user_id', $user->id) ->where('payment_status','paid')->where('status_id', 5)->count();
+        $restaurantOrders = RestaurantOrder::where('user_id', $user->id)->where('payment_status','paid')->count();
+        $restaurantOrdersCompleted = RestaurantOrder::where('user_id', $user->id) ->where('payment_status','paid')->where('status_id', 5)->count();
         $currentSubscription  = (SubscriptionOrder::where('user_id', $user->id)->where('end_date','>=',date('Y-m-d'))->first()) ? SubscriptionOrder::where('user_id', $user->id)->where('end_date','>=',date('Y-m-d'))->first()->subscriptionPrice->subscription->name : '-';
         if(SubscriptionOrder::where('user_id', $user->id)->where('end_date','>=',date('Y-m-d'))->first()){
 

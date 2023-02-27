@@ -25,8 +25,13 @@ class UpdateSliderRequest extends FormRequest
     public function rules()
     {
         return [
-            'text_ar' => 'required',
-            'text_en' => 'required',
+            'title_ar' => 'required',
+            'title_en' => 'required',
+            'btn_name_ar' => 'required',
+            'btn_name_en' => 'required',
+            'description_ar' => 'required',
+            'description_en' => 'required',
+            'link_btn' => 'required',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ];
     }

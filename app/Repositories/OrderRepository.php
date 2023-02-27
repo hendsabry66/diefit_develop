@@ -66,14 +66,19 @@ class OrderRepository extends BaseRepository
      */
     public function getOrders()
     {
-        $orders = Order::where('user_id', auth()->user()->id)->get();
+        $orders = Order::where('user_id', auth()->user()->id)
+            ->where('payment_status','paid')
+            ->get();
         return $orders;
     }
     /**
      * getCompeleteOrders
      */
     public function getCompeleteOrders(){
-        $orders = Order::where('user_id', auth()->user()->id)->where('status_id', 5)->get();
+        $orders = Order::where('user_id', auth()->user()->id)
+            ->where('payment_status','paid')
+            ->where('status_id', 5)
+            ->get();
         return $orders;
     }
 

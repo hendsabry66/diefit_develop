@@ -31,7 +31,7 @@
                             </div>
                             <div>
                                 <ul>
-                                    <li>طريقة الدفع المحددة: <strong>{{$order->payment}}</strong></li>
+{{--                                    <li>طريقة الدفع المحددة: <strong>{{$order->payment}}</strong></li>--}}
                                     <li>
                                         العنوان المحدد في الطلب: <strong>
 

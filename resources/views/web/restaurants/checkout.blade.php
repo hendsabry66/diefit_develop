@@ -145,19 +145,19 @@
                             <label for="" class="mb-3"><strong>@lang('web.hour') </strong></label>
                             <input class="form-control" type="time" name="time" id="" placeholder="00:00">
                         </div>
-                        <hr>
-                        <div class="head">
-                            <h2>@lang('web.Select the appropriate payment method')</h2>
-                        </div>
-                        @foreach(json_decode(settings()['restaurant_payment']) as $payment_method)
+{{--                        <hr>--}}
+{{--                        <div class="head">--}}
+{{--                            <h2>@lang('web.Select the appropriate payment method')</h2>--}}
+{{--                        </div>--}}
+{{--                        @foreach(json_decode(settings()['restaurant_payment']) as $payment_method)--}}
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="payment" value="visa" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                {{$payment_method}}
-                            </label>
-                        </div>
-                        @endforeach
+{{--                        <div class="form-check">--}}
+{{--                            <input class="form-check-input" type="radio" name="payment" value="visa" id="flexRadioDefault1">--}}
+{{--                            <label class="form-check-label" for="flexRadioDefault1">--}}
+{{--                                {{$payment_method}}--}}
+{{--                            </label>--}}
+{{--                        </div>--}}
+{{--                        @endforeach--}}
 
                     </div>
                 </div>

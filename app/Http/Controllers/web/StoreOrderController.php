@@ -29,7 +29,6 @@ class StoreOrderController extends Controller
             'apartment' => 'required',
             'date' => 'required',
             'time' => 'required',
-            'payment' => 'required',
         ]);
 
         $carts = $this->cartRepository->getCart();
