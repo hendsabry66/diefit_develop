@@ -327,6 +327,14 @@ return [
     'editSubscriptionfoods'=>'تعديل وجبة اشتراك',
     'select'=>'اختر',
     'order_date'=>'تاريخ الطلب',
+    'btn_name_en'=>'اسم الزر بالانجليزية',
+    'btn_name_ar'=>'اسم الزر بالعربية',
+    'link_btn'=>'رابط الزر',
+    'description_en'=>'الوصف بالانجليزية',
+    'description_ar'=>'الوصف بالعربية',
+    'background'=>'الخلفية',
+    'page_type'=>'نوع الصفحة',
+
 
 
 
