@@ -21,6 +21,7 @@ use App\Repositories\TypeRepository;
 use DateTime;
 use DateInterval;
 use DatePeriod;
+use App\Models\Slider;
 
 class SubscriptionController extends Controller
 {
@@ -39,7 +40,8 @@ class SubscriptionController extends Controller
         $subscriptions = $this->subscriptionRepository->all();
         $types = $this->typeRepository->all();
         $cities = City::get();
-        return view('web.subscriptions.subscriptions', compact('subscriptions', 'types', 'cities'));
+        $slider = Slider::where('page_type', 'subscription')->orderBy('id','desc')->first();
+        return view('web.subscriptions.subscriptions', compact('subscriptions', 'types', 'cities','slider'));
     }
 
     //save subscription order in database

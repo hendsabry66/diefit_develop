@@ -10,10 +10,9 @@
                 <div class="row align-items-center">
                     <div class="col-md-6">
                         <div class="content">
-                            <h1>انقص وزنك في اسبوع فقط</h1>
-                            <p>انضم الينا واستمتع بالنتائج المزهلة انضم الينا واستمتع بالنتائج المزهلة انضم الينا واستمتع
-                                بالنتائج </p>
-                            <a href="" class="btn btn-success">انضم معنا</a>
+                            <h1>{{$slider->title}}</h1>
+                            <p>{!! $slider->description !!}</p>
+                            <a href="{{$slider->link_btn}}" class="btn btn-success"> {{$slider->btn_name}}</a>
                         </div>
                     </div>
                 </div>

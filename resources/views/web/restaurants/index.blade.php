@@ -4,15 +4,14 @@
     @lang('web.home')
 @endsection
 @section('content')
-    <div class="intro" style="background-image: url({{asset('/web/assets/images/restaurant_product.jpg')}});">
+    <div class="intro" style="background-image: url({{$slider->image}});">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="content">
-                        <h1>خلي طعامك صحي</h1>
-                        <p>انضم الينا واستمتع بالنتائج المزهلة انضم الينا واستمتع بالنتائج المزهلة انضم الينا واستمتع
-                            بالنتائج </p>
-                        <a href="" class="btn btn-warning">انضم معنا</a>
+                        <h1>{{$slider->title}}</h1>
+                        <p>{!! $slider->description !!}</p>
+                        <a href="{{$slider->link_btn}}" class="btn btn-warning"> {{$slider->btn_name}}</a>
                     </div>
                 </div>
             </div>

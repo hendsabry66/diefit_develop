@@ -10,15 +10,14 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="content">
-                        <h1>@lang('web.articles')</h1>
-                        <p>انضم الينا واستمتع بالنتائج المزهلة انضم الينا واستمتع بالنتائج المزهلة انضم الينا واستمتع
-                            بالنتائج </p>
-                        <a href="" class="btn btn-success">المزيد</a>
+                        <h1>{{$slider->title}}</h1>
+                        <p>{!! $slider->description !!} </p>
+                        <a href="{{$slider->link_btn}}" class="btn btn-success">{{$slider->btn_name}}</a>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <figure>
-                        <img src="{{asset('web/assets/images/articles.png')}}" alt="">
+                        <img src="{{$slider->image}}" alt="">
                     </figure>
                 </div>
             </div>

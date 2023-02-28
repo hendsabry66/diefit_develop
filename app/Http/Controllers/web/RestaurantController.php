@@ -10,7 +10,7 @@ use App\Repositories\FoodCategoryRepository;
 use App\Repositories\FoodRepository;
 use App\Repositories\RestaurantCartRepository;
 use App\Repositories\CityRepository;
-
+use App\Models\Slider;
 
 class RestaurantController extends Controller
 {
@@ -26,9 +26,10 @@ class RestaurantController extends Controller
 
     public function index()
     {
+        $slider = Slider::where('page_type', 'resturant')->orderBy('id','desc')->first();
         $foodCategories = $this->foodCategoryRepository->all();
         $bestFoods = $this->foodRepository->all();
-        return view('web.restaurants.index', compact('foodCategories', 'bestFoods'));
+        return view('web.restaurants.index', compact('foodCategories', 'bestFoods', 'slider'));
     }
     public function foods($category_id)
     {

@@ -10,6 +10,7 @@ use App\Repositories\ProductCategoryRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\CartRepository;
 use App\Repositories\CityRepository;
+use App\Models\Slider;
 
 class StoreController extends Controller
 {
@@ -26,10 +27,11 @@ class StoreController extends Controller
 
     public function store()
     {
+        $slider = Slider::where('page_type', 'store')->orderBy('id','desc')->first();
         $products = \App\Models\Product::withCount('orders')->orderByDesc('orders_count')->take(10)->get();
         $productCategories = $this->productCategoryRepository->all();
 
-        return view('web.stores.store', compact('productCategories','products'));
+        return view('web.stores.store', compact('productCategories','products','slider'));
     }
 
     public function storeProducts($id)

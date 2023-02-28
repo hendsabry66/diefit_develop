@@ -14,16 +14,15 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="content">
-                        <h1>الإشتراكات</h1>
-                        <p>انضم الينا واستمتع بالنتائج المزهلة انضم الينا واستمتع بالنتائج المزهلة انضم الينا واستمتع
-                            بالنتائج </p>
-                        <a href="" class="btn btn-warning">المزيد</a>
+                        <h1>{{$slider->title}}</h1>
+                        <p>{!! $slider->description !!} </p>
+                        <a href="{{$slider->link_btn}}" class="btn btn-warning">{{$slider->btn_name}}</a>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <figure>
-                        <img class="bg-image" src="{{asset('web/assets/images/Shape-423.png')}}" alt="">
-                        <img src="{{asset('web/assets/images/img-slider.png')}}" alt="">
+{{--                        <img class="bg-image" src="{{asset('web/assets/images/Shape-423.png')}}" alt="">--}}
+                        <img src="{{$slider->image}}" alt="">
                     </figure>
                 </div>
             </div>

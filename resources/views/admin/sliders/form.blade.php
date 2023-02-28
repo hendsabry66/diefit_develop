@@ -47,6 +47,8 @@
     <div class="form-group col-md-6 mb-2">
         <label for="projectinput4">@lang('admin.page_type')</label>
         <select name="page_type" class="form-control">
+            <option value="home" @if(isset($slider) && $slider->page_type == 'home' ) selected @endif >home</option>
+
             <option value="article" @if(isset($slider) && $slider->page_type == 'article' ) selected @endif >article</option>
             <option value="video" @if(isset($slider) && $slider->page_type == 'video' ) selected @endif >video</option>
             <option value="store" @if(isset($slider) && $slider->page_type == 'store' ) selected @endif >store</option>

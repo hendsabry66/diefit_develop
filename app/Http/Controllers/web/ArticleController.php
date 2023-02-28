@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\ArticleCategoryRepository;
 use App\Repositories\ArticleRepository;
+use App\Models\Slider;
 
 class ArticleController extends Controller
 {
@@ -17,8 +18,9 @@ class ArticleController extends Controller
 
     public function articleCategories()
     {
+        $slider = Slider::where('page_type', 'article')->orderBy('id','desc')->first();
         $articleCategories = $this->articleCategoryRepository->all();
-        return view('web.articles.articleCategories')->with('articleCategories', $articleCategories);
+        return view('web.articles.articleCategories',compact('articleCategories','slider'));
     }
 
     public function articles($articleCategoryId)
