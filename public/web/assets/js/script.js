@@ -1,3 +1,4 @@
+'use strict';
 jQuery(document).ready(function ($) {
     $('ul.change-package li').click(function () {
         var getPackagePrice = $(this).data('price');
@@ -37,12 +38,12 @@ jQuery(document).ready(function ($) {
 
         if ($(this).hasClass('plus')) {
             newQty = Number(thisQty) + 1;
-            if ( newQty < thisMax ){
+            if (newQty < thisMax) {
                 newQty = thisMax;
             }
         } else {
-            if ( thisQty > thisMin ) {
-                newQty = Number(thisQty) -1;
+            if (thisQty > thisMin) {
+                newQty = Number(thisQty) - 1;
             } else {
                 newQty = thisMin;
             }
@@ -66,7 +67,7 @@ jQuery(document).ready(function ($) {
     $('.select-delivery').click(function () {
         var thisS = $(this).parents('.one-pack-itme');
         var getDelivery = thisS.find('.select-delivery:checked').val();
-        if ( getDelivery == 1 ) {
+        if (getDelivery == 1) {
             thisS.find('.list-cities').show();
         } else {
             thisS.find('.list-cities').hide();
@@ -76,7 +77,7 @@ jQuery(document).ready(function ($) {
 
 });
 
-function auto_update_subscription_price(selector){
+function auto_update_subscription_price(selector) {
     var getPeriod = selector.find('.select-period option:selected').data('period-days');
     var getCalories = selector.find('.select-calorie').val();
     var getDelivery = selector.find('.select-delivery:checked').val();
@@ -88,23 +89,23 @@ function auto_update_subscription_price(selector){
     var specialistCost = 0;
     var getAll = 0;
 
-    if ( getPeriod != undefined && getDelivery == 1 && getArea != undefined ){
+    if (getPeriod != undefined && getDelivery == 1 && getArea != undefined) {
         deliveryCost = getPeriod * getArea;
     }
 
-    if ( getSpecialistN != '' ) {
+    if (getSpecialistN != '') {
         specialistCost = getSpecialistP * getSpecialistN;
     }
 
-    getAll = Number( getSubscriptionP ) + Number( deliveryCost ) + Number( specialistCost );
+    getAll = Number(getSubscriptionP) + Number(deliveryCost) + Number(specialistCost);
 
-    selector.find('.updated-price').text( getAll );
+    selector.find('.updated-price').text(getAll);
 
 }
 
-function auto_update_cart_totel(){
+function auto_update_cart_totel() {
     var calcTotal = 0;
-    $('.total-item-price').each(function(i,e){
+    $('.total-item-price').each(function (i, e) {
         var currentPrice = $(this).val();
         calcTotal = Number(calcTotal) + Number(currentPrice);
     });
@@ -116,18 +117,21 @@ let mobile_btn = document.querySelector('.mobile-btn')
 let mobile_icon = document.querySelector('.mobile-icon')
 let slide_mobile = document.querySelector('.slide-mobile')
 let myNavbar = document.getElementById('primary-menu')
+if (mobile_btn) {
+    mobile_btn.addEventListener('click', () => {
+        mobile_icon.classList.add('active')
+        myNavbar.classList.add('active')
+        slide_mobile.classList.add('opened')
+    })
+}
 
-mobile_btn.addEventListener('click', () => {
-    mobile_icon.classList.add('active')
-    myNavbar.classList.add('active')
-    slide_mobile.classList.add('opened')
-})
-
-slide_mobile.addEventListener('click', () => {
-    mobile_icon.classList.remove('active')
-    myNavbar.classList.remove('active')
-    slide_mobile.classList.remove('opened')
-})
+if (slide_mobile) {
+    slide_mobile.addEventListener('click', () => {
+        mobile_icon.classList.remove('active')
+        myNavbar.classList.remove('active')
+        slide_mobile.classList.remove('opened')
+    })
+}
 
 
 

@@ -33,7 +33,7 @@
                         <form method="POST" action="{{ LaravelLocalization::localizeUrl('postLogin') }}">
                             @csrf
                             <div class="mb-3">
-                                <input type="text" name="phone" class="form-control" id="" placeholder=" {{__('web.phone')}}">
+                                <input type="text" name="phone" class="form-control" id="" placeholder="********05">
                             </div>
                             <div class="mb-3 position-relative">
                                 <input type="password" name="password" id="password" class="form-control"

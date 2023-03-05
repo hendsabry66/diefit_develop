@@ -61,9 +61,7 @@
                         <div class="head">
                             <h2>{{$product->name}}</h2>
                         </div>
-                        <div class="mb-4">
-                           {!! $product->details !!}
-                        </div>
+                        
                         <div class="options">
                             <div class="color mb-4">
                                 <form method="post" action="{{LaravelLocalization::localizeUrl('store/addCart')}}" >
@@ -100,7 +98,7 @@
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{$product->id}}">
                                     <input type="hidden" name="price" value="{{$product->price}}">
-                                    <button type="submit" class="btn btn-success">@lang('web.confirmation')</button>
+                                    <button type="submit" class="btn btn-success">اضف للسلة</button>
 
                                 </form>
                                 <form method="post" action="{{url('addFavorite')}}" id="favouritePost">
@@ -108,14 +106,18 @@
                                     <input type="hidden" name="product_id" value="{{$product->id}}" id="product_id">
 
 {{--                                    @if($isFavorite)--}}
-{{--                                    <button type="submit" class="btn btn-success favorite">@lang('web.add to favorite')</button>--}}
+{{--                                    <button type="submit" class="btn btn-success favorite"></button>--}}
 {{--                                        @else--}}
-                                        <button type="submit" class="btn btn-warning favorite">@lang('web.add to favorite')</button>
+                                        <button type="submit" class="btn btn-warning favorite"></button>
 {{--                                    @endif--}}
                                 </form>
 {{--                                <a href="" class="btn btn-warning favorite">@lang('web.add to favorites')</a>--}}
-                                <a href="" class="btn btn-outline-secondary share">@lang('web.to share')</a>
+                                <a href="" class="btn btn-outline-secondary share"></a>
                             </div>
+                        </div>
+
+                        <div class="mt-4">
+                           {!! $product->details !!}
                         </div>
                     </div>
                 </div>

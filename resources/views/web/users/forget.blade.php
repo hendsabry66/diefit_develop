@@ -28,7 +28,7 @@
                         <form method="POST" action="{{ LaravelLocalization::localizeUrl('forgetPassword') }}">
                             @csrf
                             <div class="mb-3">
-                                <input type="text" name="phone" class="form-control" id="" placeholder="{{__('web.phone')}}">
+                                <input type="text" name="phone" class="form-control" id="" placeholder="********05">
                             </div>
 
                             <div class="d-flex align-items-center justify-content-end">
